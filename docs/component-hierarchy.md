@@ -1,11 +1,10 @@
 # Component Hierarchy
 
 ### AuthFormContainer
-
   - AuthForm
   - HomeContainer
 
-### Home
+### HomeContainer
   - Navbar
   - Side Bar
   - Questions
@@ -20,10 +19,10 @@
   - SearchResults Index Container
     - SearchResults Index Item
 
-### Feed Container
-  - Feed Header
-  - Feed Index Container
-    - Feed Index Item
+### Subscriptions Container
+  - Subscriptions Header
+  - Subscriptions Index Container
+    - Subscriptions Index Item
 
 ### Questions Container
   - Questions Header
@@ -54,8 +53,23 @@
 
 ### Result Options Container
   - Options Index Container
-  - Options Index Item
+    - Options Index Item
 
 ### Results Container
   - Results Index Container
     - Results index item
+
+| Path        | Component         |
+| ------------- |:-------------:|
+| "/sign-up"  |	"AuthFormContainer" |
+| "/sign-in"  |	"AuthFormContainer" |
+| "/home"  |	"HomeContainer" |
+| "/navbar"  |	"NavBarContainer" |
+| "/home/subscriptions/:subscriptionId"  |	"SubscriptionsContainer" |
+| "/home/questions/:questionId"  |	"QuestionsContainer" |
+| "/home/search-results"  |	"SearchResultsContainer" |
+| "/quesiton"  |	"QuestionContainer" |
+| "/quesiton/:questionId/answers/:answerId"  |	"AnswerContainer" |
+| "/quesiton/:questionId/comments/:commentId"  |	"CommentContainer" |
+| "/search"  |	"SearchContainer" |
+| "/search/results"  |	"ResultsContainer" |
