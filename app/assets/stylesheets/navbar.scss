@@ -4,11 +4,20 @@
   justify-content: space-between;
   border-top: 3px solid red;
   border-bottom: 1px solid lightgrey;
-}
-
-.navbar {
+  background-color: white;
   padding: 20px;
   font-family: sans-serif;
+}
+
+.navbar-empty{
+  display: none;
+  background-color: blue;
+}
+
+.navbar h1{
+  color: darkred;
+  font-size: large;
+  font-family: cursive;
 }
 
 .navbar input{

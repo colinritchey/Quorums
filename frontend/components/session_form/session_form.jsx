@@ -37,13 +37,11 @@ class SessionForm extends React.Component {
     } else {
       this.props.login(user);
     }
-
   }
 
   clearErrors(e){
     e.preventDefault();
     this.props.removeErrors();
-    // this.setState({ username: "", password: ""});
   }
 
   handleGuest(e) {
@@ -59,45 +57,55 @@ class SessionForm extends React.Component {
     }
 
     return(
-      <div className="session-form">
-        <span>Would you like to <Link to={text.link} onFocus={this.clearErrors} >{text.button}</Link> instead?</span>
-        <form onSubmit={this.handleSubmit}>
-          <h3>{text.display}</h3>
-          <label>
-            <input
-              type="text"
-              placeholder="Username"
-              onChange={this.update("username")}
+      <div className="session-form-container">
+
+        <section className="session-header">
+          <h1>Quorums</h1>
+          <p>A place to share knowledge and better understand the world</p>
+        </section>
+
+        <div className="session-form">
+          <span>Would you like to <Link to={text.link}
               onFocus={this.clearErrors}
-              className="session-form-input"
-              value={this.state.username} />
-          </label>
+              >{text.button}</Link> instead?</span>
+          <form onSubmit={this.handleSubmit}>
+            <h3>{text.display}</h3>
+            <label>
+              <input
+                type="text"
+                placeholder="Username"
+                onChange={this.update("username")}
+                onFocus={this.clearErrors}
+                className="session-form-input"
+                value={this.state.username} />
+            </label>
 
-          <label>
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={this.update("password")}
-              onFocus={this.clearErrors}
-              className="session-form-input"
-              value={this.state.password} />
-          </label>
+            <label>
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={this.update("password")}
+                onFocus={this.clearErrors}
+                className="session-form-input"
+                value={this.state.password} />
+            </label>
 
-          <section className="section-form-submit-button">
+            <section className="section-form-submit-button">
 
-            <input type="submit" onClick={this.handleGuest} value="Demo"></input>
-            <input
-              type="submit"
-              value={text.display}/>
-          </section>
+              <input type="submit" onClick={this.handleGuest} value="Demo"></input>
+              <input
+                type="submit"
+                value={text.display}/>
+            </section>
 
-          <ul className="session-form-error-index">
-            {this.props.errors.map((err, idx) => (
-              <li key={idx}>{err}</li>
-            ))}
-          </ul>
-        </form>
+            <ul className="session-form-error-index">
+              {this.props.errors.map((err, idx) => (
+                <li key={idx}>{err}</li>
+              ))}
+            </ul>
+          </form>
 
+        </div>
       </div>
     );
   }

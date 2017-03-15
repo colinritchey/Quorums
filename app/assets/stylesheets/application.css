@@ -24,10 +24,9 @@ html, body, section, article, div, h1, h2, h3, form, ul, li, input {
   text-decoration: inherit;
   color: inherit;
 
-  background: inherit;
+  /*background: inherit;*/
 }
 
 body {
-  /*padding: 20px;*/
   font-family: sans-serif;
 }

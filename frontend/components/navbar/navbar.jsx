@@ -11,14 +11,7 @@ const Navbar = ({currentUser, logout}) => {
     );
   } else {
     return(
-      <div></div>
-      // <div className="navbar">
-      //   <h1>Quorums</h1>
-      //   <section>
-      //     <Link to={`/signup`}>Sign Up</Link>&nbsp;
-      //     <Link to={`/login`}>Log In</Link>
-      //   </section>
-      // </div>
+      <div className="navbar-empty"></div>
     );
   }
 };

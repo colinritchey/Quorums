@@ -21,7 +21,3 @@ document.addEventListener("DOMContentLoaded", ()=> {
   window.removeErrors = removeErrors;
   ReactDOM.render(<Root store={store}/>, root);
 });
-
-// window.signup = signup;
-// window.login = login;
-// window.logout = logout;
