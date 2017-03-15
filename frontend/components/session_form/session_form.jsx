@@ -30,35 +30,33 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+
+    if(this.props.formType === "signup"){
+      this.props.signup(user);
+    } else {
+      this.props.login(user);
+    }
+
   }
 
   handleGuest(e) {
     e.preventDefault();
-    // const user = Object.assign({}, this.state, );
     this.props.login({username: "guest", password: "password"});
   }
 
 
 
   render(){
-    // TODO: Clean up code
-    let text = this.props.formType === "signup" ? "Sign Up" : "Login";
-    let linkTo = this.props.formType === "signup" ? "/login" : "/signup";
-    let linkToText = linkTo === "/signup" ? "Sign Up" : "Log in";
-    // TODO: Clean up code
+    let text = {display: "Sign Up", link: "/signup"};
+
+    if(this.props.formType === "login"){
+      text = {display: "Log In", link: "/login"};
+    }
 
     return(
       <div className="session-form">
-
-        <ul>
-          {this.props.errors.map((err, idx) => (
-            <li key={idx}>{err}</li>
-          ))}
-        </ul>
-
         <form onSubmit={this.handleSubmit}>
-          <h3>{text}</h3>
+          <h3>{text.display}</h3>
           <label>
             <input
               type="text"
@@ -82,11 +80,19 @@ class SessionForm extends React.Component {
             <input type="submit" onClick={this.handleGuest} value="Demo"></input>
             <input
               type="submit"
-              value={text}/>
+              value={text.display}/>
           </section>
+
+          <ul className="session-form-error-index">
+            {this.props.errors.map((err, idx) => (
+              <li key={idx}>{err}</li>
+            ))}
+          </ul>
+
         </form>
 
-        <span>Would you like to <Link to={linkTo} >{linkToText}</Link> instead?</span>
+
+        <span>Would you like to <Link to={text.link} >{text.display}</Link> instead?</span>
 
       </div>
     );

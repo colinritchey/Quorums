@@ -1,9 +1,9 @@
 import React from 'react';
 
 import GreetingContainer from './greeting/greeting_container';
-
+// TODO: rename greetings to navbar
 const App = ({ children }) => (
-  <div>
+  <div className="app">
     <h1>Quorums</h1>
     <GreetingContainer />
     { children }

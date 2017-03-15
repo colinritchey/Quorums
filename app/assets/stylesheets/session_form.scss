@@ -7,14 +7,14 @@
   border: 1px solid darkgrey;
   border-radius: 15px;
 
-  width: 50%;
-  height: 300px;
+  width: 40%;
+  overflow: auto;
 }
 
 .session-form h3{
   display: inline-block;
   float: left;
-  width: 50%;
+  width: 40%;
   align-self: center;
   text-align: left;
   font-weight: bold;
@@ -28,12 +28,12 @@
 
 ::-webkit-input-placeholder {
   color: grey;
-  padding: 5px;
 }
 
 .session-form-input{
   margin: 10px;
-  width: 55%;
+  text-indent: 5px;
+  width: 40%;
   height: 30px;
 
   font-size: 15px;
@@ -45,7 +45,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 55%;
+  width: 40%;
   margin: auto;
 }
 
@@ -61,4 +61,20 @@
 
   color: white;
   background-color: #91a6c7;
+}
+
+.session-form-error-index {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 40%;
+  margin-top: 10px;
+  list-style: none;
+}
+
+.session-form-error-index li {
+  background-color: lightcoral;
+  color: white;
+  padding: 10px;
+  border-radius: 2px;
 }
