@@ -11,13 +11,14 @@ const Navbar = ({currentUser, logout}) => {
     );
   } else {
     return(
-      <div className="navbar">
-        <h1>Quorums</h1>
-        <section>
-          <Link to={`/signup`}>Sign Up</Link>&nbsp;
-          <Link to={`/login`}>Log In</Link>
-        </section>
-      </div>
+      <div></div>
+      // <div className="navbar">
+      //   <h1>Quorums</h1>
+      //   <section>
+      //     <Link to={`/signup`}>Sign Up</Link>&nbsp;
+      //     <Link to={`/login`}>Log In</Link>
+      //   </section>
+      // </div>
     );
   }
 };

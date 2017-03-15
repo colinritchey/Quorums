@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 const Home = ({currentUser}) => {
+  // debugger;
+
   if(currentUser){
     return(
       <div className="home">
@@ -9,8 +11,9 @@ const Home = ({currentUser}) => {
       </div>
     );
   } else {
+    // hashHistory.push('/login');
     return(
-      <div>
+      <div className="home">
         <h1>Welcome to Quora</h1>
       </div>
     );

@@ -23,8 +23,7 @@ export const removeErrors = () => ({
 });
 
 export const receiveLogout = () => ({
-  type: LOGOUT,
-  currentUser: null
+  type: LOGOUT
 });
 
 export const login = user => dispatch => {
@@ -38,6 +37,9 @@ export const signup = user => dispatch => {
 };
 
 export const logout = () => dispatch => {
-  APIUtil.logout().then(user => dispatch(receiveLogout(user)),
-    errors => dispatch(receiveErrors(errors)));
+  APIUtil.logout().then(user => {
+    dispatch(receiveLogout(user));
+    hashHistory.push('/login');
+  },
+  errors => dispatch(receiveErrors(errors)));
 };
