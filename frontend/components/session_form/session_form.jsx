@@ -45,12 +45,12 @@ class SessionForm extends React.Component {
     // TODO: Clean up code
     let text = this.props.formType === "signup" ? "Sign Up" : "Login";
     let linkTo = this.props.formType === "signup" ? "/login" : "/signup";
-    let linkToText = linkTo === "/signup" ? "Sign Up" : "Login";
+    let linkToText = linkTo === "/signup" ? "Sign Up" : "Log in";
     // TODO: Clean up code
 
     return(
-      <div>
-        <h3>{text}</h3>
+      <div className="session-form">
+
         <ul>
           {this.props.errors.map((err, idx) => (
             <li key={idx}>{err}</li>
@@ -58,25 +58,36 @@ class SessionForm extends React.Component {
         </ul>
 
         <form onSubmit={this.handleSubmit}>
-          <label>Username
+          <h3>{text}</h3>
+          <label>
             <input
               type="text"
+              placeholder="Username"
               onChange={this.update("username")}
+              className="session-form-input"
               value={this.state.username} />
           </label>
 
-          <label>Password
+          <label>
             <input
               type="password"
+              placeholder="Password"
               onChange={this.update("password")}
+              className="session-form-input"
               value={this.state.password} />
           </label>
 
-          <input type="submit" value={text}></input>
+          <section className="section-form-submit-button">
+
+            <input type="submit" onClick={this.handleGuest} value="Demo"></input>
+            <input
+              type="submit"
+              value={text}/>
+          </section>
         </form>
 
-        <Link to={linkTo}>{linkToText}</Link>
-        <button type="submit" onClick={this.handleGuest}>Demo</button>
+        <span>Would you like to <Link to={linkTo} >{linkToText}</Link> instead?</span>
+
       </div>
     );
   }
