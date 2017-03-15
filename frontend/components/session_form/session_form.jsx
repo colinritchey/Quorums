@@ -47,10 +47,10 @@ class SessionForm extends React.Component {
 
 
   render(){
-    let text = {display: "Sign Up", link: "/signup"};
+    let text = {display: "Sign Up", link: "/login", button: "Log In"};
 
     if(this.props.formType === "login"){
-      text = {display: "Log In", link: "/login"};
+      text = {display: "Log In", link: "/signup", button: "Sign Up"};
     }
 
     return(
@@ -92,7 +92,7 @@ class SessionForm extends React.Component {
         </form>
 
 
-        <span>Would you like to <Link to={text.link} >{text.display}</Link> instead?</span>
+        <span>Would you like to <Link to={text.link} >{text.button}</Link> instead?</span>
 
       </div>
     );
