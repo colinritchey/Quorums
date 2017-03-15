@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
   clearErrors(e){
     e.preventDefault();
     this.props.removeErrors();
-    this.setState({ username: "", password: ""});
+    // this.setState({ username: "", password: ""});
   }
 
   handleGuest(e) {
@@ -60,7 +60,7 @@ class SessionForm extends React.Component {
 
     return(
       <div className="session-form">
-        <span>Would you like to <Link to={text.link} onFocus={this.clearErrors}>{text.button}</Link> instead?</span>
+        <span>Would you like to <Link to={text.link} onFocus={this.clearErrors} >{text.button}</Link> instead?</span>
         <form onSubmit={this.handleSubmit}>
           <h3>{text.display}</h3>
           <label>
