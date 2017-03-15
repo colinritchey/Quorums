@@ -2,6 +2,7 @@
   display: block;
   text-align: center;
   margin: auto;
+  margin-top: 30px;
   padding: 10px;
 
   border: 1px solid darkgrey;
@@ -32,10 +33,11 @@
 
 .session-form-input{
   margin: 10px;
-  text-indent: 5px;
   width: 40%;
   height: 30px;
 
+  text-align: left;
+  text-indent: 5px;
   font-size: 15px;
   background-color: #e2e2e2;
   border: 0px;

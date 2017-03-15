@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
 
   componentDidUpdate(){
@@ -39,12 +40,16 @@ class SessionForm extends React.Component {
 
   }
 
+  clearErrors(e){
+    e.preventDefault();
+    this.props.removeErrors();
+    this.setState({ username: "", password: ""});
+  }
+
   handleGuest(e) {
     e.preventDefault();
     this.props.login({username: "guest", password: "password"});
   }
-
-
 
   render(){
     let text = {display: "Sign Up", link: "/login", button: "Log In"};
@@ -55,6 +60,7 @@ class SessionForm extends React.Component {
 
     return(
       <div className="session-form">
+        <span>Would you like to <Link to={text.link} onFocus={this.clearErrors}>{text.button}</Link> instead?</span>
         <form onSubmit={this.handleSubmit}>
           <h3>{text.display}</h3>
           <label>
@@ -62,6 +68,7 @@ class SessionForm extends React.Component {
               type="text"
               placeholder="Username"
               onChange={this.update("username")}
+              onFocus={this.clearErrors}
               className="session-form-input"
               value={this.state.username} />
           </label>
@@ -71,6 +78,7 @@ class SessionForm extends React.Component {
               type="password"
               placeholder="Password"
               onChange={this.update("password")}
+              onFocus={this.clearErrors}
               className="session-form-input"
               value={this.state.password} />
           </label>
@@ -88,11 +96,10 @@ class SessionForm extends React.Component {
               <li key={idx}>{err}</li>
             ))}
           </ul>
-
         </form>
 
 
-        <span>Would you like to <Link to={text.link} >{text.button}</Link> instead?</span>
+
 
       </div>
     );

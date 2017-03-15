@@ -1,0 +1,27 @@
+.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 3px solid red;
+  border-bottom: 1px solid lightgrey;
+}
+
+.navbar {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.navbar input{
+  box-sizing: content-box;
+  width: 50px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 0;
+
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+
+  color: white;
+  background-color: #91a6c7;
+}

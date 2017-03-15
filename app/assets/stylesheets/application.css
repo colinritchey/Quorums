@@ -14,7 +14,7 @@
  *= require_self
  */
 
-html, body, section, article, div, h1, h2, h3, form, ul, li {
+html, body, section, article, div, h1, h2, h3, form, ul, li, input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -28,6 +28,6 @@ html, body, section, article, div, h1, h2, h3, form, ul, li {
 }
 
 body {
-  padding: 20px;
+  /*padding: 20px;*/
   font-family: sans-serif;
 }

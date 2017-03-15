@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
 
+import HomeContainer from './home/home_container';
 import SessionFormContainer from './session_form/session_form_container';
 
 const Root = ({ store }) => {
@@ -13,10 +14,17 @@ const Root = ({ store }) => {
     }
   };
 
+  const _ensureLogin = (next, replace) => {
+    if(!store.getState().session.currentUser){
+      replace('/login');
+    }
+  };
+
   return(
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path="/" component={ App } >
+          <IndexRoute component={HomeContainer} />
           <Route path="/login"
             component={SessionFormContainer}
             onEnter={_redirectIfLoggedIn} />
@@ -24,7 +32,7 @@ const Root = ({ store }) => {
           <Route path="/signup"
             component={SessionFormContainer}
             onEnter={_redirectIfLoggedIn} />
-          
+
           //route homeconatiner
 
           //route path="/questions/:questionId"  QuestionContainer
