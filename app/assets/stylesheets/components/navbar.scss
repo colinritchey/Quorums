@@ -1,12 +1,23 @@
 .navbar{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+
   border-top: 3px solid red;
   border-bottom: 1px solid lightgrey;
   background-color: white;
-  padding: 20px;
+  padding: 20px 0;
+
   font-family: sans-serif;
+}
+
+.navbar section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 0 37px;
 }
 
 .navbar-empty{
@@ -14,13 +25,13 @@
   background-color: blue;
 }
 
-.navbar h1{
+.navbar section h1{
   color: darkred;
   font-size: large;
   font-family: cursive;
 }
 
-.navbar input{
+.navbar section input{
   box-sizing: content-box;
   width: 50px;
   padding: 5px 10px;

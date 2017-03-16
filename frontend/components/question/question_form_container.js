@@ -5,7 +5,9 @@ import QuestionForm from './question_form';
 
 const mapStateToProps = (state) => {
   let question = {title: "", body: ""};
-  return { question };
+  let currentUser = state.session.currentUser;
+  // debugger;
+  return { question, currentUser };
 };
 
 const mapDispatchToProps = (dispatch) => ({

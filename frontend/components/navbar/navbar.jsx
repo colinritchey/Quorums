@@ -5,8 +5,11 @@ const Navbar = ({currentUser, logout}) => {
   if(currentUser){
     return(
       <div className="navbar">
-        <h1>Quorums</h1>
-        <input onClick={logout} value="Log Out"></input>
+        <section>
+          <h1>Quorums</h1>
+          <input onClick={logout} value="Log Out"></input>
+
+        </section>
       </div>
     );
   } else {

@@ -7,7 +7,6 @@ const Home = ({currentUser}) => {
   if(currentUser){
     return(
       <div className="home">
-        <h1>Welcome Back {currentUser.username}</h1>
         <section
           className="subs-container col col-1-4">Subscriptions</section>
         <QuestionIndexContainer />

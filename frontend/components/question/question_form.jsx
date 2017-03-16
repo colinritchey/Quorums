@@ -21,25 +21,24 @@ class QuestionForm extends React.Component{
   }
 
   render(){
+    let user = this.props.currentUser.username;
 
     return(
-      <div>
+      <div className="question-form-container">
+        <form onSubmit={this.handleSubmit} className="question-form">
+          <h3><i className="fa fa-user" aria-hidden="true"></i> {user}</h3>
 
-        <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="What is your question?"
+            onChange={this.update("title")}
+            value={this.state.title}></input>
 
-          <label>Title
-            <input type="text" placeholder="What is your question?"
-              onChange={this.update("title")}
-              value={this.state.title}></input>
-          </label>
-
-          <label>Body
-            <textarea
-              onChange={this.update("body")}
-              value={this.state.body}></textarea>
-          </label>
-
-          <input type="submit"></input>
+          <textarea
+            onChange={this.update("body")}
+            placeholder="Go into more detail (Optional)"
+            value={this.state.body}></textarea>
+          <section className="question-form-submit">
+            <input type="submit"></input>
+          </section>
         </form>
 
 
