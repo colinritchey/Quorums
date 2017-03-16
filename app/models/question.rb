@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  validates :user, :title, :body, presence: true
+  validates :user, :title, presence: true
 
   belongs_to :user
 end

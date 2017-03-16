@@ -16,4 +16,7 @@
   border: 1px solid lightgrey;
   height: 100px;
   padding: inherit;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
