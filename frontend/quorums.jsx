@@ -18,6 +18,5 @@ document.addEventListener("DOMContentLoaded", ()=> {
   }
 
   window.store = store;
-  window.removeErrors = removeErrors;
   ReactDOM.render(<Root store={store}/>, root);
 });
