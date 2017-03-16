@@ -15,12 +15,17 @@ export const receiveQuestion = (question) => ({
   question
 });
 
-export const fetchQuestions = () => dispatch => {
+export const fetchQuestions = () => dispatch => (
   APIUtil.fetchQuestions()
-    .then(questions => dispatch(receiveQuestions(questions)));
-};
+    .then(questions => dispatch(receiveQuestions(questions)))
+);
 
-export const fetchQuestion = (question) => dispatch => {
+export const fetchQuestion = (question) => dispatch => (
   APIUtil.fetchQuestion(question)
-    .then(_question => dispatch(receiveQuestion(_question)));
-};
+    .then(_question => dispatch(receiveQuestion(_question)))
+);
+
+export const createQuestion = (question) => dispatch => (
+  APIUtil.createQuestion(question)
+    .then(_question => dispatch(receiveQuestion(_question)))
+);

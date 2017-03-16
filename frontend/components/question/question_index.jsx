@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import QuestionIndexItem from './question_index_item';
+import QuestionFormContainer from './question_form_container';
+
 
 class QuestionIndex extends React.Component{
   componentDidMount(){
@@ -11,9 +13,10 @@ class QuestionIndex extends React.Component{
   render(){
     return(
       <div className="quesitons-container col col-3-4">
+        <QuestionFormContainer />
         <ul>
           {this.props.questions.map((question, idx) => (
-            <QuestionIndexItem 
+            <QuestionIndexItem
               key={idx}
               title={question.title}
               body={question.body}

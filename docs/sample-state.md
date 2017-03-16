@@ -17,7 +17,10 @@
     1: {
       title: "Sample?",
       body: "more detail about the question",
-      author_id: 1,
+      user: {
+        id: 1,
+        username: "Bill"
+      }
       tags: {
         1: {
           id: 1
