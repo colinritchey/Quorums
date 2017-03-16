@@ -6,12 +6,14 @@ const Home = ({currentUser}) => {
     return(
       <div className="home">
         <h1>Welcome Back {currentUser.username}</h1>
+        <section className="subs-container col col-1-4">Subscriptions</section>
+        <section className="quesitons-container col col-3-4">Questions</section>
       </div>
     );
   } else {
     return(
-      <div className="home-login">
-        <h1>Welcome to Quora</h1>
+      <div>
+        <h1>Welcome to Quora ... You shouldn't be seeing this</h1>
       </div>
     );
   }

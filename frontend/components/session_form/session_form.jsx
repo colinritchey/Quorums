@@ -65,9 +65,9 @@ class SessionForm extends React.Component {
         </section>
 
         <div className="session-form">
-          <span>Would you like to <Link to={text.link}
+          <p>Would you like to <Link to={text.link}
               onFocus={this.clearErrors}
-              >{text.button}</Link> instead?</span>
+              >{text.button}</Link> instead?</p>
           <form onSubmit={this.handleSubmit}>
             <h3>{text.display}</h3>
             <label>
