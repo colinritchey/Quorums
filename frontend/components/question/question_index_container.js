@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { fetchQuestions } from '../../actions/question_actions';
 
-import QuestionIndex from './quesiton_index';
+import QuestionIndex from './question_index';
 
 const mapStateToProps = (state) => ({
   questions: Object.keys(state.questions).map((id) => state.questions[id])

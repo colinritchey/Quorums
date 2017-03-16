@@ -1,0 +1,19 @@
+.question-index-item{
+  border: 1px solid green;
+  padding: 10px;
+  font-family: sans-serif;
+  list-style: none;
+}
+
+.question-index-item h1{
+  font-size: 25px;
+  font-weight: bold;
+
+}
+
+.question-index-item article{
+  margin-top: 5px;
+  border: 1px solid lightgrey;
+  height: 100px;
+  padding: inherit;
+}

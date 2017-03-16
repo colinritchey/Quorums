@@ -2,6 +2,9 @@ class Api::QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+
+    @questions.includes(:user)
+
     render :index
   end
 

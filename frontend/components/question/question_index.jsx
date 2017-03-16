@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import QuestionIndexItem from './question_index_item';
+
 class QuestionIndex extends React.Component{
   componentDidMount(){
     this.props.fetchQuestions();
@@ -8,10 +10,15 @@ class QuestionIndex extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="quesitons-container col col-3-4">
         <ul>
-          {this.props.questions.map((question) => (
-            <li key={question.id}>{question.title}</li>
+          {this.props.questions.map((question, idx) => (
+            <QuestionIndexItem 
+              key={idx}
+              title={question.title}
+              body={question.body}
+              user={question.user}
+            />
           ))}
         </ul>
       </div>

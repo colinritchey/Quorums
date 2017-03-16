@@ -96,7 +96,10 @@ class SessionForm extends React.Component {
 
             <section className="section-form-submit-button">
 
-              <input type="submit" onClick={this.handleGuest} value="Demo"></input>
+              <input type="submit"
+                onClick={this.handleGuest}
+                value="Demo"></input>
+
               <input
                 type="submit"
                 value={text.display}/>
