@@ -7,8 +7,8 @@ const Navbar = ({currentUser, logout}) => {
       <div className="navbar">
         <section>
           <h1><Link to={'/'}>Quorums</Link></h1>
+          <input type="text" placeholder="Search Bar" className="search"></input>
           <input onClick={logout} value="Log Out"></input>
-
         </section>
       </div>
     );

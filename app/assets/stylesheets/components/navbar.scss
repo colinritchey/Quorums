@@ -45,3 +45,18 @@
   color: white;
   background-color: #91a6c7;
 }
+
+.navbar .search {
+  width: 375px;
+
+  text-align: left;
+  text-indent: 5px;
+  font-size: 15px;
+  background-color: #e2e2e2;
+  border: 0px;
+  color: grey;
+}
+
+::-webkit-input-placeholder {
+  color: blue;
+}
