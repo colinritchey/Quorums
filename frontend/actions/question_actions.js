@@ -40,7 +40,6 @@ export const updateQuestion = (question) => dispatch => (
   APIUtil.updateQuestion(question)
     .then(_question => {
       dispatch(receiveQuestion(_question));
-      hashHistory.push(`/questions/${_question.id}`);
     })
 );
 

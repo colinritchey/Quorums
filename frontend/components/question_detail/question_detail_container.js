@@ -6,9 +6,12 @@ import {
   updateQuestion,
   deleteQuestion } from '../../actions/question_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  question: state.questionDetail[ownProps.params.questionId]
-});
+const mapStateToProps = (state, ownProps) => {
+  let currentUser = state.session.currentUser;
+  let question = state.questionDetail[ownProps.params.questionId];
+
+  return( { question, currentUser });
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchQuestion: id => dispatch(fetchQuestion(id)),

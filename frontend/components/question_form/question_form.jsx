@@ -9,9 +9,7 @@ class QuestionForm extends React.Component{
   }
 
   componentDidMount(){
-    console.log(this.props.question);
     if (this.props.params) {
-      console.log(this.props.params.questionId);
       this.props.fetchQuestion(this.props.params.questionId);
     }
   }
@@ -19,7 +17,12 @@ class QuestionForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.action(this.state);
+
+    if(this.props.formType === "edit"){
+      this.props.closeModal();
+    }
     this.setState({title: "", body: ""});
+
   }
 
   update(field){
@@ -51,7 +54,6 @@ class QuestionForm extends React.Component{
           </section>
 
         </form>
-
 
       </div>
     );

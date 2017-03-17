@@ -8,11 +8,14 @@ import QuestionForm from './question_form';
 
 const mapStateToProps = (state, ownProps) => {
   let question = {title: "", body: ""};
-  if(ownProps.params) {
-    question = state.questions[ownProps.params.questionId];
+
+  if(ownProps.question) {
+    question = state.questions[ownProps.question.id];
   }
+
   let currentUser = state.session.currentUser;
   let formType = ownProps.formType || "edit";
+
   return { question, currentUser, formType };
 };
 
@@ -20,7 +23,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   let action = ownProps.formType === "new" ? createQuestion : updateQuestion;
   return{
     action: (question) => dispatch(action(question)),
-    fetchQuestion: (id) => dispatch(fetchQuestion(id))
+    fetchQuestion: (id) => dispatch(fetchQuestion(id)),
+    closeModal: () => ownProps.closeModal()
   };
 };
 

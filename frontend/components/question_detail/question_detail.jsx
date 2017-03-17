@@ -1,8 +1,16 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import QuestionFormContainer from '../question_form/question_form_container';
+import FormModal from '../modals/form_modal';
+
 
 class QuestionDetail extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.authorFunctions = this.authorFunctions.bind(this);
+  }
+
   componentDidMount(){
     this.props.fetchQuestion(this.props.params.questionId);
   }
@@ -12,12 +20,25 @@ class QuestionDetail extends React.Component {
   //     this.props.fetchQuestion(nextProps.params.questionId);
   //   }
   // }
-  editLink(id){
-    return e => {
-      e.preventDefault();
-      const url = `/questions/${id}/edit`;
-      hashHistory.push(url);
-    };
+
+  authorFunctions(){
+    let currentUser = this.props.currentUser;
+    let owner = this.props.question.user;
+    let question = this.props.question;
+
+    if(currentUser.id === owner.id){
+      return (
+        <section>
+          <button onClick={() => this.props.deleteQuestion(question.id)}>Delete</button>
+          <br/>
+          <FormModal buttonText={"Edit"} question={question}/>
+        </section>
+      );
+    } else {
+      return(
+        <section></section>
+      );
+    }
   }
 
   render(){
@@ -27,17 +48,20 @@ class QuestionDetail extends React.Component {
     }
 
     let body = <article>{question.body}</article>;
+
     if(!question.body){
       body = "";
     }
+
+    let authorButtons = this.authorFunctions();
+
     return(
       <div className="content">
         <section className="question-detail">
           <h3>{question.title}</h3>
           {body}
         </section>
-        <button onClick={() => this.props.deleteQuestion(question.id)}>Delete</button>
-        <button onClick={this.editLink(question.id)}>Edit</button>
+        {authorButtons}
       </div>
     );
   }
