@@ -1,11 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-const QuestionIndexItem = ({title, body, user}) =>{
+const QuestionIndexItem = ({question}) =>{
   return(
     <li className="question-index-item">
-      <h1>{title}</h1>
-      <p><i className="fa fa-user" aria-hidden="true"></i> {user.username}</p>
-      <article>{body}</article>
+      <h1><Link to={`/questions/${question.id}`}>{question.title}</Link></h1>
+
+      <p><i
+        className="fa fa-user"
+        aria-hidden="true"></i> {question.user.username}</p>
+      
+      <article>{question.body}</article>
     </li>
   );
 };

@@ -15,7 +15,7 @@
  *= require font-awesome
  */
 
-html, body, section, article, div, h1, h2, h3, form, ul, li, input {
+html, body, section, article, div, h1, h2, h3, form, ul, li, input, a {
   margin: 0;
   padding: 0;
   border: 0;

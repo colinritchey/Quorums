@@ -1,0 +1,25 @@
+.question-detail{
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: sans-serif;
+  list-style: none;
+
+  border-bottom: 1px solid lightgrey;
+}
+
+.question-detail h3{
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Times;
+}
+
+.question-detail article{
+  margin-top: 5px;
+  overflow: hidden;
+  padding: inherit;
+
+  white-space: pre-wrap;
+
+  font-family: q_serif;
+}

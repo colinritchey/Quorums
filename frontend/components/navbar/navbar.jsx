@@ -6,7 +6,7 @@ const Navbar = ({currentUser, logout}) => {
     return(
       <div className="navbar">
         <section>
-          <h1>Quorums</h1>
+          <h1><Link to={'/'}>Quorums</Link></h1>
           <input onClick={logout} value="Log Out"></input>
 
         </section>

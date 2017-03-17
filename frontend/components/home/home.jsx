@@ -6,9 +6,9 @@ import QuestionIndexContainer from '../question/question_index_container';
 const Home = ({currentUser}) => {
   if(currentUser){
     return(
-      <div className="home">
+      <div className="content">
         <section
-          className="subs-container col col-1-4">Subscriptions</section>
+          className="subs-container col col-1-4">Subscriptions (Placeholder)</section>
         <QuestionIndexContainer />
 
       </div>

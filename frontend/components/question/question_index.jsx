@@ -18,10 +18,7 @@ class QuestionIndex extends React.Component{
           {this.props.questions.map((question, idx) => (
             <QuestionIndexItem
               key={idx}
-              title={question.title}
-              body={question.body}
-              user={question.user}
-            />
+              question={question} />
           ))}
         </ul>
       </div>
