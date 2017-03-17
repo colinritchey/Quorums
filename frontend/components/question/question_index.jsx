@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import QuestionIndexItem from './question_index_item';
-import QuestionFormContainer from './question_form_container';
+import QuestionFormContainer from '../question_form/question_form_container';
 
 
 class QuestionIndex extends React.Component{
@@ -13,7 +13,7 @@ class QuestionIndex extends React.Component{
   render(){
     return(
       <div className="quesitons-container col col-3-4">
-        <QuestionFormContainer />
+        <QuestionFormContainer formType="new"/>
         <ul>
           {this.props.questions.map((question, idx) => (
             <QuestionIndexItem

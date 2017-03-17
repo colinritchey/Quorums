@@ -21,9 +21,25 @@ class Api::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
-  # def destroy
-  #
-  # end
+  def update
+    @question = current_user.questions.find(params[:id])
+
+    if @question.update(questions_params)
+      render :show
+    else
+      render json: @question.errors.full_messages, status: 422
+    end
+  end
+
+  def destroy
+    @question = current_user.questions.find(params[:id])
+
+    if @question.destroy
+      render :show
+    else
+      render json: @question.errors.full_messages, status: 422
+    end
+  end
 
   private
 

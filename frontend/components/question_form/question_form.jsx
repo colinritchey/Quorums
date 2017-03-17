@@ -8,9 +8,17 @@ class QuestionForm extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    console.log(this.props.question);
+    if (this.props.params) {
+      console.log(this.props.params.questionId);
+      this.props.fetchQuestion(this.props.params.questionId);
+    }
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.createQuestion(this.state);
+    this.props.action(this.state);
     this.setState({title: "", body: ""});
   }
 
@@ -26,6 +34,7 @@ class QuestionForm extends React.Component{
     return(
       <div className="question-form-container">
         <form onSubmit={this.handleSubmit} className="question-form">
+
           <h3><i className="fa fa-user" aria-hidden="true"></i> {user}</h3>
 
           <input type="text" placeholder="What is your question?"
@@ -36,9 +45,11 @@ class QuestionForm extends React.Component{
             onChange={this.update("body")}
             placeholder="Go into more detail (Optional)"
             value={this.state.body}></textarea>
+
           <section className="question-form-submit">
             <input type="submit"></input>
           </section>
+
         </form>
 
 

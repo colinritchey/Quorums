@@ -7,6 +7,7 @@ import App from './app';
 import HomeContainer from './home/home_container';
 import SessionFormContainer from './session_form/session_form_container';
 import QuestionDetailContainer from './question_detail/question_detail_container';
+import QuestionFormContainer from './question_form/question_form_container';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -36,7 +37,8 @@ const Root = ({ store }) => {
           <Route path="/questions/:questionId"
             component={QuestionDetailContainer}
             onEnter={_ensureLogin} />
-
+          <Route path="/questions/:questionId/edit"
+            component={QuestionFormContainer} />
           //route path="/questions/:questionId"  QuestionContainer
             //route path="/comments" CommentContainer
 
