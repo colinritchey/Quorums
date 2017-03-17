@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import QuestionFormContainer from '../question_form/question_form_container';
 import FormModal from '../modals/form_modal';
+import DeleteFormModal from '../modals/delete_form';
 
 
 class QuestionDetail extends React.Component {
@@ -29,8 +30,12 @@ class QuestionDetail extends React.Component {
     if(currentUser.id === owner.id){
       return (
         <section>
-          <button onClick={() => this.props.deleteQuestion(question.id)}>Delete</button>
+          <DeleteFormModal
+            question={question}
+            deleteQuestion={this.props.deleteQuestion} />
+
           <br/>
+          
           <FormModal buttonText={"Edit"} question={question}/>
         </section>
       );

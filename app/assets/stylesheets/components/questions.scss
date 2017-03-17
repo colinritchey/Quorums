@@ -1,10 +1,14 @@
 .question-index-item{
-  border-top: 1px solid grey;
+  // border-top: 1px solid grey;
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
   font-family: sans-serif;
   list-style: none;
+}
+
+.question-index-item:hover {
+  background-color: rgba(226, 226, 226, 0.77);
 }
 
 .question-index-item h1{
