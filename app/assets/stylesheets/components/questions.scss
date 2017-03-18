@@ -1,3 +1,9 @@
+.quesitons-container ul{
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: auto;
+}
+
 .question-index-item{
   // border-top: 1px solid grey;
   padding: 10px;
@@ -14,16 +20,23 @@
 .question-index-item h1{
   font-size: 25px;
   font-weight: bold;
+}
 
+.question-index-item h1:hover{
+  text-decoration: underline;
 }
 
 .question-index-item article{
   margin-top: 5px;
-  border: 1px solid lightgrey;
   height: 100px;
   padding: inherit;
 
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+
+  white-space:pre-wrap;
+
   overflow: hidden;
 }
 
@@ -62,6 +75,10 @@
   text-indent: 3px;
 }
 
+.form-textarea-edit{
+  height: 200px;
+}
+
 .question-form-submit{
   display: inline-block;
 }
@@ -82,4 +99,12 @@
 
   color: white;
   background-color: #91a6c7;
+}
+
+.quesiton-button-container{
+  display: flex;
+  float: right;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }

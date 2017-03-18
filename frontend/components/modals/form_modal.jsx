@@ -27,7 +27,9 @@ class FormModal extends React.Component {
   render() {
     return(
       <div>
-        <button onClick={this.openModal}>{this.props.buttonText}</button>
+        <input type="submit"
+          onClick={this.openModal}
+          value={this.props.buttonText}></input>
 
         <Modal
           isOpen={this.state.modalOpen}

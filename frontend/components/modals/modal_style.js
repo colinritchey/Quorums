@@ -31,10 +31,10 @@ export const delete_style = {
   },
   content : {
     position        : 'fixed',
-    top             : '200px',
-    left            : '300px',
-    right           : '300px',
-    bottom          : '200px',
+    top             : '25%',
+    left            : '30%',
+    right           : '30%',
+    bottom          : '40%',
     border          : '1px solid #ccc',
     padding         : '20px'
   }

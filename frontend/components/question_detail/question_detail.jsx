@@ -16,12 +16,6 @@ class QuestionDetail extends React.Component {
     this.props.fetchQuestion(this.props.params.questionId);
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if(this.props.quesiton.id !== nextProps.params.postId){
-  //     this.props.fetchQuestion(nextProps.params.questionId);
-  //   }
-  // }
-
   authorFunctions(){
     let currentUser = this.props.currentUser;
     let owner = this.props.question.user;
@@ -29,13 +23,11 @@ class QuestionDetail extends React.Component {
 
     if(currentUser.id === owner.id){
       return (
-        <section>
+        <section className="quesiton-button-container">
           <DeleteFormModal
             question={question}
             deleteQuestion={this.props.deleteQuestion} />
 
-          <br/>
-          
           <FormModal buttonText={"Edit"} question={question}/>
         </section>
       );

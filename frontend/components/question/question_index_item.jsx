@@ -9,7 +9,7 @@ const QuestionIndexItem = ({question}) =>{
       <p><i
         className="fa fa-user"
         aria-hidden="true"></i> {question.user.username}</p>
-      
+
       <article>{question.body}</article>
     </li>
   );
