@@ -10,6 +10,7 @@ class Api::QuestionsController < ApplicationController
 
   def create
     @question = current_user.questions.new(questions_params)
+    @answers = []
     if @question.save
       render :show
     else
@@ -20,7 +21,7 @@ class Api::QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
 
-    @answers = @question.answers    
+    @answers = @question.answers
   end
 
   def update
@@ -35,7 +36,8 @@ class Api::QuestionsController < ApplicationController
 
   def destroy
     @question = current_user.questions.find(params[:id])
-
+    @answers = @question.answers
+    
     if @question.destroy
       render :show
     else
