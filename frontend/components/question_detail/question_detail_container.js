@@ -4,7 +4,13 @@ import QuestionDetail from './question_detail';
 import {
   fetchQuestion,
   updateQuestion,
-  deleteQuestion } from '../../actions/question_actions';
+  deleteQuestion,
+  createAnswer } from '../../actions/question_actions';
+
+// import {
+//   createAnswer,
+//   updateAnswer,
+//   deleteAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
@@ -16,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   fetchQuestion: id => dispatch(fetchQuestion(id)),
   updateQuestion: question => dispatch(updateQuestion(question)),
-  deleteQuestion: question => dispatch(deleteQuestion(question))
+  deleteQuestion: question => dispatch(deleteQuestion(question)),
+  createAnswer: answer => dispatch(createAnswer(answer))
 });
 
 export default connect(

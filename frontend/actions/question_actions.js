@@ -1,14 +1,21 @@
 import * as APIUtil from '../util/question_api_util';
+import * as APIUtilAnswer from '../util/answer_api_util';
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
+export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 
 import { hashHistory } from 'react-router';
 
 export const receiveQuestions = (questions) => ({
   type: RECEIVE_QUESTIONS,
   questions
+});
+
+export const receiveAnswer = (answer) => ({
+  type: RECEIVE_ANSWER,
+  answer
 });
 
 export const receiveQuestion = (question) => ({
@@ -34,6 +41,13 @@ export const fetchQuestion = (id) => dispatch => (
 export const createQuestion = (question) => dispatch => (
   APIUtil.createQuestion(question)
     .then(_question => dispatch(receiveQuestion(_question)))
+);
+
+export const createAnswer = (answer) => dispatch => (
+  APIUtilAnswer.createAnswer(answer)
+    .then(_answer => {
+      dispatch(receiveAnswer(_answer));
+    })
 );
 
 export const updateQuestion = (question) => dispatch => (
