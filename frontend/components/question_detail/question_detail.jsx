@@ -68,9 +68,9 @@ class QuestionDetail extends React.Component {
 
     let authorButtons = this.authorFunctions();
 
-    let answers = Object.keys(question.answers).map((id) => question.answers[id]);
-    if(!question.answers){
-      answers = [];
+    let answers = [];
+    if(question.answers){
+      answers = Object.keys(question.answers).map((id) => question.answers[id]);
     }
 
     return(
