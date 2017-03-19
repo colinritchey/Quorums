@@ -7,10 +7,14 @@ import DeleteFormModal from '../modals/delete_form';
 class QuestionDetail extends React.Component {
   constructor(props){
     super(props);
-    this.state = {body: ""};
+    this.state = {
+      answer: {body: ""},
+      comment: {body: ""}
+    };
 
     this.authorFunctions = this.authorFunctions.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
+    this.handleComment = this.handleComment.bind(this);
   }
 
   componentDidMount(){
@@ -41,16 +45,26 @@ class QuestionDetail extends React.Component {
 
   handleAnswer(e){
     e.preventDefault();
-    let answer = this.state;
+    let answer = this.state.answer;
     answer.question_id = this.props.question.id;
     this.props.createAnswer(answer);
 
     this.setState({ body: ""});
   }
 
-  update(field){
+  handleComment(e){
+    e.preventDefault();
+    let comment = this.state.comment;
+    comment.question_id = this.props.question.id;
+    comment.parent_comment_id = null;
+    this.props.createComment(comment);
+
+    this.setState({ body: ""});
+  }
+
+  update(formType, field){
     return e => {
-      this.setState({[field]: e.target.value});
+      this.setState({[formType]: {[field]: e.target.value}});
     };
   }
 
@@ -73,13 +87,18 @@ class QuestionDetail extends React.Component {
       answers = Object.keys(question.answers).map((id) => question.answers[id]);
     }
 
+    let comments = [];
+    if(question.comments){
+      comments = Object.keys(question.comments).map((id) => question.comments[id]);
+    }
+
     return(
       <div className="content">
         <section className="question-detail">
           <h3>{question.title}</h3>
           {body}
         </section>
-
+        <h3>Answers</h3>
         <ul>
           {answers.map((answer, idx) => (
             <li key={idx}>
@@ -88,9 +107,30 @@ class QuestionDetail extends React.Component {
           ))}
         </ul>
 
+        <h3>Comments</h3>
+        <ul>
+          {comments.map((comment, idx) => (
+            <li key={idx}>
+              {comment.body}
+            </li>
+          ))}
+        </ul>
+
         <form onSubmit={this.handleAnswer}>
-          <label>Body
-            <input type="text" onChange={this.update("body")} value={this.state.body}/>
+          <label>Answer Body
+            <input type="text"
+              onChange={this.update("answer", "body")}
+              value={this.state.answer.body}/>
+          </label>
+
+          <input type="submit" />
+        </form>
+
+        <form onSubmit={this.handleComment}>
+          <label>Comment Body
+            <input type="text"
+              onChange={this.update("comment", "body")}
+              value={this.state.comment.body}/>
           </label>
 
           <input type="submit" />

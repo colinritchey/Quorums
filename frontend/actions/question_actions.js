@@ -1,10 +1,12 @@
 import * as APIUtil from '../util/question_api_util';
 import * as APIUtilAnswer from '../util/answer_api_util';
+import * as APIUtilComment from '../util/comment_api_util';
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
 export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
+export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 
 import { hashHistory } from 'react-router';
 
@@ -16,6 +18,11 @@ export const receiveQuestions = (questions) => ({
 export const receiveAnswer = (answer) => ({
   type: RECEIVE_ANSWER,
   answer
+});
+
+export const receiveComment = (comment) => ({
+  type: RECEIVE_COMMENT,
+  comment
 });
 
 export const receiveQuestion = (question) => ({
@@ -47,6 +54,13 @@ export const createAnswer = (answer) => dispatch => (
   APIUtilAnswer.createAnswer(answer)
     .then(_answer => {
       dispatch(receiveAnswer(_answer));
+    })
+);
+
+export const createComment = (comment) => dispatch => (
+  APIUtilComment.createComment(comment)
+    .then(_comment => {
+      dispatch(receiveComment(_comment));
     })
 );
 

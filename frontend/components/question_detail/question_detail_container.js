@@ -5,7 +5,8 @@ import {
   fetchQuestion,
   updateQuestion,
   deleteQuestion,
-  createAnswer } from '../../actions/question_actions';
+  createAnswer,
+  createComment } from '../../actions/question_actions';
 
 // import {
 //   createAnswer,
@@ -23,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
   fetchQuestion: id => dispatch(fetchQuestion(id)),
   updateQuestion: question => dispatch(updateQuestion(question)),
   deleteQuestion: question => dispatch(deleteQuestion(question)),
-  createAnswer: answer => dispatch(createAnswer(answer))
+  createAnswer: answer => dispatch(createAnswer(answer)),
+  createComment: comment => dispatch(createComment(comment))
 });
 
 export default connect(
