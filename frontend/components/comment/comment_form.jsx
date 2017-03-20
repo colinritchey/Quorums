@@ -1,13 +1,9 @@
 import React from 'react';
 
-class AnswerForm extends React.Component{
+class CommentForm extends React.Component{
   constructor(props){
     super(props);
-    if(this.props.answer){
-      this.state = { body: this.props.answer.body };
-    } else {
-      this.state = { body: "" };
-    }
+    this.state = { body: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -19,18 +15,12 @@ class AnswerForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    let answer = this.state;
-    answer.question_id = this.props.questionId;
-
-    if(this.props.answer){
-      answer.id = this.props.answer.id;
-      this.props.updateAnswer(answer);
-    }else{
-      this.props.createAnswer(answer);
-    }
+    let comment = this.state;
+    comment.question_id = this.props.questionId;
+    comment.parent_comment_id = this.props.parentCommentId;
+    this.props.createComment(comment);
 
     this.setState({ body: ""});
-    this.props.closeModal();
   }
 
   render(){
@@ -40,7 +30,7 @@ class AnswerForm extends React.Component{
           <textarea
             onChange={this.update("body")}
             value={this.state.body}
-            placeholder="What is your answer?">
+            placeholder="What is your comment?">
           </textarea>
 
           <section className="form-submit">
@@ -54,4 +44,4 @@ class AnswerForm extends React.Component{
 
 }
 
-export default AnswerForm;
+export default CommentForm;

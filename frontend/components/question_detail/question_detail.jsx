@@ -12,8 +12,7 @@ import CommentIndex from '../comment/comment_index';
 class QuestionDetail extends React.Component {
   constructor(props){
     super(props);
-    // let question = this.props.question;
-    // debugger;
+
     this.state = {
       answer: {body: ""},
       comment: {body: ""},
@@ -32,29 +31,31 @@ class QuestionDetail extends React.Component {
     this.props.fetchQuestion(parseInt(this.props.params.questionId));
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   debugger;
-  //   let questionId = nextProps.question.id;
-  //   if(nextProps.question && nextProps.question.id !== this.props.question.id){
-  //     this.props.fetchQuestion(parseInt(questionId));
-  //   }
-  // }
-
   authorFunctions(){
     let currentUser = this.props.currentUser;
     let owner = this.props.question.user;
     let question = this.props.question;
+
+    let currentUserAnswer = null;
+
     let answers = [];
     if(question.answers){
       answers = Object.keys(question.answers).map((id) => question.answers[id]);
     }
 
+    answers.forEach((answer) => {
+      if(currentUser.id === answer.user.id){
+        currentUserAnswer = answer;
+      }
+    });
+
     if(currentUser.id === owner.id){
       return (
         <section className="button-container">
           <DeleteFormModal
-            question={question}
-            deleteQuestion={this.props.deleteQuestion} />
+            item={question}
+            action={this.props.deleteQuestion}
+            textButton={"Delete Question"}/>
 
           <FormModal buttonText={"Edit"} question={question}/>
         </section>
@@ -63,11 +64,18 @@ class QuestionDetail extends React.Component {
       return(
         <section className="button-container">
 
-
           <FormModal
+            answer={currentUserAnswer}
             createAnswer={this.props.createAnswer}
+            updateAnswer={this.props.updateAnswer}
             questionId={this.props.question.id}
             buttonText={"Answer"} />
+
+          <DeleteFormModal
+            item={currentUserAnswer}
+            action={this.props.deleteAnswer}
+            textButton={"Delete Answer"}
+          />
         </section>
       );
     }
@@ -90,7 +98,10 @@ class QuestionDetail extends React.Component {
     if(this.state.commentShow){
       return(
         <div>
-          <CommentIndex comments={this.props.question.comments} />
+          <CommentIndex
+            comments={this.props.question.comments}
+            createComment={this.props.createComment}
+          />
           <button onClick={this.toggleComments}>Hide Comments</button>
         </div>
       );

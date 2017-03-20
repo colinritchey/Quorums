@@ -39,7 +39,9 @@ class FormModal extends React.Component {
     } else {
       return(
         <AnswerForm
+          answer={this.props.answer}
           createAnswer={this.props.createAnswer}
+          updateAnswer={this.props.updateAnswer}
           questionId={this.props.questionId}
           closeModal={this.closeModal}
         />

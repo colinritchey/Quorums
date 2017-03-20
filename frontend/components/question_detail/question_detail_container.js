@@ -6,12 +6,9 @@ import {
   updateQuestion,
   deleteQuestion,
   createAnswer,
+  updateAnswer,
+  deleteAnswer,
   createComment } from '../../actions/question_actions';
-
-// import {
-//   createAnswer,
-//   updateAnswer,
-//   deleteAnswer } from '../../actions/answer_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
@@ -25,6 +22,8 @@ const mapDispatchToProps = dispatch => ({
   updateQuestion: question => dispatch(updateQuestion(question)),
   deleteQuestion: question => dispatch(deleteQuestion(question)),
   createAnswer: answer => dispatch(createAnswer(answer)),
+  updateAnswer: answer => dispatch(updateAnswer(answer)),
+  deleteAnswer: answer => dispatch(deleteAnswer(answer)),
   createComment: comment => dispatch(createComment(comment))
 });
 

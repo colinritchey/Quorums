@@ -6,6 +6,7 @@ export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
 export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
+export const REMOVE_ANSWER = "REMOVE_ANSWER";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 
 import { hashHistory } from 'react-router';
@@ -33,6 +34,11 @@ export const receiveQuestion = (question) => ({
 export const removeQuestion = (question) => ({
   type: REMOVE_QUESTION,
   question
+});
+
+export const removeAnswer = (answer) => ({
+  type: REMOVE_ANSWER,
+  answer
 });
 
 export const fetchQuestions = () => dispatch => (
@@ -71,10 +77,29 @@ export const updateQuestion = (question) => dispatch => (
     })
 );
 
+export const updateAnswer = (answer) => dispatch => (
+  APIUtilAnswer.updateAnswer(answer)
+    .then(_answer => {
+      dispatch(receiveAnswer(_answer));
+    })
+);
+
 export const deleteQuestion = (question) => dispatch => (
-  APIUtil.deleteQuestion(question)
+  APIUtil.deleteQuestion(question.id)
     .then(_question => {
       dispatch(removeQuestion(_question));
       hashHistory.push('/');
     })
 );
+
+export const deleteAnswer = (answer) => dispatch => {
+  debugger;
+  return (
+    APIUtilAnswer.deleteAnswer(answer.id)
+      .then(_answer => {
+        dispatch(removeAnswer(_answer));
+        hashHistory.push(`/`);
+      })
+    );
+
+};

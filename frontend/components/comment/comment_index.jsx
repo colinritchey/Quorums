@@ -25,7 +25,9 @@ class CommentIndex extends React.Component{
             key={comment.id}
             comment={comment}
             commentList={this.state.comments}
+            questionId={comment.question_id}
             displayComments={this.displayComments}
+            createComment={this.props.createComment}
           />
         ))}
       </ul>);

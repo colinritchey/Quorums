@@ -1,6 +1,9 @@
 import React from 'react';
 
-const CommentIndexItem = ({comment, commentList, displayComments}) => {
+import CommentForm from './comment_form';
+
+const CommentIndexItem = ({comment, commentList, questionId,
+                          displayComments, createComment}) => {
   if(commentList[comment.id]){
     return(
       <li key={comment.id} className="index-item">
@@ -12,9 +15,16 @@ const CommentIndexItem = ({comment, commentList, displayComments}) => {
     );
   } else {
     return(
-      <li key={comment.id} className="index-item" >{comment.body}</li>
+      <li key={comment.id} className="index-item" >
+        {comment.body}
+        <CommentForm
+          createComment={createComment}
+          questionId={questionId}
+          parentCommentId={comment.parent_comment_id}/>
+      </li>
     );
   }
+  // <CommentForm createComment={this.createComment} questionId={questionId}/>
 
 
 };
