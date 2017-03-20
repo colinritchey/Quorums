@@ -13,6 +13,9 @@ json.comments do
     json.set! key do
       json.array! value do |comment|
         json.partial! '/api/comments/comment', comment: comment
+        json.child_comments comment.child_comments do |child|
+          json.partial! '/api/comments/comment', comment: child
+        end
       end
     end
   end

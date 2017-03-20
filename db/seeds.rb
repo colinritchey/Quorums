@@ -87,8 +87,8 @@ This is probably a quick place holder for more knowledgeable people.", user_id: 
 
 Comment.delete_all
 
-# c1 = Comment.create!({body: "comment top", user_id: user1.id, question_id: q1.id, parent_comment_id: nil})
-# c2 = Comment.create!({body: "comment nest 1", user_id: user2.id, question_id: q1.id, parent_comment_id: c1.id})
-# c3 = Comment.create!({body: "comment nest 2", user_id: user3.id, question_id: q1.id, parent_comment_id: c2.id})
-# c4 = Comment.create!({body: "comment nest 1 second", user_id: user4.id, question_id: q1.id, parent_comment_id: c1.id})
-# c5 = Comment.create!({body: "comment top 2", user_id: user2.id, question_id: q1.id, parent_comment_id: nil})
+c1 = Comment.create!({body: "comment top", user_id: user1.id, question_id: q1.id, parent_comment_id: nil})
+c2 = Comment.create!({body: "comment nest 1", user_id: user2.id, question_id: q1.id, parent_comment_id: c1.id})
+c3 = Comment.create!({body: "comment nest 2", user_id: user3.id, question_id: q1.id, parent_comment_id: c2.id})
+c4 = Comment.create!({body: "comment nest 1 second", user_id: user4.id, question_id: q1.id, parent_comment_id: c1.id})
+c5 = Comment.create!({body: "comment top 2", user_id: user2.id, question_id: q1.id, parent_comment_id: nil})
