@@ -30,10 +30,14 @@ class QuestionDetail extends React.Component {
     let currentUser = this.props.currentUser;
     let owner = this.props.question.user;
     let question = this.props.question;
+    let answers = [];
+    if(question.answers){
+      answers = Object.keys(question.answers).map((id) => question.answers[id]);
+    }
 
     if(currentUser.id === owner.id){
       return (
-        <section className="quesiton-button-container">
+        <section className="button-container">
           <DeleteFormModal
             question={question}
             deleteQuestion={this.props.deleteQuestion} />
@@ -43,7 +47,14 @@ class QuestionDetail extends React.Component {
       );
     } else {
       return(
-        <section></section>
+        <section className="button-container">
+          <AnswerIndex answers={answers} />
+
+          <FormModal
+            createAnswer={this.props.createAnswer}
+            questionId={this.props.question.id}
+            buttonText={"Answer"} />
+        </section>
       );
     }
   }
@@ -155,16 +166,11 @@ class QuestionDetail extends React.Component {
 
     return(
       <div className="content">
-        <section className="question-detail">
+        <section className="detail">
           <h3>{question.title}</h3>
           {body}
         </section>
-        <AnswerIndex answers={answers} />
 
-        <FormModal
-          createAnswer={this.props.createAnswer}
-          questionId={this.props.question.id}
-          buttonText={"Answer"} />
 
         {authorButtons}
       </div>

@@ -38,7 +38,6 @@
   margin: auto;
   padding: 10px;
 
-
   border: 1px solid darkgrey;
   border-radius: 15px;
   background-color: white;
@@ -64,8 +63,9 @@
 .session-form form{
   display: flex;
   flex-direction: column;
-  margin: 10%;
-  margin-top: 40px;
+  // margin: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 ::-webkit-input-placeholder {
@@ -93,17 +93,7 @@
 }
 
 .section-form-submit-button input{
-  box-sizing: content-box;
-  padding: 5px 15px;
-  border: 0px;
-  border-radius: 5px;
-
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-
-  color: white;
-  background-color: #91a6c7;
+  margin-right: 0px;
 }
 
 .session-form-error-index {

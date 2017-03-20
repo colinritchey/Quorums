@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const QuestionIndexItem = ({question}) =>{
   return(
-    <li className="question-index-item">
+    <li className="index-item">
       <h1><Link to={`/questions/${question.id}`}>{question.title}</Link></h1>
 
       <p><i

@@ -25,16 +25,15 @@ class AnswerForm extends React.Component{
 
   render(){
     return(
-      <div className="question-form-container">
-        <form onSubmit={this.handleSubmit} className="question-form">
+      <div className="form-container">
+        <form onSubmit={this.handleSubmit} className="form">
           <textarea
             onChange={this.update("body")}
             value={this.state.body}
-            placeholder="What is your answer?"
-            className="form-textarea-edit">
+            placeholder="What is your answer?">
           </textarea>
 
-          <section className="question-form-submit">
+          <section className="form-submit">
             <input type="submit"></input>
           </section>
         </form>

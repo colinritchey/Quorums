@@ -8,7 +8,7 @@ class AnswerIndex extends React.Component{
   }
   render(){
     return(
-      <section>
+      <section className="detail">
         <h3>Answers</h3>
         <ul>
           {this.props.answers.map((answer, idx) => (

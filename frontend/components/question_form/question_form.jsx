@@ -37,8 +37,8 @@ class QuestionForm extends React.Component{
     let classTextArea = form === "new" ? "" : "form-textarea-edit";
 
     return(
-      <div className="question-form-container">
-        <form onSubmit={this.handleSubmit} className="question-form">
+      <div className="form-container">
+        <form onSubmit={this.handleSubmit} className="form">
 
           <h3><i className="fa fa-user" aria-hidden="true"></i> {user}</h3>
 
@@ -52,7 +52,7 @@ class QuestionForm extends React.Component{
             placeholder="Go into more detail (Optional)"
             value={this.state.body}></textarea>
 
-          <section className="question-form-submit">
+          <section className="form-submit">
             <input type="submit"></input>
           </section>
 

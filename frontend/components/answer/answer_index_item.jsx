@@ -2,7 +2,7 @@ import React from 'react';
 
 const AnswerIndexItem = ({answer}) => {
   return(
-    <li className="question-index-item">
+    <li className="index-item">
       {answer.body}
     </li>
   );
