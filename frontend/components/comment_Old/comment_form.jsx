@@ -3,11 +3,7 @@ import React from 'react';
 class CommentForm extends React.Component{
   constructor(props){
     super(props);
-    if(this.props.comment){
-      this.state = { body: this.props.comment.body };
-    } else {
-      this.state = { body: "" };
-    }
+    this.state = { body: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,16 +17,10 @@ class CommentForm extends React.Component{
     e.preventDefault();
     let comment = this.state;
     comment.question_id = this.props.questionId;
-
-    if(this.props.comment){
-      comment.id = this.props.comment.id;
-      this.props.updateComment(comment);
-    }else{
-      this.props.createComment(comment);
-    }
+    comment.parent_comment_id = this.props.parentCommentId;
+    this.props.createComment(comment);
 
     this.setState({ body: ""});
-    this.props.closeModal();
   }
 
   render(){

@@ -8,6 +8,7 @@ export const REMOVE_QUESTION = "REMOVE_QUESTION";
 export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 export const REMOVE_ANSWER = "REMOVE_ANSWER";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
+export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
 import { hashHistory } from 'react-router';
 
@@ -41,6 +42,11 @@ export const removeAnswer = (answer) => ({
   answer
 });
 
+export const removeComment = (comment) => ({
+  type: REMOVE_COMMENT,
+  comment
+});
+
 export const fetchQuestions = () => dispatch => (
   APIUtil.fetchQuestions()
     .then(questions => dispatch(receiveQuestions(questions)))
@@ -56,12 +62,14 @@ export const createQuestion = (question) => dispatch => (
     .then(_question => dispatch(receiveQuestion(_question)))
 );
 
-export const createAnswer = (answer) => dispatch => (
+export const createAnswer = (answer) => dispatch => {
+  debugger;
+  return(
   APIUtilAnswer.createAnswer(answer)
     .then(_answer => {
       dispatch(receiveAnswer(_answer));
     })
-);
+)};
 
 export const createComment = (comment) => dispatch => (
   APIUtilComment.createComment(comment)
@@ -84,6 +92,13 @@ export const updateAnswer = (answer) => dispatch => (
     })
 );
 
+export const updateComment = (comment) => dispatch => (
+  APIUtilComment.updateComment(comment)
+    .then(_comment => {
+      dispatch(receiveComment(_comment));
+    })
+);
+
 export const deleteQuestion = (question) => dispatch => (
   APIUtil.deleteQuestion(question.id)
     .then(_question => {
@@ -93,11 +108,20 @@ export const deleteQuestion = (question) => dispatch => (
 );
 
 export const deleteAnswer = (answer) => dispatch => {
-  debugger;
   return (
     APIUtilAnswer.deleteAnswer(answer.id)
       .then(_answer => {
         dispatch(removeAnswer(_answer));
+        hashHistory.push(`/`);
+      })
+    );
+};
+
+export const deleteComment = (comment) => dispatch => {
+  return (
+    APIUtilComment.deleteComment(comment.id)
+      .then(_comment => {
+        dispatch(removeComment(_comment));
         hashHistory.push(`/`);
       })
     );

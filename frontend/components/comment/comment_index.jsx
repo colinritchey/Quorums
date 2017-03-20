@@ -1,48 +1,65 @@
 import React from 'react';
+import FormModal from '../modals/form_modal';
+import DeleteFormModal from '../modals/delete_form';
 
 import CommentIndexItem from './comment_index_item';
 
 class CommentIndex extends React.Component{
   constructor(props){
     super(props);
-    let comments = this.props.comments;
-    this.state = {comments: this.props.comments};
-    this.displayComments = this.displayComments.bind(this);
-    this.showNest = this.showNest.bind(this);
+
+    this.authorizedButttons = this.authorizedButttons.bind(this);
   }
 
-  showNest(){
-    this.setState({comments: this.props.comments});
-  }
+  authorizedButttons(){
 
-  displayComments(list){
-    let commentTree = this.props.comments;
-    // debugger;
-    return(
-      <ul>
-        {list.map((comment) => (
-          <CommentIndexItem
-            key={comment.id}
-            comment={comment}
-            commentList={this.state.comments}
-            questionId={comment.question_id}
-            displayComments={this.displayComments}
-            createComment={this.props.createComment}
+    let currentUserComment = null;
+    let buttonText = "Reply";
+    let deleteForm = "";
+    let owner = this.props.question.user;
+    let question = this.props.question;
+
+    let comments = [];
+    if(question.comments){
+      comments = Object.keys(question.comments).map((id) => question.comments[id]);
+    }
+
+    comments.forEach((comment) => {
+      if(this.props.currentUser.id === comment.user.id){
+        currentUserComment = comment;
+        buttonText = "Edit Comment";
+        deleteForm = (
+          <DeleteFormModal
+            item={currentUserComment}
+            action={this.props.deleteComment}
+            textButton={"Delete Comment"}
           />
-        ))}
-      </ul>);
+        );
+      }
+    });
 
+    return(
+      <section className="button-container">
+
+        <FormModal
+          comment={currentUserComment}
+          createComment={this.props.createComment}
+          updateComment={this.props.updateComment}
+          questionId={this.props.question.id}
+          buttonText={buttonText} />
+
+      </section>
+    );
   }
-
   render(){
-    let commentDisplayTree = this.displayComments(this.state.comments[""]);
-
     return(
       <section className="detail">
         <h3>Comments</h3>
-
-        <ul className="comment-list">
-          {commentDisplayTree}
+        {this.authorizedButttons()}
+        <ul>
+          {this.props.comments.map((comment, idx) => (
+            <CommentIndexItem comment={comment} key={idx}/>
+          ))}
         </ul>
       </section>
     );

@@ -23,7 +23,6 @@ class DeleteFormModal extends React.Component {
   }
 
   render() {
-    // debugger;
     return(
       <div >
         <input type="submit" onClick={this.openModal} value="Delete"></input>

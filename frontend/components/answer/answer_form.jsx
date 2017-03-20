@@ -22,7 +22,7 @@ class AnswerForm extends React.Component{
     let answer = this.state;
     answer.question_id = this.props.questionId;
 
-    if(this.props.answer){
+    if(this.props.answer !== undefined){
       answer.id = this.props.answer.id;
       this.props.updateAnswer(answer);
     }else{

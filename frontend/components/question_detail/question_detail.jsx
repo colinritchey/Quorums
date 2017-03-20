@@ -64,18 +64,6 @@ class QuestionDetail extends React.Component {
       return(
         <section className="button-container">
 
-          <FormModal
-            answer={currentUserAnswer}
-            createAnswer={this.props.createAnswer}
-            updateAnswer={this.props.updateAnswer}
-            questionId={this.props.question.id}
-            buttonText={"Answer"} />
-
-          <DeleteFormModal
-            item={currentUserAnswer}
-            action={this.props.deleteAnswer}
-            textButton={"Delete Answer"}
-          />
         </section>
       );
     }
@@ -147,17 +135,36 @@ class QuestionDetail extends React.Component {
       answers = Object.keys(question.answers).map((id) => question.answers[id]);
     }
 
+    let comments = [];
+    if(question.comments){
+      comments = Object.keys(question.comments).map((id) => question.comments[id]);
+    }
     return(
       <div className="content">
         <section className="detail">
           <h3>{question.title}</h3>
           {body}
+          {this.authorFunctions()}
         </section>
-        {this.authorFunctions()}
 
-        <AnswerIndex answers={answers} />
+        <AnswerIndex
+          answers={answers}
+          question={question}
+          currentUser={this.props.currentUser}
+          createAnswer={this.props.createAnswer}
+          updateAnswer={this.props.updateAnswer}
+          deleteAnswer={this.props.deleteAnswer}
 
-        {this.displayComments()}
+        />
+
+        <CommentIndex
+          comments={comments}
+          question={question}
+          currentUser={this.props.currentUser}
+          createComment={this.props.createComment}
+          updateComment={this.props.updateComment}
+          deleteComment={this.props.deleteComment}
+        />
 
       </div>
     );

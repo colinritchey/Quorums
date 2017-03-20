@@ -8,7 +8,9 @@ import {
   createAnswer,
   updateAnswer,
   deleteAnswer,
-  createComment } from '../../actions/question_actions';
+  createComment,
+  updateComment,
+  deleteComment, } from '../../actions/question_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
@@ -24,7 +26,9 @@ const mapDispatchToProps = dispatch => ({
   createAnswer: answer => dispatch(createAnswer(answer)),
   updateAnswer: answer => dispatch(updateAnswer(answer)),
   deleteAnswer: answer => dispatch(deleteAnswer(answer)),
-  createComment: comment => dispatch(createComment(comment))
+  createComment: comment => dispatch(createComment(comment)),
+  updateComment: comment => dispatch(updateComment(comment)),
+  deleteComment: comment => dispatch(deleteComment(comment)),
 });
 
 export default connect(

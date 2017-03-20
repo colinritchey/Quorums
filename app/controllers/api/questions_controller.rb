@@ -24,7 +24,7 @@ class Api::QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     @answers = @question.answers
-    @comments = @question.comments_by_parent
+    @comments = @question.comments
   end
 
   def update

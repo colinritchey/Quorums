@@ -4,6 +4,7 @@ import { form_style } from './modal_style';
 
 import QuestionFormContainer from '../question_form/question_form_container';
 import AnswerForm from '../answer/answer_form';
+import CommentForm from '../comment/comment_form';
 
 class FormModal extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class FormModal extends React.Component {
   }
 
   getForm(){
+    // debugger;
     if (this.props.question){
       return(
         <QuestionFormContainer
@@ -36,12 +38,22 @@ class FormModal extends React.Component {
           closeModal={this.closeModal}
         />
       );
-    } else {
+    } else if(this.props.formType === "answer") {
       return(
         <AnswerForm
           answer={this.props.answer}
           createAnswer={this.props.createAnswer}
           updateAnswer={this.props.updateAnswer}
+          questionId={this.props.questionId}
+          closeModal={this.closeModal}
+        />
+      );
+    } else {
+      return(
+        <CommentForm
+          comment={this.props.comment}
+          createComment={this.props.createComment}
+          updateComment={this.props.updateComment}
           questionId={this.props.questionId}
           closeModal={this.closeModal}
         />
