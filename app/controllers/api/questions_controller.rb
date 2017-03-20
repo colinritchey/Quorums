@@ -29,7 +29,8 @@ class Api::QuestionsController < ApplicationController
 
   def update
     @question = current_user.questions.find(params[:id])
-
+    @answers = @question.answers
+    @comments = @question.comments
     if @question.update(questions_params)
       render :show
     else

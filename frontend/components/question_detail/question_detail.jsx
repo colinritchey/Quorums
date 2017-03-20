@@ -4,6 +4,9 @@ import QuestionFormContainer from '../question_form/question_form_container';
 import FormModal from '../modals/form_modal';
 import DeleteFormModal from '../modals/delete_form';
 
+import AnswerIndex from '../answer/answer_index';
+import AnswerForm from '../answer/answer_form';
+
 class QuestionDetail extends React.Component {
   constructor(props){
     super(props);
@@ -15,6 +18,8 @@ class QuestionDetail extends React.Component {
     this.authorFunctions = this.authorFunctions.bind(this);
     this.handleAnswer = this.handleAnswer.bind(this);
     this.handleComment = this.handleComment.bind(this);
+    // this.rec_tree = this.rec_tree.bind(this);
+    // this.renderTree = this.renderTree.bind(this);
   }
 
   componentDidMount(){
@@ -52,6 +57,49 @@ class QuestionDetail extends React.Component {
     this.setState({ body: ""});
   }
 
+  // displayComments(){
+  //   let raw_result = this.rec_tree(this.props.question.comments[""], this.props.question);
+  //   console.log(raw_result);
+  //   console.log(this.renderTree(raw_result));
+  //   return raw_result;
+  // }
+
+  // rec_tree (list, question) {
+  //   let new_list = [];
+  //   // debugger;
+  //   list.forEach((comment) => {
+  //     let new_comment = comment;
+  //     new_comment.child_comments = [];
+  //
+  //     if(question.comments[comment.id]){
+  //       let result = this.rec_tree(question.comments[comment.id], question);
+  //       new_comment.child_comments.push(result);
+  //     }
+  //
+  //     new_list.push(new_comment);
+  //   });
+  //
+  //   return new_list;
+  // }
+
+  // renderTree(tree){
+  //   debugger;
+  //   if(tree.length < 1){ return <div></div>; }
+  //   return (
+  //     <ul>
+  //       {tree.map((comment, idx) => {
+  //         console.log(comment.id, "comment");
+  //
+  //         return(
+  //           <li key={idx}>
+  //             {comment}
+  //           </li>
+  //         );
+  //       })}
+  //     </ul>
+  //   );
+  // }
+
   handleComment(e){
     e.preventDefault();
     let comment = this.state.comment;
@@ -87,10 +135,23 @@ class QuestionDetail extends React.Component {
       answers = Object.keys(question.answers).map((id) => question.answers[id]);
     }
 
-    let comments = [];
-    if(question.comments){
-      comments = Object.keys(question.comments).map((id) => question.comments[id]);
-    }
+    // let comments = [];
+    // let raw_tree = [];
+    // if(question.comments){
+    //   comments = Object.keys(question.comments).map((id) => question.comments[id]);
+    //   raw_tree = this.displayComments();
+    // }
+
+    // putting aside for now
+    // <form onSubmit={this.handleComment}>
+    //   <label>Comment Body
+    //     <input type="text"
+    //       onChange={this.update("comment", "body")}
+    //       value={this.state.comment.body}/>
+    //   </label>
+    //
+    //   <input type="submit" />
+    // </form>
 
     return(
       <div className="content">
@@ -98,43 +159,12 @@ class QuestionDetail extends React.Component {
           <h3>{question.title}</h3>
           {body}
         </section>
-        <h3>Answers</h3>
-        <ul>
-          {answers.map((answer, idx) => (
-            <li key={idx}>
-              {answer.body}
-            </li>
-          ))}
-        </ul>
+        <AnswerIndex answers={answers} />
 
-        <h3>Comments</h3>
-        <ul>
-          {comments.map((comment, idx) => (
-            <li key={idx}>
-              {comment.body}
-            </li>
-          ))}
-        </ul>
-
-        <form onSubmit={this.handleAnswer}>
-          <label>Answer Body
-            <input type="text"
-              onChange={this.update("answer", "body")}
-              value={this.state.answer.body}/>
-          </label>
-
-          <input type="submit" />
-        </form>
-
-        <form onSubmit={this.handleComment}>
-          <label>Comment Body
-            <input type="text"
-              onChange={this.update("comment", "body")}
-              value={this.state.comment.body}/>
-          </label>
-
-          <input type="submit" />
-        </form>
+        <FormModal
+          createAnswer={this.props.createAnswer}
+          questionId={this.props.question.id}
+          buttonText={"Answer"} />
 
         {authorButtons}
       </div>

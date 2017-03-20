@@ -28,10 +28,10 @@ q2 = Question.create!(title: "Empty body?", body: "", user_id: user1.id)
 
 #user 2 questions
 q3 = Question.create!(title: "Is it Quorums or Quora?", body: "", user_id: user2.id)
-q3 = Question.create!(title: "What was the image on the Log in page?", body: "I really like it", user_id: user2.id)
+q4 = Question.create!(title: "What was the image on the Log in page?", body: "I really like it", user_id: user2.id)
 
 #user 3 questions
-q4 = Question.create!(title: "If we took a picture of Earth from the Moon, why can't we see sunlight anywhere?", body: "The first time I read your question I said: WOW!
+q5 = Question.create!(title: "If we took a picture of Earth from the Moon, why can't we see sunlight anywhere?", body: "The first time I read your question I said: WOW!
 
 I’m assuming you are a child, I’m just surprise how you were able to make a Quora account, you using your parent’s?
 
@@ -51,10 +51,44 @@ Lastly, if you don’t use the long exposure on the camera, the dimmer lights ca
 
 ", user_id: user3.id)
 
+Answer.delete_all
+
+#Answers to question 1
+a1 = Answer.create!({body: "Hello!", user_id: user2.id, question_id: q1.id})
+a2 = Answer.create!({body: "Hello World!", user_id: user3.id, question_id: q1.id})
+
+#Answers to question 3
+a3 = Answer.create!({body: "I believe both is acceptable", user_id: user4.id, question_id: q3.id})
+a4 = Answer.create!({body: "Quorum is singular for Quora", user_id: user2.id, question_id: q3.id})
+a5 = Answer.create!({body: "Quorums", user_id: user5.id, question_id: q3.id})
+
+#Answers to question 4
+a6 = Answer.create!({body: "Its a Monet Winter", user_id: user5.id, question_id: q4.id})
+a7 = Answer.create!({body: "Some painting from a french person", user_id: user7.id, question_id: q4.id})
+
+#Answers to question 5
+a5 = Answer.create!({body: "I'm not a man-rated systems expert. These are just the obvious objective hazards. You should ask any of the ex-astronauts or Robert.
+
+You have to deal with the vacuum of space.
+
+You will have various variable levels of radiation (background to solar flares and others).
+
+You have to deal with object strike (generally remove).
+
+You have to deal with flammables (and oxidizers), not just flame but combustion products.
+
+You have to be aware of electrical shock hazards.
+
+You need to watch out for problems of 0-G which might have otherwise been more trivial in 1-G.
+
+You have to be mindful for confined space problems.
+
+This is probably a quick place holder for more knowledgeable people.", user_id: user3.id, question_id: q5.id})
+
 Comment.delete_all
 
-c1 = Comment.create!({body: "comment top", user_id: user1.id, question_id: q1.id, parent_comment_id: nil})
-c2 = Comment.create!({body: "comment nest 1", user_id: user2.id, question_id: q1.id, parent_comment_id: c1.id})
-c3 = Comment.create!({body: "comment nest 2", user_id: user3.id, question_id: q1.id, parent_comment_id: c2.id})
-c4 = Comment.create!({body: "comment nest 1 second", user_id: user4.id, question_id: q1.id, parent_comment_id: c1.id})
-c5 = Comment.create!({body: "comment top 2", user_id: user2.id, question_id: q1.id, parent_comment_id: nil})
+# c1 = Comment.create!({body: "comment top", user_id: user1.id, question_id: q1.id, parent_comment_id: nil})
+# c2 = Comment.create!({body: "comment nest 1", user_id: user2.id, question_id: q1.id, parent_comment_id: c1.id})
+# c3 = Comment.create!({body: "comment nest 2", user_id: user3.id, question_id: q1.id, parent_comment_id: c2.id})
+# c4 = Comment.create!({body: "comment nest 1 second", user_id: user4.id, question_id: q1.id, parent_comment_id: c1.id})
+# c5 = Comment.create!({body: "comment top 2", user_id: user2.id, question_id: q1.id, parent_comment_id: nil})

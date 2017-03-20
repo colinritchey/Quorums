@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { form_style } from './modal_style';
 
 import QuestionFormContainer from '../question_form/question_form_container';
+import AnswerForm from '../answer/answer_form';
 
 class FormModal extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class FormModal extends React.Component {
 
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.getForm = this.getForm.bind(this);
+
   }
 
   closeModal() {
@@ -24,7 +27,29 @@ class FormModal extends React.Component {
     this.setState({ modalOpen: true });
   }
 
+  getForm(){
+    if (this.props.question){
+      return(
+        <QuestionFormContainer
+          formType="edit"
+          question={this.props.question}
+          closeModal={this.closeModal}
+        />
+      );
+    } else {
+      return(
+        <AnswerForm
+          createAnswer={this.props.createAnswer}
+          questionId={this.props.questionId}
+          closeModal={this.closeModal}
+        />
+      );
+    }
+  }
+
   render() {
+    const form = this.getForm();
+
     return(
       <div>
         <input type="submit"
@@ -37,11 +62,7 @@ class FormModal extends React.Component {
           contentLabel={"Form Modal"}
           style={form_style}>
 
-          <QuestionFormContainer
-            formType="edit"
-            question={this.props.question}
-            closeModal={this.closeModal}
-          />
+          {form}
 
         </Modal>
       </div>

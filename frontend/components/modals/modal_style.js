@@ -14,6 +14,7 @@ export const form_style = {
     left            : '150px',
     right           : '150px',
     bottom          : '100px',
+    // overflow        : 'auto',
     border          : '1px solid #ccc',
     padding         : '20px'
   }

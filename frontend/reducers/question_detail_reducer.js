@@ -17,11 +17,8 @@ const QuestionDetailReducer = (oldState = {}, action) => {
       delete newState[action.question.id];
       return newState;
     case RECEIVE_ANSWER:
-      debugger;
       let answer = action.answer;
-
       newState[answer.question_id].answers[answer.id] = answer;
-
       return newState;
     case RECEIVE_COMMENT:
       let comment = action.comment;
