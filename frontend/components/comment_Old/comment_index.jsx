@@ -17,7 +17,6 @@ class CommentIndex extends React.Component{
 
   displayComments(list){
     let commentTree = this.props.comments;
-    // debugger;
     return(
       <ul>
         {list.map((comment) => (

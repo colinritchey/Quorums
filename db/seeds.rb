@@ -58,7 +58,7 @@ a1 = Answer.create!({body: "Hello!", user_id: user2.id, question_id: q1.id})
 a2 = Answer.create!({body: "Hello World!", user_id: user3.id, question_id: q1.id})
 
 #Answers to question 3
-a3 = Answer.create!({body: "I believe both is acceptable", user_id: user4.id, question_id: q3.id})
+a3 = Answer.create!({body: "I believe both are acceptable", user_id: user4.id, question_id: q3.id})
 a4 = Answer.create!({body: "Quorum is singular for Quora", user_id: user2.id, question_id: q3.id})
 a5 = Answer.create!({body: "Quorums", user_id: user5.id, question_id: q3.id})
 
@@ -87,8 +87,22 @@ This is probably a quick place holder for more knowledgeable people.", user_id: 
 
 Comment.delete_all
 
-c1 = Comment.create!({body: "comment top", user_id: user1.id, question_id: q1.id, parent_comment_id: nil})
-c2 = Comment.create!({body: "comment nest 1", user_id: user2.id, question_id: q1.id, parent_comment_id: c1.id})
-c3 = Comment.create!({body: "comment nest 2", user_id: user3.id, question_id: q1.id, parent_comment_id: c2.id})
-c4 = Comment.create!({body: "comment nest 1 second", user_id: user4.id, question_id: q1.id, parent_comment_id: c1.id})
-c5 = Comment.create!({body: "comment top 2", user_id: user2.id, question_id: q1.id, parent_comment_id: nil})
+# Comments for question 1
+c1 = Comment.create!({body: "A classic", user_id: user3.id, question_id: q1.id })
+c2 = Comment.create!({body: "Oldy but goody", user_id: user2.id, question_id: q1.id })
+
+# Comments for question 2
+c3 = Comment.create!({body: "This question isn't very detailed", user_id: user3.id, question_id: q2.id })
+c4 = Comment.create!({body: "Agreed, but I think this is a test question", user_id: user4.id, question_id: q2.id})
+c5 = Comment.create!({body: "The mods should probably remove this", user_id: user2.id, question_id: q2.id })
+
+#Comments for question 3
+c6 = Comment.create!({body: "Are you allowed to ask that question here?", user_id: user7.id, question_id: q3.id })
+
+#Comment for question 4
+c7 = Comment.create!({body: "Claude Monet was a true treasure", user_id: user3.id, question_id: q4.id })
+
+#Comments for question 5
+c8 = Comment.create!({body: "This was a interesting read, thank you", user_id: user7.id, question_id: q5.id })
+c9 = Comment.create!({body: "First!", user_id: user2.id, question_id: q5.id })
+c10 = Comment.create!({body: "Hate to disappoint you but someone beat you to it", user_id: user1.id, question_id: q5.id })

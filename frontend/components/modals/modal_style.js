@@ -10,11 +10,11 @@ export const form_style = {
   },
   content : {
     position        : 'fixed',
-    top             : '100px',
+    // top             : '100px',
     left            : '150px',
     right           : '150px',
-    bottom          : '100px',
-    // overflow        : 'auto',
+    // bottom          : '100px',
+    overflow        : 'visible',
     border          : '1px solid #ccc',
     padding         : '20px'
   }

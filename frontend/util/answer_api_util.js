@@ -6,14 +6,13 @@ export const createAnswer = (answer) => (
   })
 );
 
-export const updateAnswer = answer => {
-  debugger;
-  return ($.ajax({
+export const updateAnswer = answer => (
+  $.ajax({
     url: `api/answers/${answer.id}`,
     method: 'PATCH',
     data: { answer }
-  }));
-};
+  })
+);
 
 export const deleteAnswer = id => (
   $.ajax({

@@ -40,7 +40,8 @@ class AnswerForm extends React.Component{
           <textarea
             onChange={this.update("body")}
             value={this.state.body}
-            placeholder="What is your answer?">
+            placeholder="What is your answer?"
+            className="modal-text">
           </textarea>
 
           <section className="form-submit">

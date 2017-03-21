@@ -7,8 +7,35 @@ const Home = ({currentUser}) => {
   if(currentUser){
     return(
       <div className="content">
-        <section
-          className="subs-container col col-1-4">Subscriptions (Placeholder)</section>
+        <div className="empty-sidebar col col-1-4">
+          &nbsp;
+        </div>
+
+        <section className="subs-container ">
+          <section>
+            <h3>Feed</h3>
+            <Link to={"/"}>edit</Link>
+          </section>
+
+          <ul>
+            <li>
+              Calculus
+            </li>
+            <li>
+              Science
+            </li>
+            <li>
+              Programming
+            </li>
+            <li>
+              Javascript
+            </li>
+            <li>
+              Cooking
+            </li>
+          </ul>
+
+        </section>
         <QuestionIndexContainer />
 
       </div>
