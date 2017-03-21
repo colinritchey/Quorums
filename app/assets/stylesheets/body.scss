@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+
 .content {
   padding: 20px;
   font-family: sans-serif;
@@ -12,9 +14,6 @@
 }
 
 .empty-sidebar{
-  // float: left;
-  // box-sizing: border-box;
-  // width: 25%;
   height: 300px;
 }
 
@@ -58,8 +57,9 @@
   float: right;
   justify-content: space-between;
   margin-right: 10px;
-  width: 5%;
+  width: 50px;
   margin-top: 25px;
+  font-size: 20px;
   // margin-bottom: 20px;
 }
 
@@ -85,7 +85,7 @@ input[type="submit"]{
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  font-family: times;
+  font-family: 'Roboto', sans-serif;
   list-style: none;
 }
 
@@ -96,6 +96,7 @@ input[type="submit"]{
 .index-item h1{
   font-size: 25px;
   font-weight: bold;
+  color: rgba(255,82,82,0.87);
 }
 
 .index-item h1:hover{
@@ -104,7 +105,7 @@ input[type="submit"]{
 
 .index-item article{
   margin-top: 5px;
-  height: 100px;
+  height: 105px;
   padding: inherit;
 
   display: -webkit-box;
@@ -118,11 +119,13 @@ input[type="submit"]{
 
 .form-container{
   padding: 10px;
+  height: 100%;
 }
 
 .form{
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .form h3{
@@ -146,7 +149,7 @@ input[type="submit"]{
   margin-right: 10px;
   margin: 10px;
   border: 0px;
-  height: 120px;
+  height: 80%;
 
   font-size: small;
   text-indent: 3px;

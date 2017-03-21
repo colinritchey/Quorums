@@ -11,54 +11,55 @@ class CommentIndex extends React.Component{
     this.authorizedButttons = this.authorizedButttons.bind(this);
   }
 
-  authorizedButttons(){
-
+  authorizedButttons(comment, currentUser){
     let currentUserComment = null;
     let buttonType = "create";
     let deleteForm = "";
-    let owner = this.props.question.user;
-    let question = this.props.question;
-
-    let comments = [];
-    if(question.comments){
-      comments = Object.keys(question.comments).map((id) => question.comments[id]);
-    }
-
-    comments.forEach((comment) => {
-      if(this.props.currentUser.id === comment.user.id){
-        currentUserComment = comment;
+      if(currentUser.id === comment.user.id){
         buttonType = "edit";
         deleteForm = (
           <DeleteFormModal
-            item={currentUserComment}
+            item={comment}
             action={this.props.deleteComment}
             textButton={"Delete Comment"}
           />
         );
+
+        return(
+          <section className="comment-buttons">
+
+            <FormModal
+              comment={comment}
+              createComment={this.props.createComment}
+              updateComment={this.props.updateComment}
+              questionId={this.props.question.id}
+              buttonType={buttonType} />
+            {deleteForm}
+          </section>
+        );
+      } else {
+        return(<div></div>);
       }
-    });
-
-    return(
-      <section className="button-container">
-
-        <FormModal
-          comment={currentUserComment}
-          createComment={this.props.createComment}
-          updateComment={this.props.updateComment}
-          questionId={this.props.question.id}
-          buttonType={buttonType} />
-        {deleteForm}
-      </section>
-    );
   }
   render(){
     return(
-      <section className="detail">
-        {this.authorizedButttons()}
+      <section className="detail comments-container">
+        <section className="button-container">
+
+          <FormModal
+            createComment={this.props.createComment}
+            updateComment={this.props.updateComment}
+            questionId={this.props.question.id}
+            buttonType={"create"} />
+        </section>
         <h4>{this.props.comments.length} Comments</h4>
-        <ul>
+        <ul className="comment-index">
           {this.props.comments.map((comment, idx) => (
-            <CommentIndexItem comment={comment} key={idx}/>
+            <CommentIndexItem
+              comment={comment}
+              currentUser={this.props.currentUser}
+              authorizedButttons={this.authorizedButttons}
+              key={idx}/>
           ))}
         </ul>
       </section>

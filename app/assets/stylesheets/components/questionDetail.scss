@@ -3,7 +3,7 @@
   margin-left: 20px;
   margin-right: 20px;
   padding-bottom: 20px;
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   list-style: none;
 
   border-bottom: 1px solid lightgrey;
@@ -12,7 +12,14 @@
 .detail h3{
   font-size: 25px;
   font-weight: bold;
-  font-family: Times;
+
+  color: rgba(255,82,82,0.87);
+}
+
+.detail h4{
+  font-weight: bold;
+
+  color: rgba(255,82,82,0.87);
 }
 
 .detail article{
@@ -22,11 +29,42 @@
 
   white-space: pre-wrap;
 
-  font-family: q_serif;
 }
 
 .detail ul{
   display: flex;
   flex-direction: column-reverse;
   overflow: auto;
+}
+
+.comment-inline-buttons{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.comment-buttons{
+  display: flex;
+  // float: left;
+  justify-content: space-between;
+  margin-right: 10px;
+  width: 50px;
+  // margin-top: 25px;
+}
+
+.comments-container{
+  margin-left: 200px;
+  border-bottom: 0px;
+}
+
+.comment-index{
+  font-size: 15px;
+}
+
+.answers-container{
+  border-bottom: 0px;
+  border-top: 1px solid lightgrey;
+}
+
+.create-button{
+  font-size: 25px;
 }

@@ -48,7 +48,7 @@ class QuestionForm extends React.Component{
 
           <textarea
             onChange={this.update("body")}
-            className={classTextArea}
+            
             placeholder="Go into more detail (Optional)"
             value={this.state.body}></textarea>
 

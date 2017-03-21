@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
     comments_by_parent
   end
 
-  def self.searchByWords(words)
+  def self.searchByWords(words) # words = ["Quora", "House"]
     results = [];
 
     words.each do |word|

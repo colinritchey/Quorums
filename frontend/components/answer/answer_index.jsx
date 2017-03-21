@@ -55,7 +55,7 @@ class AnswerIndex extends React.Component{
 
   render(){
     return(
-      <section className="detail">
+      <section className="detail answers-container">
         {this.authorizedButttons()}
         <h4>{this.props.answers.length} Answers</h4>
         <ul>
