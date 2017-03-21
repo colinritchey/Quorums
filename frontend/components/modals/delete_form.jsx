@@ -25,14 +25,16 @@ class DeleteFormModal extends React.Component {
   render() {
     return(
       <div >
-        <input type="submit" onClick={this.openModal} value="Delete"></input>
+        <i className="fa fa-trash-o"
+          aria-hidden="true"
+          title="Delete"
+          onClick={this.openModal}></i>
 
         <Modal
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
           contentLabel={"Delete Form Modal"}
           style={delete_style}>
-
 
           <h3 className="delete-header">Are you sure you want to delete this?</h3>
           <div className="delete-modal-container">
@@ -41,9 +43,10 @@ class DeleteFormModal extends React.Component {
                 value={this.props.textButton}
                 type="submit"
                 className="delete-modal-button"
-                onClick={() => (
-                  this.props.action(this.props.item)
-                )}></input>
+                onClick={() => {
+                  this.props.action(this.props.item);
+                  this.closeModal();
+                }}></input>
 
                 <input type="submit"
                   onClick={() => this.closeModal()}

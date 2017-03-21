@@ -14,7 +14,7 @@ class CommentIndex extends React.Component{
   authorizedButttons(){
 
     let currentUserComment = null;
-    let buttonText = "Reply";
+    let buttonType = "create";
     let deleteForm = "";
     let owner = this.props.question.user;
     let question = this.props.question;
@@ -27,7 +27,7 @@ class CommentIndex extends React.Component{
     comments.forEach((comment) => {
       if(this.props.currentUser.id === comment.user.id){
         currentUserComment = comment;
-        buttonText = "Edit Comment";
+        buttonType = "edit";
         deleteForm = (
           <DeleteFormModal
             item={currentUserComment}
@@ -46,16 +46,16 @@ class CommentIndex extends React.Component{
           createComment={this.props.createComment}
           updateComment={this.props.updateComment}
           questionId={this.props.question.id}
-          buttonText={buttonText} />
-
+          buttonType={buttonType} />
+        {deleteForm}
       </section>
     );
   }
   render(){
     return(
       <section className="detail">
-        <h3>Comments</h3>
         {this.authorizedButttons()}
+        <h4>{this.props.comments.length} Comments</h4>
         <ul>
           {this.props.comments.map((comment, idx) => (
             <CommentIndexItem comment={comment} key={idx}/>

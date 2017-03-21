@@ -14,7 +14,7 @@ class AnswerIndex extends React.Component{
   authorizedButttons(){
 
     let currentUserAnswer = undefined;
-    let buttonText = "Answer";
+    let buttonType = "create";
     let deleteForm = "";
     let owner = this.props.question.user;
     let question = this.props.question;
@@ -27,7 +27,7 @@ class AnswerIndex extends React.Component{
     answers.forEach((answer) => {
       if(this.props.currentUser.id === answer.user.id){
         currentUserAnswer = answer;
-        buttonText = "Edit Answer";
+        buttonType = "edit";
         deleteForm = (
           <DeleteFormModal
             item={currentUserAnswer}
@@ -47,7 +47,7 @@ class AnswerIndex extends React.Component{
           createAnswer={this.props.createAnswer}
           updateAnswer={this.props.updateAnswer}
           questionId={this.props.question.id}
-          buttonText={buttonText} />
+          buttonType={buttonType} />
         {deleteForm}
       </section>
     );
@@ -56,8 +56,8 @@ class AnswerIndex extends React.Component{
   render(){
     return(
       <section className="detail">
-        <h3>Answers</h3>
         {this.authorizedButttons()}
+        <h4>{this.props.answers.length} Answers</h4>
         <ul>
           {this.props.answers.map((answer, idx) => (
             <AnswerIndexItem answer={answer} key={idx}/>

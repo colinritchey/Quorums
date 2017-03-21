@@ -20,10 +20,7 @@ class QuestionDetail extends React.Component {
     };
 
     this.authorFunctions = this.authorFunctions.bind(this);
-    this.handleAnswer = this.handleAnswer.bind(this);
-    this.handleComment = this.handleComment.bind(this);
-    this.displayComments = this.displayComments.bind(this);
-    this.toggleComments = this.toggleComments.bind(this);
+    
 
   }
 
@@ -52,12 +49,12 @@ class QuestionDetail extends React.Component {
     if(currentUser.id === owner.id){
       return (
         <section className="button-container">
+          <FormModal buttonType={"edit"} question={question}/>
           <DeleteFormModal
             item={question}
             action={this.props.deleteQuestion}
             textButton={"Delete Question"}/>
 
-          <FormModal buttonText={"Edit"} question={question}/>
         </section>
       );
     } else {
@@ -67,49 +64,6 @@ class QuestionDetail extends React.Component {
         </section>
       );
     }
-  }
-
-  handleAnswer(e){
-    e.preventDefault();
-    let answer = this.state.answer;
-    answer.question_id = this.props.question.id;
-    this.props.createAnswer(answer);
-
-    this.setState({ body: ""});
-  }
-
-  toggleComments(){
-    this.setState({commentShow: !this.state.commentShow});
-  }
-
-  displayComments(){
-    if(this.state.commentShow){
-      return(
-        <div>
-          <CommentIndex
-            comments={this.props.question.comments}
-            createComment={this.props.createComment}
-          />
-          <button onClick={this.toggleComments}>Hide Comments</button>
-        </div>
-      );
-    } else {
-      return(
-        <div>
-          <button onClick={this.toggleComments}>Show Comments</button>
-        </div>)
-      ;
-    }
-  }
-
-  handleComment(e){
-    e.preventDefault();
-    let comment = this.state.comment;
-    comment.question_id = this.props.question.id;
-    comment.parent_comment_id = null;
-    this.props.createComment(comment);
-
-    this.setState({ body: ""});
   }
 
   update(formType, field){
@@ -142,9 +96,9 @@ class QuestionDetail extends React.Component {
     return(
       <div className="content">
         <section className="detail">
+          {this.authorFunctions()}
           <h3>{question.title}</h3>
           {body}
-          {this.authorFunctions()}
         </section>
 
         <AnswerIndex

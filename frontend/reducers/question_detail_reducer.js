@@ -3,13 +3,16 @@ import {
   REMOVE_QUESTION,
   RECEIVE_ANSWER,
   REMOVE_ANSWER,
-  RECEIVE_COMMENT } from '../actions/question_actions';
+  RECEIVE_COMMENT,
+  REMOVE_COMMENT  } from '../actions/question_actions';
 import merge from 'lodash/merge';
 
 
 const QuestionDetailReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = merge({}, oldState);
+  let answer = undefined;
+  let comment = undefined;
 
   switch(action.type){
     case RECEIVE_QUESTION:
@@ -21,7 +24,7 @@ const QuestionDetailReducer = (oldState = {}, action) => {
       return newState;
 
     case RECEIVE_ANSWER:
-      let answer = action.answer;
+      answer = action.answer;
 
       if(newState[answer.question_id].answers === undefined ){
         newState[answer.question_id].answers = {};
@@ -29,15 +32,25 @@ const QuestionDetailReducer = (oldState = {}, action) => {
 
       newState[answer.question_id].answers[answer.id] = answer;
       return newState;
+      
+    case REMOVE_ANSWER:
+      answer = action.answer;
+      delete newState[answer.question_id].answers[answer.id];
+      return newState;
 
     case RECEIVE_COMMENT:
-      let comment = action.comment;
+      comment = action.comment;
 
       if(newState[comment.question_id].comments === undefined ){
         newState[comment.question_id].comments = {};
       }
 
       newState[comment.question_id].comments[comment.id] = comment;
+      return newState;
+
+    case REMOVE_COMMENT:
+      comment = action.comment;
+      delete newState[comment.question_id].comments[comment.id];
       return newState;
 
     default:

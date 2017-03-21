@@ -63,13 +63,13 @@ export const createQuestion = (question) => dispatch => (
 );
 
 export const createAnswer = (answer) => dispatch => {
-  debugger;
   return(
-  APIUtilAnswer.createAnswer(answer)
-    .then(_answer => {
-      dispatch(receiveAnswer(_answer));
-    })
-)};
+    APIUtilAnswer.createAnswer(answer)
+      .then(_answer => {
+        dispatch(receiveAnswer(_answer));
+      })
+    );
+};
 
 export const createComment = (comment) => dispatch => (
   APIUtilComment.createComment(comment)
@@ -112,7 +112,6 @@ export const deleteAnswer = (answer) => dispatch => {
     APIUtilAnswer.deleteAnswer(answer.id)
       .then(_answer => {
         dispatch(removeAnswer(_answer));
-        hashHistory.push(`/`);
       })
     );
 };
@@ -122,7 +121,6 @@ export const deleteComment = (comment) => dispatch => {
     APIUtilComment.deleteComment(comment.id)
       .then(_comment => {
         dispatch(removeComment(_comment));
-        hashHistory.push(`/`);
       })
     );
 

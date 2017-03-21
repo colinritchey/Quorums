@@ -29,7 +29,6 @@ class FormModal extends React.Component {
   }
 
   getForm(){
-    // debugger;
     if (this.props.question){
       return(
         <QuestionFormContainer
@@ -64,11 +63,25 @@ class FormModal extends React.Component {
   render() {
     const form = this.getForm();
 
+    let button = (
+      <i className="fa fa-plus-circle"
+        aria-hidden="true"
+        title="Create"
+        onClick={this.openModal}></i>
+    );
+
+    if(this.props.buttonType === "edit"){
+      button = (
+        <i className="fa fa-pencil-square-o"
+        aria-hidden="true"
+        title="Edit"
+        onClick={this.openModal}></i>
+      );
+    }
+
     return(
       <div>
-        <input type="submit"
-          onClick={this.openModal}
-          value={this.props.buttonText}></input>
+        {button}
 
         <Modal
           isOpen={this.state.modalOpen}

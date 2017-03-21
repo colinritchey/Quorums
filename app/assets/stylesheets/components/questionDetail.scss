@@ -2,6 +2,7 @@
   padding: 10px;
   margin-left: 20px;
   margin-right: 20px;
+  padding-bottom: 20px;
   font-family: sans-serif;
   list-style: none;
 
@@ -22,4 +23,10 @@
   white-space: pre-wrap;
 
   font-family: q_serif;
+}
+
+.detail ul{
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: auto;
 }
