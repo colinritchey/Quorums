@@ -42,8 +42,19 @@ class CommentIndex extends React.Component{
       }
   }
   render(){
+    let comment_class_name = "detail";
+    let header = "Comments";
+
+    if(this.props.comments.length){
+      comment_class_name = "detail comments-container";
+    }
+
+    if(this.props.comments.length === 1){
+      header = "Comment";
+    }
+    
     return(
-      <section className="detail comments-container">
+      <section className={comment_class_name}>
         <section className="button-container">
 
           <FormModal
@@ -52,7 +63,7 @@ class CommentIndex extends React.Component{
             questionId={this.props.question.id}
             buttonType={"create"} />
         </section>
-        <h4>{this.props.comments.length} Comments</h4>
+        <h4>{this.props.comments.length} {header}</h4>
         <ul className="comment-index">
           {this.props.comments.map((comment, idx) => (
             <CommentIndexItem

@@ -99,7 +99,7 @@ class QuestionDetail extends React.Component {
           <h3>{question.title}</h3>
           {body}
         </section>
-
+        
         <CommentIndex
           comments={comments}
           question={question}

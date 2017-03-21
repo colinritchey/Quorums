@@ -54,10 +54,16 @@ class AnswerIndex extends React.Component{
   }
 
   render(){
+    let header = "Answers";
+
+    if(this.props.answers.length === 1){
+      header = "Answer";
+    }
+
     return(
       <section className="detail answers-container">
         {this.authorizedButttons()}
-        <h4>{this.props.answers.length} Answers</h4>
+        <h4>{this.props.answers.length} {header}</h4>
         <ul>
           {this.props.answers.map((answer, idx) => (
             <AnswerIndexItem answer={answer} key={idx}/>
