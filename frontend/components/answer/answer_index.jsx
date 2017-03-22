@@ -32,7 +32,7 @@ class AnswerIndex extends React.Component{
           <DeleteFormModal
             item={currentUserAnswer}
             action={this.props.deleteAnswer}
-            textButton={"Delete Answer"}
+            textButton={"Answer"}
             />
         );
       }

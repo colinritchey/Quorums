@@ -36,11 +36,11 @@ class DeleteFormModal extends React.Component {
           contentLabel={"Delete Form Modal"}
           style={delete_style}>
 
-          <h3 className="delete-header">Are you sure you want to delete this?</h3>
+          <h3 className="delete-header">Are you sure you want to delete this {this.props.textButton}?</h3>
           <div className="delete-modal-container">
             <section className="delete-form-modal">
               <input
-                value={this.props.textButton}
+                value={`Delete ${this.props.textButton}`}
                 type="submit"
                 className="delete-modal-button"
                 onClick={() => {

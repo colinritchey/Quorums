@@ -33,8 +33,8 @@ export const delete_style = {
   content : {
     position        : 'fixed',
     top             : '25%',
-    left            : '30%',
-    right           : '30%',
+    left            : '40%',
+    right           : '40%',
     bottom          : '40%',
     border          : '1px solid #ccc',
     padding         : '20px'

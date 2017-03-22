@@ -52,7 +52,7 @@ class QuestionDetail extends React.Component {
           <DeleteFormModal
             item={question}
             action={this.props.deleteQuestion}
-            textButton={"Delete Question"}/>
+            textButton={"Question"}/>
 
         </section>
       );

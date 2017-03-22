@@ -21,7 +21,7 @@ class CommentIndex extends React.Component{
           <DeleteFormModal
             item={comment}
             action={this.props.deleteComment}
-            textButton={"Delete Comment"}
+            textButton={"Comment"}
           />
         );
 
