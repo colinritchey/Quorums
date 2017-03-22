@@ -3,8 +3,9 @@ import { fetchQuestions } from './question_actions';
 export const UPDATE_FILTER = "UPDATE_FILTER";
 
 export const updateFilter = (filter, value) => (dispatch, getState) => {
+  // debugger;
   dispatch(changeFilter(filter, value));
-  return fetchQuestions(getState().filters)(dispatch);
+  return dispatch(fetchQuestions(getState().filters));
 };
 
 export const changeFilter = (filter, value) => ({

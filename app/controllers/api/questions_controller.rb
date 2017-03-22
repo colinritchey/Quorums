@@ -1,7 +1,7 @@
 class Api::QuestionsController < ApplicationController
 
   def index
-    @questions = filter_params ? Question.searchByWords(filter_params) : Question.all
+    @questions = filter_params ? Question.searchByWord(filter_params) : Question.all
 
     @questions.includes(:user)
 

@@ -10,10 +10,20 @@ class QuestionIndex extends React.Component{
     this.props.fetchQuestions();
   }
 
+  getForm(){
+    if(this.props.formType === 'new'){
+      return <QuestionFormContainer formType="new"/>;
+    } else {
+      return "";
+    }
+  }
+
   render(){
+    const form = this.getForm();
+
     return(
       <div className="quesitons-container col col-3-4">
-        <QuestionFormContainer formType="new"/>
+        {form}
         <ul>
           {this.props.questions.map((question, idx) => (
             <QuestionIndexItem

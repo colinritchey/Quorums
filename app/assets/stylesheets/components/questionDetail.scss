@@ -58,9 +58,25 @@
   font-size: 15px;
 }
 
+.comment-index-item{
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: 'Roboto', sans-serif;
+  list-style: none;
+}
+
 .answers-container{
-  border-bottom: 0px;
-  border-top: 1px solid lightgrey;
+  // border-bottom: 0px;
+  // border-top: 1px solid lightgrey;
+}
+
+.answer-index-item{
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-family: 'Roboto', sans-serif;
+  list-style: none;
 }
 
 .create-button{

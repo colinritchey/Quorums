@@ -47,8 +47,8 @@ export const removeComment = (comment) => ({
   comment
 });
 
-export const fetchQuestions = () => dispatch => (
-  APIUtil.fetchQuestions()
+export const fetchQuestions = (data) => dispatch => (
+  APIUtil.fetchQuestions(data)
     .then(questions => dispatch(receiveQuestions(questions)))
 );
 

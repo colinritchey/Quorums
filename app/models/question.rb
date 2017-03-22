@@ -15,13 +15,7 @@ class Question < ActiveRecord::Base
     comments_by_parent
   end
 
-  def self.searchByWords(words) # words = ["Quora", "House"]
-    results = [];
-
-    words.each do |word|
-      results.concat(self.where("lower(title) LIKE ?", "%#{word.downcase}%"))
-    end
-
-    results.uniq
+  def self.searchByWord(word)
+    self.where("lower(title) LIKE ?", "%#{word.downcase}%")
   end
 end

@@ -99,7 +99,15 @@ class QuestionDetail extends React.Component {
           <h3>{question.title}</h3>
           {body}
         </section>
-        
+        <AnswerIndex
+          answers={answers}
+          question={question}
+          currentUser={this.props.currentUser}
+          createAnswer={this.props.createAnswer}
+          updateAnswer={this.props.updateAnswer}
+          deleteAnswer={this.props.deleteAnswer}
+        />
+
         <CommentIndex
           comments={comments}
           question={question}
@@ -109,15 +117,6 @@ class QuestionDetail extends React.Component {
           deleteComment={this.props.deleteComment}
         />
 
-        <AnswerIndex
-          answers={answers}
-          question={question}
-          currentUser={this.props.currentUser}
-          createAnswer={this.props.createAnswer}
-          updateAnswer={this.props.updateAnswer}
-          deleteAnswer={this.props.deleteAnswer}
-
-          />
       </div>
     );
   }

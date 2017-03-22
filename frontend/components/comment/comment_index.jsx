@@ -52,9 +52,9 @@ class CommentIndex extends React.Component{
     if(this.props.comments.length === 1){
       header = "Comment";
     }
-    
+
     return(
-      <section className={comment_class_name}>
+      <section className="detail">
         <section className="button-container">
 
           <FormModal
