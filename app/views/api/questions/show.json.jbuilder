@@ -8,23 +8,18 @@ json.answers do
   end
 end
 
-# json.comments do
-#   @comments.each do |key, value|
-#     json.set! key do
-#       json.array! value do |comment|
-#         json.partial! '/api/comments/comment', comment: comment
-#         # json.child_comments comment.child_comments do |child|
-#         #   json.partial! '/api/comments/comment', comment: child
-#         # end
-#       end
-#     end
-#   end
-# end
-
 json.comments do
   @comments.each do |comment|
     json.set! comment.id do
       json.partial! '/api/comments/comment', comment: comment
+    end
+  end
+end
+
+json.tags do
+  @tags.each do |tag|
+    json.set! tag.id do
+      json.partial! '/api/tags/tag', tag: tag
     end
   end
 end

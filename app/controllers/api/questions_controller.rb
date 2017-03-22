@@ -3,7 +3,7 @@ class Api::QuestionsController < ApplicationController
   def index
     @questions = filter_params ? Question.searchByWord(filter_params) : Question.all
 
-    @questions.includes(:user)
+    @questions.includes(:user, :tags)
 
     render :index
   end
@@ -25,6 +25,7 @@ class Api::QuestionsController < ApplicationController
 
     @answers = @question.answers
     @comments = @question.comments
+    @tags = @question.tags
   end
 
   def update

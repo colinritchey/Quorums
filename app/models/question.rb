@@ -5,6 +5,10 @@ class Question < ActiveRecord::Base
   has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :comments, inverse_of: :question, dependent: :destroy
 
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
+
+
   def comments_by_parent
     comments_by_parent = Hash.new { |hash, key| hash[key] = [] }
 
