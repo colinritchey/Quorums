@@ -31,6 +31,16 @@
   font-family: cursive;
 }
 
+.navbar .search-button{
+  margin-top: 0px;
+  height: 17px;
+  text-align: center;
+  border-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: rgba(255,82,82,0.87);
+}
+
 .navbar section input{
   box-sizing: content-box;
   width: 50px;
@@ -48,6 +58,9 @@
 
 .navbar .search {
   width: 375px;
+  border-radius: 0px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 
   text-align: left;
   text-indent: 5px;

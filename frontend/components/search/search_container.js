@@ -4,11 +4,10 @@ import {  updateFilter } from '../../actions/filter_actions';
 
 import Search from './search';
 
-const mapStateToProps = (state) => {
-  // debugger;
+const mapStateToProps = (state, ownProps) => {
   return {
     questions: Object.keys(state.questions).map((id) => state.questions[id]),
-    searchWords: state.filters.searchWords
+    searchWord: ownProps.params.searchWord
   };
 };
 

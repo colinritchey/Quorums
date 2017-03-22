@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import {  updateFilter } from '../../actions/filter_actions';
 
-import Navbar from './navbar';
+import SearchForm from './search_form';
 
 const mapStateToProps = ({session}) => {
   let currentUser = null;
@@ -13,11 +13,10 @@ const mapStateToProps = ({session}) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
   updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar);
+)(SearchForm);

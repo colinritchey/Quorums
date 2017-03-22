@@ -36,7 +36,7 @@ const Root = ({ store }) => {
             component={SessionFormContainer}
             onEnter={_redirectIfLoggedIn} />
           
-          <Route path="/search"
+          <Route path="/search/:searchWord"
             component={SearchContainer}
             onEnter={_ensureLogin} />
 

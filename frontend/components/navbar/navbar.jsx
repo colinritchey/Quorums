@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
+
+import SearchFormContainer from '../search_form/search_form_container';
 
 const Navbar = ({currentUser, logout}) => {
   if(currentUser){
@@ -7,7 +9,7 @@ const Navbar = ({currentUser, logout}) => {
       <div className="navbar">
         <section>
           <h1><Link to={'/'}>Quorums</Link></h1>
-          <input type="text" placeholder="Search Bar" className="search"></input>
+          <SearchFormContainer />
           <input onClick={logout} value="Log Out"></input>
         </section>
       </div>

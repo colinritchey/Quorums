@@ -6,15 +6,20 @@ import QuestionIndexContainer from '../question/question_index_container';
 class Search extends React.Component{
   constructor(props){
     super(props);
+    this.state = this.props;
   }
 
   componentDidMount(){
-    // debugger;
-    this.props.updateFilter('searchWords', "Quora");
+    this.props.updateFilter('searchWords', this.props.searchWord);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(newProps.searchWord !== this.props.searchWord){
+      this.props.updateFilter('searchWords', newProps.searchWord);
+    }
   }
 
   render(){
-    // debugger;
     return(
       <div className="content">
         <div className="empty-sidebar col col-1-4">
@@ -23,27 +28,21 @@ class Search extends React.Component{
 
         <section className="subs-container ">
           <section>
-            <h3>Feed</h3>
-            <Link to={"/"}><i className="fa fa-pencil-square-o"
-                  aria-hidden="true"
-                  title="Edit"></i></Link>
+            <h3>By Type</h3>
           </section>
 
           <ul>
             <li>
-              Calculus
+              Question
             </li>
             <li>
-              Science
+              Answer
             </li>
             <li>
-              Programming
+              Author
             </li>
             <li>
-              Javascript
-            </li>
-            <li>
-              Cooking
+              Tag
             </li>
           </ul>
 
