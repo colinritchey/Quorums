@@ -10,14 +10,15 @@ class Search extends React.Component{
   }
 
   componentDidMount(){
-    this.props.updateFilter('searchWords', this.props.searchWord);
+    this.props.updateFilter('searchByTitle', this.props.searchByTitle);
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.searchWord !== this.props.searchWord){
-      this.props.updateFilter('searchWords', newProps.searchWord);
+    if(newProps.searchByTitle !== this.props.searchByTitle){
+      this.props.updateFilter('searchByTitle', newProps.searchByTitle);
     }
   }
+
 
   render(){
     return(
@@ -33,13 +34,10 @@ class Search extends React.Component{
 
           <ul>
             <li>
-              Question
+              Question Title
             </li>
             <li>
-              Answer
-            </li>
-            <li>
-              Author
+              Question Content
             </li>
             <li>
               Tag

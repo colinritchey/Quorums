@@ -5,9 +5,10 @@ import {  updateFilter } from '../../actions/filter_actions';
 import Search from './search';
 
 const mapStateToProps = (state, ownProps) => {
+  let searchByTitle = ownProps.params.searchByTitle.split("-").join(" ");
   return {
     questions: Object.keys(state.questions).map((id) => state.questions[id]),
-    searchWord: ownProps.params.searchWord
+    searchByTitle
   };
 };
 

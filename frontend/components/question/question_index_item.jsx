@@ -5,7 +5,8 @@ const showPage = (id) => {
   hashHistory.push(`/questions/${id}`);
 };
 
-const QuestionIndexItem = ({question}) =>{
+
+const QuestionIndexItem = ({question}) => {
   return(
     <li className="index-item" onClick={() => showPage(question.id)}>
       <h1>{question.title}</h1>

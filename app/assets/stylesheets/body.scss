@@ -20,7 +20,7 @@
 .subs-container{
   position: fixed; /* Set the navbar to fixed position */
   top: 95px;
-  width: 17%;
+  width: 15%;
   font-family: 'Roboto', sans-serif;
   border: 1px solid lightgrey;
   border-radius: 3px;
@@ -103,6 +103,7 @@ input[type="submit"]{
   font-size: 25px;
   font-weight: bold;
   color: rgba(255,82,82,0.87);
+  cursor: pointer;
 }
 
 .index-item h1:hover{

@@ -16,13 +16,9 @@ class SearchForm extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.updateFilter('searchWords', this.state.body);
-    hashHistory.push(`/search/${this.state.body}`);
-    // console.log(this.state.body);
-    // this.props.action(this.state);
+    hashHistory.push(`/search/${this.state.body.split(" ").join("-")}`);
   }
   render(){
-    // debugger;
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text"
