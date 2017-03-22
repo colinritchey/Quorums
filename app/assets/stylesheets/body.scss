@@ -111,7 +111,7 @@ input[type="submit"]{
 
 .index-item article{
   margin-top: 5px;
-  height: 105px;
+  max-height: 105px;
   padding: inherit;
 
   display: -webkit-box;

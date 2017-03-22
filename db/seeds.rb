@@ -22,15 +22,15 @@ user7 = User.create!(username: "Most Interesting Man", password: "normal_passwor
 
 Question.delete_all
 
-#user 1 questions
+#topic: programming questions
 q1 = Question.create!(title: "Hello World?", body: "sample body", user_id: user1.id)
-q2 = Question.create!(title: "Empty body?", body: "", user_id: user1.id)
+q2 = Question.create!(title: "Should programming be taught at an earlier age?", body: "", user_id: user2.id)
 
-#user 2 questions
+#topic: internet questions
 q3 = Question.create!(title: "Is it Quorums or Quora?", body: "", user_id: user2.id)
 q4 = Question.create!(title: "What was the image on the Log in page?", body: "I really like it", user_id: user2.id)
 
-#user 3 questions
+#topic: space questions
 q5 = Question.create!(title: "If we took a picture of Earth from the Moon, why can't we see sunlight anywhere?", body: "The first time I read your question I said: WOW!
 
 I’m assuming you are a child, I’m just surprise how you were able to make a Quora account, you using your parent’s?
@@ -51,6 +51,58 @@ Lastly, if you don’t use the long exposure on the camera, the dimmer lights ca
 
 ", user_id: user3.id)
 
+q6 = Question.create!(title: "Is space exploration a waste of money?", user_id: user7.id ,body: "I absolutely HATE this question!  Why?  It's obvious to me you have simply read someone else's BS account that states space exploration is a waste.  The statement is so far from the truth it disgusts me.  Let me see if I can briefly explain why.
+
+Your ability to post the question in the first place, and perhaps read my answer on your smart phone in your part of our world, results from transmission satellites placed round the globe by technology developed through our space program.  First developed in the sixties, our space program (along with Russia, at that time the ONLY 2 countries even attempting such things) was in its infancy.
+
+When someone you know grabs a portable drill, and sticks in a freshly charged battery, enabling them to work on a home project or repair a fence after a big storm, encourage them to look toward the sky, hands extended upward in reverence and yell, 'Thank you NASA,' for this useful technology developed during the Apollo program.
+
+If you have a niece or a nephew, fortunate enough to have invisible braces to help straighten their teeth, but not mar their beautiful, cherubic smile, you should shake your head in awe and prayerfully say, 'Thank you NASA!'
+
+If your grandma Martha, has had a hip replacement and that hip joint is covered with a light coating of metallic gold, allowing her to walk easier than ever before, you should lift your hands to the heavens and yell, 'Thank you NASA!'  Then tell grandma you love her!
+
+During the Apollo program, the US spent about 1.75 cents per tax dollar on space. From about 1983 until 2013, the value hovered around 3/4 cents per tax dollar.  Today, that value is less than 1/2 cent per tax dollar.  Depending on your source, the payback cited to humans on earth (not just Americans) was 7 to 1!  Some argue 20 to 1!  Who today would not take a 7 to 1 return on investment?  Very few I'm guessing.  Our problem is that we want instant gratification from any investment we make.  We are not willing (Americans anyway) to wait for the payback over time.  If your DVR breaks, what do you do?  Most go purchase a new one, if it is within their means.
+
+Do you need even more information for me to convince you to change your tune and agree that space exploration is an investment, and NOT a waste of taxpayer dollars?  Just go to Benefits to You and start reading.  You'll be surprised at what you might find.  And when you've done a little more research, cast your eyes to the skies, and following my advice to keep lookin' up, take a few seconds to yell, 'Thank you NASA!''  You'll be glad you did!")
+
+#topic: technology questions
+
+q7 = Question.create!(user_id: user3.id, title: "What is the future of web development in 2017?", body: "")
+q8 = Question.create!(user_id: user5.id, title: "What are some mind-blowing facts related to technology?", body: "")
+q9 = Question.create!(user_id: user6.id, title: "What are the main security problems and solutions for enterprise mobile apps?", body: "Mobile malware exploits vulnerabilities or bugs in the coding of the mobile apps. Applying security best practices to mobile app development, including the use of source code scanning tools, can help make mobile apps resilient to such an attack. It is also important to analyze code from third parties, or any app that is allowed to coexist on phones used by employees. In this case, executables rather than source code should be scanned.")
+q10 = Question.create!(user_id: user1.id, title: "Why did the internet get so popular so quickly?", body: "I actually don't remember the Internet getting popular all that quickly. My first real exposure to the Internet was in 1992, when I started at UC Davis, and while the Internet was well established by then, it was a very well kept secret outside of academia and the military. There were virtually no commercial applications for the Internet back in the early 1990s, although there were plenty of commercial online services and online databases, such as CompuServe, Prodigy, AOL, Westlaw, Lexis/Nexis, etc., that did not use the Internet as their backbone. Indeed, the term 'Internet' had not yet come into vogue, with the news media constantly referring to the 'Information Superhighway' as something that was still years away.")
+
+#topic: cooking questions
+
+q11 = Question.create!(user_id: user4.id, title: "How do you make a Queche?", body: "It looks really good, I want to try and make it")
+q12 = Question.create!(user_id: user5.id, title: "I ran out of flour, what is a good replacement?", body: "")
+q13 = Question.create!(user_id: user6.id, title: "What our your favorite things to cook?", body: "I'm a fan of steak and eggs")
+
+#topic: hiking questions
+q14 = Question.create!(user_id: user7.id, title: "How long of a hike is mt. Diablo?", body: "Some friends from out of town want to hike it")
+q15 = Question.create!(user_id: user1.id, title: "What are the peaks in the rim of the bay hikes?", body: "")
+
+#topic: political questions
+q16 = Question.create!(user_id: user2.id, title: "Should I be worried about Net Neutrality?")
+q17 = Question.create!(user_id: user3.id, title: "What does the Vice President do exactly?", body: "(S)He sits in on the House of Reps. but what else?")
+q18 = Question.create!(user_id: user4.id, title: "What is a filobuster?")
+
+#topic: film questions
+q19 = Question.create!(user_id: user5.id, title: "What is your favorite film?", body: "Mine is Blade Runner")
+q20 = Question.create!(user_id: user1.id, title: "Is Arrival any good?", body: "I'm usually not into scifi but I keep hearing great reviews about this")
+q21 = Question.create!(user_id: user4.id, title: "Do you think Super Hero movies are getting stale?")
+
+#topic: financhial
+q22 = Question.create!(user_id: user1.id, title: "When should I worry about my credit score?")
+q23 = Question.create!(user_id: user3.id, title: "What is a 401-k?")
+q24 = Question.create!(user_id: user2.id, title: "When should I start saving for retirement?", body: "Is 45 a little too late...")
+
+#topic: biology
+q25 = Question.create!(user_id: user7.id, title: "How fast can a falcon fly?", body: "I hear it's over 200mph")
+q26 = Question.create!(user_id: user3.id, title: "Why were canaries used when mining?")
+q27 = Question.create!(user_id: user1.id, title: "How do I take care of my cacti?")
+
+
 Answer.delete_all
 
 #Answers to question 1
@@ -67,7 +119,7 @@ a6 = Answer.create!({body: "Its a Monet Winter", user_id: user5.id, question_id:
 a7 = Answer.create!({body: "Some painting from a french person", user_id: user7.id, question_id: q4.id})
 
 #Answers to question 5
-a5 = Answer.create!({body: "I'm not a man-rated systems expert. These are just the obvious objective hazards. You should ask any of the ex-astronauts or Robert.
+a8 = Answer.create!({body: "I'm not a man-rated systems expert. These are just the obvious objective hazards. You should ask any of the ex-astronauts or Robert.
 
 You have to deal with the vacuum of space.
 
@@ -84,6 +136,46 @@ You need to watch out for problems of 0-G which might have otherwise been more t
 You have to be mindful for confined space problems.
 
 This is probably a quick place holder for more knowledgeable people.", user_id: user3.id, question_id: q5.id})
+
+# answers for Question 6
+
+a9 = Answer.create!(user_id: user3.id, question_id: q6.id, body: "What you said in your details is the primary reason they do: they feel the money should be spent on Earth. But in fact space exploration does solve a lot of problems we have here on Earth. Weather satellites and satellite telephones save lives every day. Satellite television enables remote parts of the world to be aware of what’s going on elsewhere, rather than remaining isolated and ignorant.
+
+Space exploration really doesn’t cost much, either. In the entire history of NASA, it has only cost about 1.75 times what the American military costs in one year.")
+
+a10 = Answer.create!(user_id: user4.id, question_id: q6.id, body: "You missed the point. Setting aside for a moment the fact that NASA's budget comprises about half a cent of each dollar spent in the federal budget, the payoff has been huge in help on earth.
+
+Ultralight and flexible thermal shielding (Mylar) has saved countless lives. Everything from recycling water from human waste to GPS and bioengineered organs that may one day make organ waiting lists obsolete began in space.
+
+Climate change is best demonstrated with images from space. Astronauts experience bone density loss like the elderly. Research on these healthy active subjects could save many of us from broken hips and worse as we age.
+
+It should go without saying, but most of our high tech appliances, from computers to remote sensing used to find survivors of catastrophes owes at least part of their creation to groundwork in the space program.
+
+The mere process of conquering the extreme environment of space teaches us so many lessons that are eventually applied here on the ground. You may argue that we should innovate those solutions on the ground. It's a false dichotomy though. It is the challenge of solving the unknown puzzles presented in this exploration that makes us look for radical new solutions. Solving the mundane problems on earth, though noble, does not really place the inadequacy of the current solutions on display tangibly. The challenge of the unknown forces us to abandon preconceptions. From that extreme exercise we will eventually find myriads of solutions to the unaddressed issues at home.")
+
+#answer for Question 7
+a11 = Answer.create!(user_id: user6.id, question_id: q7.id, body: "Artificial intelligence programs are already used successfully by Google and Wikipedia, the technology is more than within our grasp to allow us to develop software which can think and act as a human without requiring the manpower.")
+
+#answer for Question 8
+a12 = Answer.create!(user_id: user2.id, question_id: q8.id, body: "Artificial intelligence programs are already used successfully by Google and Wikipedia, the technology is more than within our grasp to allow us to develop software which can think and act as a human without requiring the manpower.")
+a13 = Answer.create!(user_id: user2.id, question_id: q8.id, body: "Bots are there to make our life easier and our experiences more personable (or at least they should). Bots are interesting from various standpoints and use cases.
+
+Chris Messina already predicted in 2016 that 2016 will be the year of conversational commerce. As messaging platforms become more and more popular, its role and influence on web design and web development can no longer be neglected.
+
+Therefore the design and development of conversational UI will become an important topic for developers in 2017.")
+
+# answers for Question 9
+
+a14 = Answer.create!(user_id: user5.id, question_id: q9.id, body: "End point security is the root of all concerns as enterprise applications mobilize over time. Proper end point security mitigates concerns around lost devices, malware/viruses, careless employees, etc.
+")
+
+a15 = Answer.create!(user_id: user2.id, question_id: q9.id, body: "The majority of mobile applications - whether in the Android, iOS or Windows Phone ecosystems - will not have basic business-acceptable security protocols in place. Part of the issue with mobile app security is that employees download apps that access enterprise assets or perform business functions, but the security of the apps is not adequate to protect against attacks or meet the security requirements set out by company policy.")
+
+# answers for Queston 10
+
+a16 = Answer.create!(user_id: user7.id, question_id: q10.id, body: "The Internet did not get popular all that quickly. Rather, awareness of the Internet came to most people overnight, long after the technical protocols that make the Internet go had been established and tested. Meanwhile, technology evangelists such as myself had to patiently and persistently explain to people how the Internet works and how important it was eventually going to be. And then one day, a quarter of a century later . . . BAM! . . . the Internet was finally something that everyone took for granted.")
+
+
 
 Comment.delete_all
 
@@ -106,3 +198,23 @@ c7 = Comment.create!({body: "Claude Monet was a true treasure", user_id: user3.i
 c8 = Comment.create!({body: "This was a interesting read, thank you", user_id: user7.id, question_id: q5.id })
 c9 = Comment.create!({body: "First!", user_id: user2.id, question_id: q5.id })
 c10 = Comment.create!({body: "Hate to disappoint you but someone beat you to it", user_id: user1.id, question_id: q5.id })
+
+#Comments for question 6
+c11 = Comment.create!(user_id: user1.id, question_id: q6.id, body: "Being a huge space fan and economist at the same time is sometimes hard. This is one of the situations.
+For example, there is an economic concept called opportunity cost - in this case the tax money spent on NASA are not the only cost of the space programme, the other costs are the things that did not happen, because of money and resources were spent on space programme. I don't think that best brains, who work with NASA, would just sit at home if there was no space programme. Probably the structure of the innovation would be different - in some areas it would be slower, some things would come earlier than they did. And maybe innovation that is not just a by-product of something could bring more practical things in the end.
+So while it is definitely not a waste of taxpayer's money, its role in everyday life is vastly overestimated by ignoring the alternatives.")
+c12 = Comment.create!(user_id: user5.id, question_id: q6.id, body: "Thank you NASA!     ...and thank you Clayton for sharing your experiences with us here on Quora and with your new book 'The Ordinary Spaceman: From Boyhood Dreams to Astronaut'. I just purchased it and look forward to reading it!")
+
+#Comments for question 7
+c13 = Comment.create!(user_id: user4.id, question_id: q7.id, body: "ES7? if that will ever come out")
+c14 = Comment.create!(user_id: user6.id, question_id: q7.id, body: "Something with javascript")
+
+#Comments for question 8
+c15 = Comment.create!(user_id: user7.id, question_id: q8.id, body: "MIND BLOWN")
+
+#Comments for question 9
+c16 = Comment.create!(user_id: user1.id, question_id: q9.id, body: "This seems like an important question to answer")
+c17 = Comment.create!(user_id: user3.id, question_id: q9.id, body: "Eh, ignorance is bliss")
+
+#Comments for question 10
+c18 = Comment.create!(user_id: user3.id, question_id: q10.id, body: "cat videos probably")
