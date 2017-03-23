@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
 import QuestionIndexContainer from '../question/question_index_container';
+import SidebarContainer from '../sidebar/sidebar_container';
 
 class Search extends React.Component{
   constructor(props){
@@ -27,24 +28,7 @@ class Search extends React.Component{
           &nbsp;
         </div>
 
-        <section className="subs-container ">
-          <section>
-            <h3>By Type</h3>
-          </section>
-
-          <ul>
-            <li>
-              Question Title
-            </li>
-            <li>
-              Question Content
-            </li>
-            <li>
-              Tag
-            </li>
-          </ul>
-
-        </section>
+        <SidebarContainer />
         <QuestionIndexContainer formType="none"/>
 
       </div>

@@ -4,15 +4,18 @@ import { fetchTags } from '../../actions/tag_actions.js';
 
 import Sidebar from './sidebar';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   let currentUser = null;
   if(state.session.currentUser){
     currentUser = state.session.currentUser;
   }
 
+  let formType = ownProps.formType;
+  let filter = state.filter;
+
   let tags = Object.keys(state.tags).map((id) => state.tags[id]);
 
-  return { currentUser, tags };
+  return { currentUser, tags, formType };
 };
 
 const mapDispatchToProps = dispatch => ({

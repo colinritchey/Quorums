@@ -12,32 +12,6 @@ class TagIndex extends React.Component{
     this.state = {tag_ids: []};
   }
 
-  // componentDidMount(){
-  //   this.props.fetchTags();
-  // }
-
-  // update(e){
-  //   // debugger;
-  //   e.preventDefault();
-  //   let newArray = [];
-  //   if(e.target.checked){
-  //     newArray.push(e.target.value);
-  //   }
-  //
-  //   this.setState({ tag_ids: newArray });
-  // }
-  //
-  //
-  // handleSubmit(e){
-  //   e.preventDefault();
-  //   // debugger;
-  //   let question = this.props.question;
-  //   question.tag_ids = this.state.tag_ids;
-  //
-  //   this.props.updateQuestion(question);
-  // }
-
-
   render(){
 
     let questionTags = [];
@@ -45,7 +19,6 @@ class TagIndex extends React.Component{
       questionTags = this.props.questionTags.map((id) => (
         this.props.tags[id]
       ));
-      // questionTags = this.props.questionTags;
     }
 
     let tags = [];
@@ -53,7 +26,6 @@ class TagIndex extends React.Component{
       tags = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
     }
 
-    // debugger;
     return(
       <div className="tag-index">
 

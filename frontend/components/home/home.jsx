@@ -12,7 +12,7 @@ const Home = ({currentUser}) => {
           &nbsp;
         </div>
 
-        <SidebarContainer />
+        <SidebarContainer formType="home"/>
         <QuestionIndexContainer formType="new"/>
 
       </div>

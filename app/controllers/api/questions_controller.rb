@@ -4,7 +4,7 @@ class Api::QuestionsController < ApplicationController
     @questions = filter_params ? Question.searchByWord(filter_params) : Question.all
 
     if(filter_tag_params)
-      @questions = Tag.returnQuestionsByTagName(filter_tag_params)
+      @questions = Tag.returnQuestionsByTagId(filter_tag_params)
     elsif filter_params
       @questions = Question.searchByWord(filter_params)
     else
@@ -70,6 +70,6 @@ class Api::QuestionsController < ApplicationController
   end
 
   def filter_tag_params
-    params[:searchByTagName]
+    params[:searchByTagId]
   end
 end

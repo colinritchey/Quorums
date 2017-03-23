@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 
 const _defaultFilters = Object.freeze({
   searchByTitle: undefined,
-  searchByTagName: undefined
+  searchByTagId: undefined
 });
 
 const FiltersReducer = (state = _defaultFilters, action) => {
