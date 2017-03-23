@@ -28,7 +28,7 @@ class Search extends React.Component{
           &nbsp;
         </div>
 
-        <SidebarContainer />
+        <SidebarContainer formType="home"/>
         <QuestionIndexContainer formType="none"/>
 
       </div>

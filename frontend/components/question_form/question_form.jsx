@@ -6,7 +6,6 @@ class QuestionForm extends React.Component{
     super(props);
 
     this.state = merge({}, this.props.question);
-    console.log(this.state.tag_ids, "first state");
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTagIds = this.updateTagIds.bind(this);
@@ -20,12 +19,18 @@ class QuestionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+
+    // let tag_ids = this.state.tag_ids;
+    // if(!this.state.tag_ids.length){
+    //   tag_ids = [];
+    // }
+
     this.props.action(this.state);
 
     if(this.props.formType === "edit"){
       this.props.closeModal();
     }
-    this.setState({title: "", body: ""});
+    this.setState({title: "", body: "", tag_ids: []});
 
   }
 
@@ -38,7 +43,7 @@ class QuestionForm extends React.Component{
       } else {
         newArray = newArray.filter((tag_id) => tag_id !== id);
       }
-
+      // debugger;
       this.setState({ tag_ids: newArray }, () => console.log(this.state));
 
     };

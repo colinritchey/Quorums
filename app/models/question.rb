@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
   has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :comments, inverse_of: :question, dependent: :destroy
 
-  has_many :taggings, dependent: :destroy
+  has_many :taggings, dependent: :destroy, inverse_of: :question
   has_many :tags, through: :taggings
 
 

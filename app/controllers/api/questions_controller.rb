@@ -40,6 +40,10 @@ class Api::QuestionsController < ApplicationController
     @question = current_user.questions.find(params[:id])
     @answers = @question.answers
     @comments = @question.comments
+    @question.tag_ids = questions_params[:tag_ids] || []
+
+    p questions_params
+
     if @question.update(questions_params)
       render :show
     else

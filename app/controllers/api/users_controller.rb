@@ -15,9 +15,20 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = current_user
+    @user.tag_ids = user_params[:tag_ids] || []
+
+    if @user.update(user_params)
+      render "api/users/show"
+    else
+      render json: @question.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, tag_ids: [])
   end
 end

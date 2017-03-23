@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :comments
 
+  has_many :subscriptions, dependent: :destroy
+  has_many :tags, through: :subscriptions
+
   attr_reader :password
 
   after_initialize :ensure_session_token

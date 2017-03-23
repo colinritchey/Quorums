@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
+import SubscriptionFormModal from '../modals/subscriptions';
 
 class Sidebar extends React.Component {
   constructor(props){
     super(props);
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleFetchAll = this.handleFetchAll.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
+    // this.handleUpdateSubscriptions = this.handleUpdateSubscriptions.bind(this);
     this.form = this.form.bind(this);
   }
 
@@ -20,30 +23,43 @@ class Sidebar extends React.Component {
     this.props.updateFilter('searchByTagId', e.target.value);
   }
 
-  handleClick(filter){
-    debugger;
-    this.props.filter;
-    return e => {
-      this.props.updateFilter(filter, 33);
-    };
+  handleFetchAll(e){
+    e.preventDefault();
+    this.props.fetchQuestions();
   }
 
   form(){
+    let userTags = [];
+    if(this.props.currentUser.tag_ids){
+      userTags = this.props.currentUser.tag_ids;
+    }
+
     if(this.props.formType === "home"){
       return(
         <section className="subs-container ">
           <section>
             <h3>Feed</h3>
-            <Link to={"/"}><i className="fa fa-pencil-square-o"
-              aria-hidden="true"
-              title="Edit"></i></Link>
+              <SubscriptionFormModal
+                currentUser={this.props.currentUser}
+                tags={this.props.tags}
+                updateUser={this.props.updateUser}
+              />
           </section>
 
           <ul>
-            {this.props.tags.map((tag) => (
-              <li onClick={this.handleSubmit} value={tag.id}>{tag.name}</li>
-            ))}
+            <li onClick={this.handleFetchAll} key={"All"}>Featured</li>
+
+            {this.props.tags.map((tag, idx) => {
+              if(userTags.includes(tag.id)){
+                return (<li onClick={this.handleSubmit} key={idx}
+                  value={tag.id}>{tag.name}</li>);
+              } else {
+                return "";
+              }
+
+            })}
           </ul>
+
 
         </section>
       );

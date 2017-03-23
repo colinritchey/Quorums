@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import {  updateFilter } from '../../actions/filter_actions';
 import { fetchTags } from '../../actions/tag_actions.js';
+import { updateUser } from '../../actions/session_actions.js';
+import { fetchQuestions } from '../../actions/question_actions.js';
 
 import Sidebar from './sidebar';
 
@@ -20,7 +22,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
-  fetchTags: () => dispatch(fetchTags())
+  fetchTags: () => dispatch(fetchTags()),
+  updateUser: (user) => dispatch(updateUser(user)),
+  fetchQuestions: () => dispatch(fetchQuestions())
 });
 
 export default connect(
