@@ -13,10 +13,12 @@ const mapStateToProps = (state, ownProps) => {
     question = state.questions[ownProps.question.id];
   }
 
+
   let currentUser = state.session.currentUser;
   let formType = ownProps.formType || "edit";
+  let tags = ownProps.tags || [];
 
-  return { question, currentUser, formType };
+  return { question, currentUser, formType, tags };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

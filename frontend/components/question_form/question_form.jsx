@@ -25,6 +25,19 @@ class QuestionForm extends React.Component{
 
   }
 
+  updateTagIds(){
+    return e => {
+      e.preventDefault();
+      debugger;
+      let newArray = [];
+      if(e.target.checked){
+        newArray.push(e.target.value);
+      }
+
+      this.setState({ tag_ids: newArray });
+    };
+  }
+
   update(field){
     return e => {
       this.setState({[field]: e.target.value});
@@ -34,8 +47,10 @@ class QuestionForm extends React.Component{
   render(){
     let user = this.props.currentUser.username;
     let form = this.props.formType;
+    let tagList = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
     let classTextArea = form === "new" ? "" : "form-textarea-edit";
 
+    // debugger;
     return(
       <div className="form-container">
         <form onSubmit={this.handleSubmit} className="form">
@@ -48,9 +63,21 @@ class QuestionForm extends React.Component{
 
           <textarea
             onChange={this.update("body")}
-            
+
             placeholder="Go into more detail (Optional)"
             value={this.state.body}></textarea>
+          <ul className="tag-list-form">
+            {tagList.map((tag, idx) => (
+              <li className="tag-item-form">
+                <label key={idx}>{tag.name}
+                  <input type="checkbox"
+                    value={tag.id}
+                    name="[tag_ids][]"
+                    onChange={this.updateTagIds()}></input>
+                </label>
+              </li>
+            ))}
+          </ul>
 
           <section className="form-submit">
             <input type="submit"></input>

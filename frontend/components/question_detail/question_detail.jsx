@@ -50,7 +50,7 @@ class QuestionDetail extends React.Component {
     if(currentUser.id === owner.id){
       return (
         <section className="button-container">
-          <FormModal buttonType={"edit"} question={question}/>
+          <FormModal buttonType={"edit"} question={question} tags={this.props.tags}/>
           <DeleteFormModal
             item={question}
             action={this.props.deleteQuestion}

@@ -18,7 +18,7 @@ class TagIndex extends React.Component{
   // }
 
   update(e){
-    debugger;
+    // debugger;
     e.preventDefault();
     let newArray = [];
     if(e.target.checked){
@@ -31,7 +31,7 @@ class TagIndex extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger;
+    // debugger;
     let question = this.props.question;
     question.tag_ids = this.state.tag_ids;
 
@@ -54,31 +54,17 @@ class TagIndex extends React.Component{
       tags = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
     }
 
-    debugger;
+    // debugger;
     return(
-      <div>
+      <div className="tag-index">
 
         <ul>
-          {questionTags.map((tag)=>(
-            <li key={tag}>{tag.name}</li>
+          {questionTags.map((tag, idx)=>(
+            <li className="tag-index-item"
+              key={idx}>{tag.name}</li>
           ))}
         </ul>
 
-
-        <form onSubmit={this.handleSubmit}>
-          {tags.map((tag, idx) => (
-            <label key={idx}>{tag.name}
-              <input type="checkbox"
-                value={tag.id}
-                name="[tag_ids][]"
-                onChange={this.update}></input>
-            </label>
-          ))}
-
-
-
-          <button type="submit" value="Submit">Submit</button>
-        </form>
       </div>
     );
   }

@@ -34,6 +34,7 @@ class FormModal extends React.Component {
         <QuestionFormContainer
           formType="edit"
           question={this.props.question}
+          tags={this.props.tags}
           closeModal={this.closeModal}
         />
       );

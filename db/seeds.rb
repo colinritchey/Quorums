@@ -20,15 +20,38 @@ user5 = User.create!(username: "forest_18", password: "longpassword")
 user6 = User.create!(username: "PM_ME_YOUR_QUESTIONS", password: "palidrone")
 user7 = User.create!(username: "Most Interesting Man", password: "normal_password")
 
+Tag.delete_all
+
+#list of tags
+t1 = Tag.create!(name:"programming")
+t2 = Tag.create!(name:"internet")
+t3 = Tag.create!(name:"space")
+t4 = Tag.create!(name:"technology")
+t5 = Tag.create!(name:"cooking")
+t6 = Tag.create!(name:"hiking")
+t7 = Tag.create!(name:"political")
+t8 = Tag.create!(name:"film")
+t9 = Tag.create!(name:"financhial")
+t10 = Tag.create!(name:"biology")
+
+
 Question.delete_all
+Tagging.delete_all
 
 #topic: programming questions
 q1 = Question.create!(title: "Hello World?", body: "sample body", user_id: user1.id)
+Tagging.create(tag_id: t1.id, question_id: q1.id)
+Tagging.create(tag_id: t2.id, question_id: q1.id)
+
 q2 = Question.create!(title: "Should programming be taught at an earlier age?", body: "", user_id: user2.id)
+Tagging.create(tag_id: t1.id, question_id: q2.id)
 
 #topic: internet questions
 q3 = Question.create!(title: "Is it Quorums or Quora?", body: "", user_id: user2.id)
+Tagging.create(tag_id: t2.id, question_id: q3.id)
+
 q4 = Question.create!(title: "What was the image on the Log in page?", body: "I really like it", user_id: user2.id)
+Tagging.create(tag_id: t2.id, question_id: q4.id)
 
 #topic: space questions
 q5 = Question.create!(title: "If we took a picture of Earth from the Moon, why can't we see sunlight anywhere?", body: "The first time I read your question I said: WOW!
@@ -51,7 +74,10 @@ Lastly, if you don’t use the long exposure on the camera, the dimmer lights ca
 
 ", user_id: user3.id)
 
-q6 = Question.create!(title: "Is space exploration a waste of money?", user_id: user7.id ,body: "I absolutely HATE this question!  Why?  It's obvious to me you have simply read someone else's BS account that states space exploration is a waste.  The statement is so far from the truth it disgusts me.  Let me see if I can briefly explain why.
+Tagging.create(tag_id: t3.id, question_id: q5.id)
+Tagging.create(tag_id: t4.id, question_id: q5.id)
+
+q6 = Question.create!(title: "Is space exploration a waste of money?", user_id: user7.id, body: "I absolutely HATE this question!  Why?  It's obvious to me you have simply read someone else's BS account that states space exploration is a waste.  The statement is so far from the truth it disgusts me.  Let me see if I can briefly explain why.
 
 Your ability to post the question in the first place, and perhaps read my answer on your smart phone in your part of our world, results from transmission satellites placed round the globe by technology developed through our space program.  First developed in the sixties, our space program (along with Russia, at that time the ONLY 2 countries even attempting such things) was in its infancy.
 
@@ -65,6 +91,8 @@ During the Apollo program, the US spent about 1.75 cents per tax dollar on space
 
 Do you need even more information for me to convince you to change your tune and agree that space exploration is an investment, and NOT a waste of taxpayer dollars?  Just go to Benefits to You and start reading.  You'll be surprised at what you might find.  And when you've done a little more research, cast your eyes to the skies, and following my advice to keep lookin' up, take a few seconds to yell, 'Thank you NASA!''  You'll be glad you did!")
 
+Tagging.create(tag_id: t3.id, question_id: q6.id)
+Tagging.create(tag_id: t4.id, question_id: q6.id)
 #topic: technology questions
 
 q7 = Question.create!(user_id: user3.id, title: "What is the future of web development in 2017?", body: "")
@@ -72,36 +100,63 @@ q8 = Question.create!(user_id: user5.id, title: "What are some mind-blowing fact
 q9 = Question.create!(user_id: user6.id, title: "What are the main security problems and solutions for enterprise mobile apps?", body: "Mobile malware exploits vulnerabilities or bugs in the coding of the mobile apps. Applying security best practices to mobile app development, including the use of source code scanning tools, can help make mobile apps resilient to such an attack. It is also important to analyze code from third parties, or any app that is allowed to coexist on phones used by employees. In this case, executables rather than source code should be scanned.")
 q10 = Question.create!(user_id: user1.id, title: "Why did the internet get so popular so quickly?", body: "I actually don't remember the Internet getting popular all that quickly. My first real exposure to the Internet was in 1992, when I started at UC Davis, and while the Internet was well established by then, it was a very well kept secret outside of academia and the military. There were virtually no commercial applications for the Internet back in the early 1990s, although there were plenty of commercial online services and online databases, such as CompuServe, Prodigy, AOL, Westlaw, Lexis/Nexis, etc., that did not use the Internet as their backbone. Indeed, the term 'Internet' had not yet come into vogue, with the news media constantly referring to the 'Information Superhighway' as something that was still years away.")
 
+Tagging.create(tag_id: t4.id, question_id: q7.id)
+Tagging.create(tag_id: t4.id, question_id: q8.id)
+Tagging.create(tag_id: t4.id, question_id: q9.id)
+Tagging.create(tag_id: t4.id, question_id: q10.id)
 #topic: cooking questions
 
 q11 = Question.create!(user_id: user4.id, title: "How do you make a Queche?", body: "It looks really good, I want to try and make it")
 q12 = Question.create!(user_id: user5.id, title: "I ran out of flour, what is a good replacement?", body: "")
 q13 = Question.create!(user_id: user6.id, title: "What our your favorite things to cook?", body: "I'm a fan of steak and eggs")
 
+Tagging.create(tag_id: t5.id, question_id: q11.id)
+Tagging.create(tag_id: t5.id, question_id: q12.id)
+Tagging.create(tag_id: t5.id, question_id: q13.id)
+
+
 #topic: hiking questions
 q14 = Question.create!(user_id: user7.id, title: "How long of a hike is mt. Diablo?", body: "Some friends from out of town want to hike it")
 q15 = Question.create!(user_id: user1.id, title: "What are the peaks in the rim of the bay hikes?", body: "")
+
+Tagging.create(tag_id: t6.id, question_id: q14.id)
+Tagging.create(tag_id: t6.id, question_id: q15.id)
 
 #topic: political questions
 q16 = Question.create!(user_id: user2.id, title: "Should I be worried about Net Neutrality?")
 q17 = Question.create!(user_id: user3.id, title: "What does the Vice President do exactly?", body: "(S)He sits in on the House of Reps. but what else?")
 q18 = Question.create!(user_id: user4.id, title: "What is a filobuster?")
 
+Tagging.create(tag_id: t7.id, question_id: q16.id)
+Tagging.create(tag_id: t7.id, question_id: q17.id)
+Tagging.create(tag_id: t7.id, question_id: q18.id)
+
 #topic: film questions
 q19 = Question.create!(user_id: user5.id, title: "What is your favorite film?", body: "Mine is Blade Runner")
 q20 = Question.create!(user_id: user1.id, title: "Is Arrival any good?", body: "I'm usually not into scifi but I keep hearing great reviews about this")
 q21 = Question.create!(user_id: user4.id, title: "Do you think Super Hero movies are getting stale?")
+
+Tagging.create(tag_id: t8.id, question_id: q19.id)
+Tagging.create(tag_id: t8.id, question_id: q20.id)
+Tagging.create(tag_id: t8.id, question_id: q21.id)
 
 #topic: financhial
 q22 = Question.create!(user_id: user1.id, title: "When should I worry about my credit score?")
 q23 = Question.create!(user_id: user3.id, title: "What is a 401-k?")
 q24 = Question.create!(user_id: user2.id, title: "When should I start saving for retirement?", body: "Is 45 a little too late...")
 
+Tagging.create(tag_id: t9.id, question_id: q22.id)
+Tagging.create(tag_id: t9.id, question_id: q23.id)
+Tagging.create(tag_id: t9.id, question_id: q24.id)
+
 #topic: biology
 q25 = Question.create!(user_id: user7.id, title: "How fast can a falcon fly?", body: "I hear it's over 200mph")
 q26 = Question.create!(user_id: user3.id, title: "Why were canaries used when mining?")
 q27 = Question.create!(user_id: user1.id, title: "How do I take care of my cacti?")
 
+Tagging.create(tag_id: t10.id, question_id: q25.id)
+Tagging.create(tag_id: t10.id, question_id: q26.id)
+Tagging.create(tag_id: t10.id, question_id: q27.id)
 
 Answer.delete_all
 

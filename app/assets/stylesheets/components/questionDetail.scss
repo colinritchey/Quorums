@@ -82,3 +82,39 @@
 .create-button{
   font-size: 25px;
 }
+
+.tag-index ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 10px;
+}
+
+.tag-index-item{
+  box-sizing: content-box;
+  width: fit-content;
+  padding: 5px 15px;
+  margin: 10px;
+  border: 0px;
+  border-radius: 5px;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  color: white;
+  background-color: #91a6c7;
+}
+
+.tag-list-form{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 10px;
+}
+
+.tag-item-form{
+  padding: 5px 15px;
+  margin: 10px;
+  border: 1px;
+  border-radius: 5px;
+}
