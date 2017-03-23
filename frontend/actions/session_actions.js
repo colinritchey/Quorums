@@ -39,9 +39,9 @@ export const signup = user => dispatch => {
 export const logout = () => dispatch => {
   APIUtil.logout().then(user => {
     dispatch(receiveLogout(user));
-    hashHistory.push('/login');
   },
-  errors => dispatch(receiveErrors(errors)));
+  errors => dispatch(receiveErrors(errors)))
+  .then(hashHistory.push('/login'));
 };
 
 export const updateUser = (user) => dispatch => (

@@ -20,11 +20,6 @@ class QuestionForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
 
-    // let tag_ids = this.state.tag_ids;
-    // if(!this.state.tag_ids.length){
-    //   tag_ids = [];
-    // }
-
     this.props.action(this.state);
 
     if(this.props.formType === "edit"){
@@ -43,7 +38,6 @@ class QuestionForm extends React.Component{
       } else {
         newArray = newArray.filter((tag_id) => tag_id !== id);
       }
-      // debugger;
       this.setState({ tag_ids: newArray }, () => console.log(this.state));
 
     };
@@ -63,7 +57,6 @@ class QuestionForm extends React.Component{
     let tagList = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
     let classTextArea = form === "new" ? "" : "form-textarea-edit";
 
-    // debugger;
     return(
       <div className="form-container">
         <form onSubmit={this.handleSubmit} className="form">
