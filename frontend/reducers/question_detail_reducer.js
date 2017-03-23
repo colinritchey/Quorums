@@ -60,18 +60,6 @@ const QuestionDetailReducer = (oldState = defaultState, action) => {
       delete newState[comment.question_id].comments[comment.id];
       return newState;
 
-    // case RECEIVE_TAG:
-    //
-    //   // tag_ids = action.tag_ids;
-    //   //
-    //   // if(newState[comment.question_id].comments === undefined ){
-    //   //   newState[comment.question_id].comments = {};
-    //   // }
-    //   //
-    //   // newState[comment.question_id].comments[comment.id] = comment;
-    //   return newState;
-
-
     default:
       return oldState;
   }

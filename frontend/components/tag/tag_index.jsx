@@ -10,33 +10,32 @@ class TagIndex extends React.Component{
     super(props);
 
     this.state = {tag_ids: []};
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // componentDidMount(){
   //   this.props.fetchTags();
   // }
 
-  update(e){
-    // debugger;
-    e.preventDefault();
-    let newArray = [];
-    if(e.target.checked){
-      newArray.push(e.target.value);
-    }
-
-    this.setState({ tag_ids: newArray });
-  }
-
-
-  handleSubmit(e){
-    e.preventDefault();
-    // debugger;
-    let question = this.props.question;
-    question.tag_ids = this.state.tag_ids;
-
-    this.props.updateQuestion(question);
-  }
+  // update(e){
+  //   // debugger;
+  //   e.preventDefault();
+  //   let newArray = [];
+  //   if(e.target.checked){
+  //     newArray.push(e.target.value);
+  //   }
+  //
+  //   this.setState({ tag_ids: newArray });
+  // }
+  //
+  //
+  // handleSubmit(e){
+  //   e.preventDefault();
+  //   // debugger;
+  //   let question = this.props.question;
+  //   question.tag_ids = this.state.tag_ids;
+  //
+  //   this.props.updateQuestion(question);
+  // }
 
 
   render(){

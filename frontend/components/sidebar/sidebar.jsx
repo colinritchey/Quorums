@@ -9,9 +9,14 @@ class Sidebar extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.props.fetchTags();
+  }
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.updateFilter('searchByTitle', 'quora');
+    debugger;
+    this.props.updateFilter('searchByTagId', e.target.value);
   }
 
   render(){
@@ -25,21 +30,9 @@ class Sidebar extends React.Component {
         </section>
 
         <ul>
-          <li onClick={this.handleSubmit}>
-            Calculus
-          </li>
-          <li>
-            Science
-          </li>
-          <li>
-            Programming
-          </li>
-          <li>
-            Javascript
-          </li>
-          <li>
-            Cooking
-          </li>
+          {this.props.tags.map((tag) => (
+            <li onClick={this.handleSubmit} value={tag.id}>{tag.name}</li>
+          ))}
         </ul>
 
       </section>

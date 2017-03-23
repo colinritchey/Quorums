@@ -3,6 +3,14 @@ class Api::QuestionsController < ApplicationController
   def index
     @questions = filter_params ? Question.searchByWord(filter_params) : Question.all
 
+    if(filter_tag_params)
+      @questions = Tag.returnQuestionsByTagName(filter_tag_params)
+    elsif filter_params
+      @questions = Question.searchByWord(filter_params)
+    else
+      @questions = Question.all
+    end
+
     @questions.includes(:user)
 
     render :index
@@ -59,5 +67,9 @@ class Api::QuestionsController < ApplicationController
 
   def filter_params
     params[:searchByTitle]
+  end
+
+  def filter_tag_params
+    params[:searchByTagName]
   end
 end

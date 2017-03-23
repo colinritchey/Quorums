@@ -1,11 +1,15 @@
 import React from 'react';
+import { merge } from 'lodash';
 
 class QuestionForm extends React.Component{
   constructor(props){
     super(props);
 
-    this.state = this.props.question;
+    this.state = merge({}, this.props.question);
+    console.log(this.state.tag_ids, "first state");
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateTagIds = this.updateTagIds.bind(this);
   }
 
   componentDidMount(){
@@ -25,16 +29,18 @@ class QuestionForm extends React.Component{
 
   }
 
-  updateTagIds(){
+  updateTagIds(id){
     return e => {
-      e.preventDefault();
-      debugger;
-      let newArray = [];
+      let newArray = this.state.tag_ids.slice();
+
       if(e.target.checked){
-        newArray.push(e.target.value);
+        newArray.push(parseInt(id));
+      } else {
+        newArray = newArray.filter((tag_id) => tag_id !== id);
       }
 
-      this.setState({ tag_ids: newArray });
+      this.setState({ tag_ids: newArray }, () => console.log(this.state));
+
     };
   }
 
@@ -45,6 +51,8 @@ class QuestionForm extends React.Component{
   }
 
   render(){
+    let state = this.state;
+
     let user = this.props.currentUser.username;
     let form = this.props.formType;
     let tagList = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
@@ -66,15 +74,22 @@ class QuestionForm extends React.Component{
 
             placeholder="Go into more detail (Optional)"
             value={this.state.body}></textarea>
+
+
           <ul className="tag-list-form">
+
             {tagList.map((tag, idx) => (
+
               <li className="tag-item-form">
+
                 <label key={idx}>{tag.name}
                   <input type="checkbox"
                     value={tag.id}
                     name="[tag_ids][]"
-                    onChange={this.updateTagIds()}></input>
+                    checked={this.state.tag_ids.includes(tag.id)}
+                    onClick={this.updateTagIds(tag.id)}></input>
                 </label>
+
               </li>
             ))}
           </ul>

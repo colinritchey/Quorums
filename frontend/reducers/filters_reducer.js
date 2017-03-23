@@ -2,7 +2,8 @@ import { UPDATE_FILTER } from '../actions/filter_actions';
 import merge from 'lodash/merge';
 
 const _defaultFilters = Object.freeze({
-  searchByTitle: undefined
+  searchByTitle: undefined,
+  searchByTagName: undefined
 });
 
 const FiltersReducer = (state = _defaultFilters, action) => {
@@ -11,7 +12,8 @@ const FiltersReducer = (state = _defaultFilters, action) => {
     const newFilter = {
       [action.filter]: action.value
     };
-    return merge({}, state, newFilter);
+    let merger = merge({}, _defaultFilters, newFilter);
+    return merger;
   } else {
     return state;
   }
