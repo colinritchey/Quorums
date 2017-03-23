@@ -12,11 +12,14 @@ import {
   updateComment,
   deleteComment, } from '../../actions/question_actions';
 
+import { fetchTags } from '../../actions/tag_actions.js';
+
 const mapStateToProps = (state, ownProps) => {
   let currentUser = state.session.currentUser;
   let question = state.questionDetail[ownProps.params.questionId];
+  let tags = state.tags;
 
-  return( { question, currentUser });
+  return( { question, currentUser, tags });
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -29,6 +32,7 @@ const mapDispatchToProps = dispatch => ({
   createComment: comment => dispatch(createComment(comment)),
   updateComment: comment => dispatch(updateComment(comment)),
   deleteComment: comment => dispatch(deleteComment(comment)),
+  fetchTags: () => dispatch(fetchTags())
 });
 
 export default connect(

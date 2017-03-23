@@ -8,6 +8,7 @@ import AnswerIndex from '../answer/answer_index';
 import AnswerForm from '../answer/answer_form';
 
 import CommentIndex from '../comment/comment_index';
+import TagIndex from '../tag/tag_index';
 
 class QuestionDetail extends React.Component {
   constructor(props){
@@ -25,6 +26,7 @@ class QuestionDetail extends React.Component {
 
   componentDidMount(){
     this.props.fetchQuestion(parseInt(this.props.params.questionId));
+    this.props.fetchTags();
   }
 
   authorFunctions(){
@@ -92,12 +94,22 @@ class QuestionDetail extends React.Component {
     if(question.comments){
       comments = Object.keys(question.comments).map((id) => question.comments[id]);
     }
+
+    let tags = {};
+    if(this.props.tags){
+      // tags = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
+      tags = this.props.tags;
+    }
     return(
       <div className="content">
         <section className="detail">
           {this.authorFunctions()}
           <h3>{question.title}</h3>
           {body}
+        <TagIndex tags={tags}
+          questionTags={question.tag_ids}
+          question={question}
+          updateQuestion={this.props.updateQuestion}/>
         </section>
         <AnswerIndex
           answers={answers}

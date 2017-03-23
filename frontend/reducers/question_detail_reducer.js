@@ -4,15 +4,22 @@ import {
   RECEIVE_ANSWER,
   REMOVE_ANSWER,
   RECEIVE_COMMENT,
-  REMOVE_COMMENT  } from '../actions/question_actions';
+  REMOVE_COMMENT } from '../actions/question_actions';
+
 import merge from 'lodash/merge';
 
+const defaultState = Object.freeze({
+  answer: undefined,
+  comment: undefined,
+  tag_: []
+});
 
-const QuestionDetailReducer = (oldState = {}, action) => {
+const QuestionDetailReducer = (oldState = defaultState, action) => {
   Object.freeze(oldState);
   let newState = merge({}, oldState);
   let answer = undefined;
   let comment = undefined;
+  let tags = undefined;
 
   switch(action.type){
     case RECEIVE_QUESTION:
@@ -32,7 +39,7 @@ const QuestionDetailReducer = (oldState = {}, action) => {
 
       newState[answer.question_id].answers[answer.id] = answer;
       return newState;
-      
+
     case REMOVE_ANSWER:
       answer = action.answer;
       delete newState[answer.question_id].answers[answer.id];
@@ -52,6 +59,18 @@ const QuestionDetailReducer = (oldState = {}, action) => {
       comment = action.comment;
       delete newState[comment.question_id].comments[comment.id];
       return newState;
+
+    // case RECEIVE_TAG:
+    //
+    //   // tag_ids = action.tag_ids;
+    //   //
+    //   // if(newState[comment.question_id].comments === undefined ){
+    //   //   newState[comment.question_id].comments = {};
+    //   // }
+    //   //
+    //   // newState[comment.question_id].comments[comment.id] = comment;
+    //   return newState;
+
 
     default:
       return oldState;
