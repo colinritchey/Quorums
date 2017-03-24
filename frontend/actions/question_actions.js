@@ -9,6 +9,8 @@ export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 export const REMOVE_ANSWER = "REMOVE_ANSWER";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const REMOVE_ERRORS = "REMOVE_ERRORS";
 
 import { hashHistory } from 'react-router';
 
@@ -46,6 +48,16 @@ export const removeComment = (comment) => ({
   type: REMOVE_COMMENT,
   comment
 });
+
+// export const receiveErrors = errors => ({
+//   type: RECEIVE_MAIN_ERRORS,
+//   errors
+// });
+//
+// export const removeErrors = () => ({
+//   type: REMOVE_MAIN_ERRORS,
+//   errors: []
+// });
 
 export const fetchQuestions = (data) => dispatch => (
   APIUtil.fetchQuestions(data)

@@ -9,8 +9,6 @@ class Sidebar extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFetchAll = this.handleFetchAll.bind(this);
-    // this.handleClick = this.handleClick.bind(this);
-    // this.handleUpdateSubscriptions = this.handleUpdateSubscriptions.bind(this);
     this.form = this.form.bind(this);
   }
 
@@ -66,21 +64,6 @@ class Sidebar extends React.Component {
     } else {
       return(
         <section className="subs-container ">
-          <section>
-            <h3>By Type</h3>
-          </section>
-
-          <ul>
-            <li>
-              Question Title
-            </li>
-            <li>
-              Question Content
-            </li>
-            <li onClick={this.handleClick('searchByTagId')}>
-              Tag
-            </li>
-          </ul>
 
         </section>
       );

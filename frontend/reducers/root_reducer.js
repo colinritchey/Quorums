@@ -6,6 +6,7 @@ import QuestionDetailReducer from './question_detail_reducer';
 import FiltersReducer from './filters_reducer';
 import TagsReducer from './tags_reducer';
 
+
 const RootReducer = combineReducers({
   session: SessionReducer,
   questions: QuestionReducer,

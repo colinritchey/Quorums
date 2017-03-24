@@ -8,7 +8,11 @@ class AnswerForm extends React.Component{
     } else {
       this.state = { body: "" };
     }
+
+    this.state.hasError = false;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.showError = this.showError.bind(this);
+
   }
 
   update(field){
@@ -20,23 +24,44 @@ class AnswerForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     let answer = this.state;
-    answer.question_id = this.props.questionId;
 
-    if(this.props.answer !== undefined){
-      answer.id = this.props.answer.id;
-      this.props.updateAnswer(answer);
-    }else{
-      this.props.createAnswer(answer);
+    if(answer.body === ""){
+      this.setState({hasError: true});
+    } else {
+      this.setState({hasError: false});
+      answer.question_id = this.props.questionId;
+
+      if(this.props.answer !== undefined){
+        answer.id = this.props.answer.id;
+        this.props.updateAnswer(answer);
+      }else{
+        this.props.createAnswer(answer);
+      }
+
+      this.setState({ body: ""});
+      this.props.closeModal();
     }
 
-    this.setState({ body: ""});
-    this.props.closeModal();
+  }
+
+  showError(){
+    if(this.state.hasError){
+      return(
+        <div className="error-container">
+          Text can't be blank
+        </div>
+      );
+    } else {
+      return("");
+    }
   }
 
   render(){
     return(
       <div className="form-container">
+
         <form onSubmit={this.handleSubmit} className="form">
+          {this.showError()}
           <textarea
             onChange={this.update("body")}
             value={this.state.body}

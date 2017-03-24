@@ -6,9 +6,11 @@ class QuestionForm extends React.Component{
     super(props);
 
     this.state = merge({}, this.props.question);
+    this.state.hasError = false;
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTagIds = this.updateTagIds.bind(this);
+    this.showError = this.showError.bind(this);
   }
 
   componentDidMount(){
@@ -19,13 +21,16 @@ class QuestionForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
+    if(this.state.title === ""){
+      this.setState({hasError: true});
+    } else {
+      this.props.action(this.state);
 
-    this.props.action(this.state);
-
-    if(this.props.formType === "edit"){
-      this.props.closeModal();
+      if(this.props.formType === "edit"){
+        this.props.closeModal();
+      }
+      this.setState({title: "", body: "", tag_ids: [], hasError: false});
     }
-    this.setState({title: "", body: "", tag_ids: []});
 
   }
 
@@ -49,6 +54,18 @@ class QuestionForm extends React.Component{
     };
   }
 
+  showError(){
+    if(this.state.hasError){
+      return(
+        <div className="error-container">
+          Title can't be blank
+        </div>
+      );
+    } else {
+      return("");
+    }
+  }
+
   render(){
     let state = this.state;
 
@@ -63,7 +80,7 @@ class QuestionForm extends React.Component{
     return(
       <div className="form-container">
         <form onSubmit={this.handleSubmit} className="form">
-
+          {this.showError()}
           <h3><i className="fa fa-user" aria-hidden="true"></i> {user}</h3>
 
           <input type="text" placeholder="What is your question?"
