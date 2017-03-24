@@ -6,14 +6,7 @@
     },
     errors: []
   },
-  forms: {
-    signUp: {},
-    logIn: {},
-    createQuestion: {},
-    createAnswer: {},
-    createComment: {}
-  },
-  questionIndex: {
+  questions: {
     1: {
       title: "Sample?",
       body: "more detail about the question",
@@ -34,11 +27,7 @@
     title: "Sample?",
     body: "more detail about the question",
     author_id: 1,
-    tags: {
-      1: {
-        id: 1
-        name: "Coding"
-      }
+    tag_ids: [1, 3, 4]
     },
     answers: {
       1: {
@@ -54,6 +43,15 @@
         body: "first!"
       }
     }
+  },
+  filter: {
+    searchByTitle: "Quorums",
+    searchByTagId:  null
+  },
+  tags: {
+    1: {
+      id: 1,
+      name: "Science"
+    }
   }
-  tagFilters: [1, 7, 14] // Used to track selected Tags for filtering of notes
 }

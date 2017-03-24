@@ -8,9 +8,7 @@ const Home = ({currentUser}) => {
   if(currentUser){
     return(
       <div className="content">
-        <div className="empty-sidebar col col-1-4">
-          &nbsp;
-        </div>
+        
 
         <SidebarContainer formType="home"/>
         <QuestionIndexContainer formType="new"/>

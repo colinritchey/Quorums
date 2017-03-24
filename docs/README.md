@@ -37,4 +37,4 @@ Implementation Timeline
 
   Phase 5: Tags (1 day)
 
-  Objective: Questions can be tagged with multiple tags, and tags are searchable.
+  Objective: Questions can be tagged with multiple tags.

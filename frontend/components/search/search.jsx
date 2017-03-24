@@ -24,12 +24,11 @@ class Search extends React.Component{
   render(){
     return(
       <div className="content">
-        <div className="empty-sidebar col col-1-4">
-          &nbsp;
-        </div>
 
-        <SidebarContainer formType="home"/>
-        <QuestionIndexContainer formType="none"/>
+        <SidebarContainer />
+        <div className="search-results-container ">
+          <QuestionIndexContainer formType="none"/>
+        </div>
 
       </div>
     );

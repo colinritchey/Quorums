@@ -17,6 +17,7 @@ class SearchForm extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
     hashHistory.push(`/search/${this.state.body.split(" ").join("-")}`);
+    this.setState({body: ""});
   }
   render(){
     return (

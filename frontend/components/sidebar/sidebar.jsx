@@ -34,32 +34,38 @@ class Sidebar extends React.Component {
 
     if(this.props.formType === "home"){
       return(
-        <section className="subs-container ">
-          <section>
-            <h3>Feed</h3>
-              <SubscriptionFormModal
-                currentUser={this.props.currentUser}
-                tags={this.props.tags}
-                updateUser={this.props.updateUser}
-              />
+        <div>
+          <div className="empty-sidebar col col-1-4">
+            &nbsp;
+          </div>
+
+          <section className="subs-container ">
+            <section>
+              <h3>Feed</h3>
+                <SubscriptionFormModal
+                  currentUser={this.props.currentUser}
+                  tags={this.props.tags}
+                  updateUser={this.props.updateUser}
+                />
+            </section>
+
+            <ul>
+              <li onClick={this.handleFetchAll} key={"All"}>Featured</li>
+
+              {this.props.tags.map((tag, idx) => {
+                if(userTags.includes(tag.id)){
+                  return (<li onClick={this.handleSubmit} key={idx}
+                    value={tag.id}>{tag.name}</li>);
+                } else {
+                  return "";
+                }
+
+              })}
+            </ul>
+
+
           </section>
-
-          <ul>
-            <li onClick={this.handleFetchAll} key={"All"}>Featured</li>
-
-            {this.props.tags.map((tag, idx) => {
-              if(userTags.includes(tag.id)){
-                return (<li onClick={this.handleSubmit} key={idx}
-                  value={tag.id}>{tag.name}</li>);
-              } else {
-                return "";
-              }
-
-            })}
-          </ul>
-
-
-        </section>
+        </div>
       );
     } else {
       return(
