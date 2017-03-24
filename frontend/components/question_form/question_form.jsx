@@ -38,7 +38,7 @@ class QuestionForm extends React.Component{
       } else {
         newArray = newArray.filter((tag_id) => tag_id !== id);
       }
-      this.setState({ tag_ids: newArray }, () => console.log(this.state));
+      this.setState({ tag_ids: newArray });
 
     };
   }
@@ -78,14 +78,14 @@ class QuestionForm extends React.Component{
 
             {tagList.map((tag, idx) => (
 
-              <li className="tag-item-form">
+              <li className="tag-item-form" key={idx}>
 
-                <label key={idx}>{tag.name}
+                <label>{tag.name}
                   <input type="checkbox"
                     value={tag.id}
                     name="[tag_ids][]"
                     checked={this.state.tag_ids.includes(tag.id)}
-                    onClick={this.updateTagIds(tag.id)}></input>
+                    onChange={this.updateTagIds(tag.id)}></input>
                 </label>
 
               </li>
