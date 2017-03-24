@@ -84,12 +84,13 @@ class QuestionForm extends React.Component{
               <li className="tag-item-form" key={idx}>
 
                 <label>{tag.name}
-                  <input type="checkbox"
-                    value={tag.id}
-                    name="[tag_ids][]"
-                    checked={this.state.tag_ids.includes(tag.id)}
-                    onChange={this.updateTagIds(tag.id)}></input>
+
                 </label>
+                <input type="checkbox"
+                  value={tag.id}
+                  name="[tag_ids][]"
+                  checked={this.state.tag_ids.includes(tag.id)}
+                  onChange={this.updateTagIds(tag.id)}></input>
 
               </li>
             ))}

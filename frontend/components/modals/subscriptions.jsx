@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { form_style } from './modal_style';
+import { sub_form_style } from './modal_style';
 
 class SubscriptionFormModal extends React.Component {
   constructor(props) {
@@ -65,23 +65,23 @@ class SubscriptionFormModal extends React.Component {
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
           contentLabel={"Form Modal"}
-          style={form_style}>
+          style={sub_form_style}>
 
-          <div className="form-container">
-            <form onSubmit={this.handleUpdateSubs} className="form">
+          <div className="sub-form-container">
+            <form onSubmit={this.handleUpdateSubs} className="sub-form">
 
-              <ul className="tag-list-form">
+              <ul className="sub-list-form">
 
                 {tagList.map((tag, idx) => (
 
-                  <li className="tag-item-form" key={idx}>
+                  <li className="sub-item-form" key={idx}>
 
+                    <input type="checkbox"
+                      value={tag.id}
+                      name="[tag_ids][]"
+                      checked={this.state.tag_ids.includes(tag.id)}
+                      onClick={this.updateTagIds(tag.id)}></input>
                     <label key={idx}>{tag.name}
-                      <input type="checkbox"
-                        value={tag.id}
-                        name="[tag_ids][]"
-                        checked={this.state.tag_ids.includes(tag.id)}
-                        onClick={this.updateTagIds(tag.id)}></input>
                     </label>
 
                   </li>

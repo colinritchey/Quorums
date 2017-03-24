@@ -34,6 +34,15 @@ t8 = Tag.create!(name:"film")
 t9 = Tag.create!(name:"financhial")
 t10 = Tag.create!(name:"biology")
 
+guest.tag_ids = [t1.id, t3.id, t4.id, t6.id, t9.id]
+
+user1.tag_ids = [t1.id, t3.id, t6.id, t7.id]
+user2.tag_ids = [t2.id, t3.id, t6.id, t7.id]
+user3.tag_ids = [t1.id, t4.id, t5.id, t10.id]
+user4.tag_ids = [t1.id, t3.id, t9.id, t10.id]
+user5.tag_ids = [t2.id, t8.id, t7.id, t9.id]
+user6.tag_ids = [t2.id, t4.id, t6.id, t10.id]
+user7.tag_ids = [t1.id, t3.id, t5.id, t7.id]
 
 Question.delete_all
 Tagging.delete_all
@@ -104,9 +113,10 @@ Tagging.create(tag_id: t4.id, question_id: q7.id)
 Tagging.create(tag_id: t4.id, question_id: q8.id)
 Tagging.create(tag_id: t4.id, question_id: q9.id)
 Tagging.create(tag_id: t4.id, question_id: q10.id)
+Tagging.create(tag_id: t2.id, question_id: q10.id)
 #topic: cooking questions
 
-q11 = Question.create!(user_id: user4.id, title: "How do you make a Queche?", body: "It looks really good, I want to try and make it")
+q11 = Question.create!(user_id: user4.id, title: "What is a Quiche?", body: "It looks really good, I want to try and make it")
 q12 = Question.create!(user_id: user5.id, title: "I ran out of flour, what is a good replacement?", body: "")
 q13 = Question.create!(user_id: user6.id, title: "What our your favorite things to cook?", body: "I'm a fan of steak and eggs")
 
@@ -116,7 +126,7 @@ Tagging.create(tag_id: t5.id, question_id: q13.id)
 
 
 #topic: hiking questions
-q14 = Question.create!(user_id: user7.id, title: "How long of a hike is mt. Diablo?", body: "Some friends from out of town want to hike it")
+q14 = Question.create!(user_id: user7.id, title: "How long of a hike is Mt. Diablo?", body: "Some friends from out of town want to hike it")
 q15 = Question.create!(user_id: user1.id, title: "What are the peaks in the rim of the bay hikes?", body: "")
 
 Tagging.create(tag_id: t6.id, question_id: q14.id)
@@ -125,9 +135,10 @@ Tagging.create(tag_id: t6.id, question_id: q15.id)
 #topic: political questions
 q16 = Question.create!(user_id: user2.id, title: "Should I be worried about Net Neutrality?")
 q17 = Question.create!(user_id: user3.id, title: "What does the Vice President do exactly?", body: "(S)He sits in on the House of Reps. but what else?")
-q18 = Question.create!(user_id: user4.id, title: "What is a filobuster?")
+q18 = Question.create!(user_id: user4.id, title: "What is a filibuster?")
 
 Tagging.create(tag_id: t7.id, question_id: q16.id)
+Tagging.create(tag_id: t2.id, question_id: q16.id)
 Tagging.create(tag_id: t7.id, question_id: q17.id)
 Tagging.create(tag_id: t7.id, question_id: q18.id)
 
@@ -138,6 +149,7 @@ q21 = Question.create!(user_id: user4.id, title: "Do you think Super Hero movies
 
 Tagging.create(tag_id: t8.id, question_id: q19.id)
 Tagging.create(tag_id: t8.id, question_id: q20.id)
+Tagging.create(tag_id: t3.id, question_id: q20.id)
 Tagging.create(tag_id: t8.id, question_id: q21.id)
 
 #topic: financhial
@@ -230,6 +242,65 @@ a15 = Answer.create!(user_id: user2.id, question_id: q9.id, body: "The majority 
 
 a16 = Answer.create!(user_id: user7.id, question_id: q10.id, body: "The Internet did not get popular all that quickly. Rather, awareness of the Internet came to most people overnight, long after the technical protocols that make the Internet go had been established and tested. Meanwhile, technology evangelists such as myself had to patiently and persistently explain to people how the Internet works and how important it was eventually going to be. And then one day, a quarter of a century later . . . BAM! . . . the Internet was finally something that everyone took for granted.")
 
+# answers for Queston 11
+
+a17 = Answer.create!(user_id: user3.id, question_id: q11.id, body: "Quiche has a pastry crust and a filling of eggs and milk or cream which, when baked, becomes a custard. It can be made with vegetables, meat and seafood.")
+
+# answers for Question 12
+
+a18 = Answer.create!(user_id: user4.id, question_id: q12.id, body: "Like gluten-free baking mixes, there are many alternative flours that can be used instead of wheat flour. These include tapioca flour, corn flour, sorghum, quinoa, rice flour, arrowroot, amaranth, buckwheat, chickpea (garbanzo) flour, almond flour, potato flour, teff and soy flour.")
+a19 = Answer.create!(user_id: user5.id, question_id: q12.id, body: "Ask a neighbor")
+
+# answers for Question 13
+a20 = Answer.create!(user_id: user7.id, question_id: q13.id, body: "Quiche")
+a21 = Answer.create!(user_id: user1.id, question_id: q13.id, body: "Chocolate Cake")
+a22 = Answer.create!(user_id: user2.id, question_id: q13.id, body: "Steak and eggs")
+
+# answers for question 14
+a23 = Answer.create!(user_id: user2.id, question_id: q14.id, body: "It's about 6 1/2 hours")
+a24 = Answer.create!(user_id: user3.id, question_id: q14.id, body: "13.2 miles")
+
+# answers for quesiton 15
+a24 = Answer.create!(user_id: user5.id, question_id: q15.id, body: "Mt. St. Helena,	Mt. Wittenburg,	Mt. Tamalpais,	Mt. Diablo,	Mission Peak, and	Pinnacles NM")
+
+# answers for question 16
+a25 = Answer.create!(user_id: user3.id, question_id: q16.id, body: "It is the principle that Internet service providers should enable access to all content and applications regardless of the source, and without favoring or blocking particular products or websites.")
+
+# answers for question 17
+a26 = Answer.create!(user_id: user7.id, question_id: q17.id, body: "The Constitution gives the vice president the role of presiding over the Senate, and voting in the Senate if there is a tie. The vice president's only other formal responsibility is taking over the presidency if the president dies.")
+
+# answers for question 18
+a27 = Answer.create!(user_id: user3.id, question_id: q18.id, body: "It is an action such as a prolonged speech that obstructs progress in a legislative assembly while not technically contravening the required procedures.")
+
+# answers for question 19
+a28 = Answer.create!(user_id: user4.id, question_id: q19.id, body: "Arrival")
+a29 = Answer.create!(user_id: user7.id, question_id: q19.id, body: "Logan")
+a30 = Answer.create!(user_id: user5.id, question_id: q19.id, body: "Star Wars: Empire Strikes Back")
+
+#answers for question 20
+a31 = Answer.create!(user_id: user4.id, question_id: q20.id, body: "Arrival is more about language than a cheezy scifi movie")
+
+# answers for question 21
+a32 = Answer.create!(user_id: user1.id, question_id: q21.id, body: "This is really dependent on your opinion")
+
+# answers for question 22
+a34 = Answer.create!(user_id: user7.id, question_id: q22.id, body: "Usually when you are making a load or buying a house")
+
+# answers for question 23
+a35 = Answer.create!(user_id: user1.id, question_id: q23.id, body: "A 401(k) is a retirement savings plan sponsored by an employer. It lets workers save and invest a piece of their paycheck before taxes are taken out. Taxes aren't paid until the money is withdrawn from the account.")
+
+# answers for quesiton 24
+a36 = Answer.create!(user_id: user2.id, question_id: q24.id, body: "Say you start at age 25, and put aside $3,000 a year in a tax-deferred retirement account for 10 years - and then you stop saving - completely. By the time you reach 65, your $30,000 investment will have grown to more than $338,000, (assuming a 7% annual return), even though you didn't contribute a dime beyond age 35.")
+
+# answers for question 25
+a37 = Answer.create!(user_id: user1.id, question_id: q25.id, body: "320 km/h")
+a38 = Answer.create!(user_id: user5.id, question_id: q25.id, body: "200 mph")
+
+# answers for question 26
+a39 = Answer.create!(user_id: user7.id, question_id: q26.id, body: "Canaries were once regularly used in coal mining as an early warning system. Toxic gases such as carbon monoxide or methane in the mine would kill the bird before affecting the miners.")
+
+# answers for question 27
+a40 = Answer.create!(user_id: user3.id, question_id: q27.id, body: "Just bury the pot so they can be removed and taken in for the winter. Give the plants a small amount of water ever two or three weeks until they root. Then let nature pay the water bill. Feed once a year with a plant food like 10-10-10 or good house plant food.")
 
 
 Comment.delete_all
@@ -273,3 +344,41 @@ c17 = Comment.create!(user_id: user3.id, question_id: q9.id, body: "Eh, ignoranc
 
 #Comments for question 10
 c18 = Comment.create!(user_id: user3.id, question_id: q10.id, body: "cat videos probably")
+
+#Comments for question 11
+c19 = Comment.create!(user_id: user4.id, question_id: q11.id, body: "one of my favorite dishes")
+
+#Comments for question 14
+c20 = Comment.create!(user_id: user3.id, question_id: q14.id, body: "A great hike, highly recommend")
+
+#Comments for question 16
+c21 = Comment.create!(user_id: user3.id, question_id: q16.id, body: "probably")
+c22 = Comment.create!(user_id: user7.id, question_id: q16.id, body: "Depends how often you surf the web")
+
+#Comments for question 17
+c23 = Comment.create!(user_id: user4.id, question_id: q17.id, body: "Takes the President's role if they die")
+
+#Comments for question 19
+c24 = Comment.create!(user_id: user4.id, question_id: q19.id, body: "You are all wrong! Clearly the Princess Bride is the best!")
+
+#Comments for question 21
+c25 = Comment.create!(user_id: user5.id, question_id: q21.id, body: "Yes!")
+c26 = Comment.create!(user_id: user6.id, question_id: q21.id, body: "No, there are still enough variety")
+
+#Comments for question 22
+c27 = Comment.create!(user_id: user3.id, question_id: q22.id, body: "Are you planning on buying a house or something?")
+
+#Comments for question 24
+c27 = Comment.create!(user_id: user7.id, question_id: q24.id, body: "Ooh, yeah maybe you shoulda started sooner")
+c27 = Comment.create!(user_id: user1.id, question_id: q24.id, body: "Now, its never too late to start")
+
+#Comments for question 25
+c27 = Comment.create!(user_id: user5.id, question_id: q25.id, body: "Falcons are my favorite animal")
+
+#Comments for question 26
+c27 = Comment.create!(user_id: user4.id, question_id: q26.id, body: "Pretty sure they don't use them anymore")
+
+#Comments for question 27
+c27 = Comment.create!(user_id: user4.id, question_id: q27.id, body: "I have a friend who grows his own, I can text him")
+c27 = Comment.create!(user_id: user6.id, question_id: q27.id, body: "Isn't it 'cactus'")
+c27 = Comment.create!(user_id: user1.id, question_id: q27.id, body: "Both are acceptable")

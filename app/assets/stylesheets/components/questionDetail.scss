@@ -1,3 +1,7 @@
+.ReactModal__Body--open{
+  overflow: hidden;
+}
+
 .detail{
   padding: 10px;
   margin-left: 20px;
@@ -88,15 +92,18 @@
   flex-direction: row;
   list-style: none;
   padding: 10px;
+  width: fit-content;
 }
 
 .tag-index-item{
   box-sizing: content-box;
   width: fit-content;
   padding: 5px 15px;
-  margin: 10px;
+  margin-right: 10px;
   border: 0px;
   border-radius: 5px;
+
+  height: 100%;
 
   font-size: 12px;
   font-weight: bold;
@@ -105,16 +112,28 @@
   background-color: #91a6c7;
 }
 
+
 .tag-list-form{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   list-style: none;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .tag-item-form{
-  padding: 5px 15px;
+  display: flex;
+
   margin: 10px;
   border: 1px;
   border-radius: 5px;
+}
+
+.tag-item-form label {
+  padding-right: 5px;
+}
+
+.tag-item-form input {
+  margin-top: 2px;
 }
