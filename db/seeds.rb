@@ -23,16 +23,16 @@ user7 = User.create!(username: "Most Interesting Man", password: "normal_passwor
 Tag.delete_all
 
 #list of tags
-t1 = Tag.create!(name:"programming")
-t2 = Tag.create!(name:"internet")
-t3 = Tag.create!(name:"space")
-t4 = Tag.create!(name:"technology")
-t5 = Tag.create!(name:"cooking")
-t6 = Tag.create!(name:"hiking")
-t7 = Tag.create!(name:"political")
-t8 = Tag.create!(name:"film")
-t9 = Tag.create!(name:"financhial")
-t10 = Tag.create!(name:"biology")
+t1 = Tag.create!(name:"Programming")
+t2 = Tag.create!(name:"Internet")
+t3 = Tag.create!(name:"Space")
+t4 = Tag.create!(name:"Technology")
+t5 = Tag.create!(name:"Cooking")
+t6 = Tag.create!(name:"Hiking")
+t7 = Tag.create!(name:"Political")
+t8 = Tag.create!(name:"Film")
+t9 = Tag.create!(name:"Financial")
+t10 = Tag.create!(name:"Biology")
 
 guest.tag_ids = [t1.id, t3.id, t4.id, t6.id, t9.id]
 

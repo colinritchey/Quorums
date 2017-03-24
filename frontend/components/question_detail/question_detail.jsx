@@ -97,7 +97,6 @@ class QuestionDetail extends React.Component {
 
     let tags = {};
     if(this.props.tags){
-      // tags = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
       tags = this.props.tags;
     }
     return(

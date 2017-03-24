@@ -62,9 +62,13 @@ class CommentIndex extends React.Component{
             updateComment={this.props.updateComment}
             questionId={this.props.question.id}
             buttonType={"create"} />
+
         </section>
+
         <h4>{this.props.comments.length} {header}</h4>
+
         <ul className="comment-index">
+
           {this.props.comments.map((comment, idx) => (
             <CommentIndexItem
               comment={comment}
@@ -72,7 +76,9 @@ class CommentIndex extends React.Component{
               authorizedButttons={this.authorizedButttons}
               key={idx}/>
           ))}
+          
         </ul>
+
       </section>
     );
   }
