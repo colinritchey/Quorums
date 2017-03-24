@@ -54,7 +54,10 @@ class QuestionForm extends React.Component{
 
     let user = this.props.currentUser.username;
     let form = this.props.formType;
-    let tagList = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
+    let tagList = [];
+    if(this.props.tags){
+      tagList = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
+    }
     let classTextArea = form === "new" ? "" : "form-textarea-edit";
 
     return(
