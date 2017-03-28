@@ -17,7 +17,7 @@ Questions have many answers and comments, but users can only create and edit one
 
 On the frontend a question will display all the comments/answers but will be able to tell if the current user owns said answer/comment. Edit and delete buttons will only appear if the user owns the post. Meaning you can always edit your answers or comments, but can't edit others.
 
-![question-show](wireframes/question-show.png)
+![question-show](docs/wireframes/question-show.png)
 
 Backend comment creation:
 
@@ -101,7 +101,7 @@ The function `changeFilter` is telling the Filter Reducer to change the field `s
 
 'updateFilter' takes in the filter name and value and calls changeFilter, then returns a promise 'fetchQuestions' with the state's filter parameter. This will repopulate the questions index with the returned questions instead of the default fetch.
 
-![questions-index](wireframes/question-index.png)
+![questions-index](docs/wireframes/question-index.png)
 
 ### Future Direction for Quorums
 
