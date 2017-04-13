@@ -15,15 +15,13 @@ class TagIndex extends React.Component{
   render(){
 
     let questionTags = [];
-    debugger;
-    if(this.props.questionTags){
+    let tags = [];
+
+    if(!$.isEmptyObject(this.props.tags)){
       questionTags = this.props.questionTags.map((id) => (
         this.props.tags[id]
       ));
-    }
-
-    let tags = [];
-    if(this.props.tags){
+      
       tags = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
     }
 
@@ -31,10 +29,11 @@ class TagIndex extends React.Component{
       <div className="tag-index">
 
         <ul>
-          {questionTags.map((tag, idx)=>(
-            <li className="tag-index-item"
-              key={idx}>{tag.name}</li>
-          ))}
+          {questionTags.map((tag, idx)=>{
+            return (<li className="tag-index-item"
+            key={idx}>{tag.name}</li>)
+          }
+          )}
         </ul>
 
       </div>
