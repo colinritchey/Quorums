@@ -65,7 +65,7 @@ class FormModal extends React.Component {
     const form = this.getForm();
 
     let button = (
-      <i className="fa fa-plus-circle"
+      <i className="fa fa-plus-circle button"
         aria-hidden="true"
         title="Create"
         onClick={this.openModal}></i>
@@ -73,7 +73,7 @@ class FormModal extends React.Component {
 
     if(this.props.buttonType === "edit"){
       button = (
-        <i className="fa fa-pencil-square-o"
+        <i className="fa fa-pencil-square-o button"
         aria-hidden="true"
         title="Edit"
         onClick={this.openModal}></i>

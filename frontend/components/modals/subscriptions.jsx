@@ -8,7 +8,9 @@ class SubscriptionFormModal extends React.Component {
 
     this.state = {
       modalOpen: false,
-      tag_ids: this.props.currentUser.tag_ids
+      tag_ids: this.props.currentUser.tag_ids,
+
+      // TODO: Current Tag
     };
 
     this.closeModal = this.closeModal.bind(this);
@@ -55,10 +57,10 @@ class SubscriptionFormModal extends React.Component {
     let user = this.props.currentUser;
 
     return(
-      <div>
+      <div className="edit-feed">
         <i className="fa fa-pencil-square-o"
         aria-hidden="true"
-        title="Edit"
+        title="Edit Feed"
         onClick={this.openModal}></i>
 
         <Modal

@@ -15,6 +15,7 @@ class TagIndex extends React.Component{
   render(){
 
     let questionTags = [];
+    debugger;
     if(this.props.questionTags){
       questionTags = this.props.questionTags.map((id) => (
         this.props.tags[id]

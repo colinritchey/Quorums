@@ -25,7 +25,7 @@ class DeleteFormModal extends React.Component {
   render() {
     return(
       <div >
-        <i className="fa fa-trash-o"
+        <i className="fa fa-trash-o button"
           aria-hidden="true"
           title="Delete"
           onClick={this.openModal}></i>
