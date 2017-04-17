@@ -80,6 +80,11 @@
   list-style: none;
 }
 
+.comment-index-item img{
+  width: 25px;
+  border-radius: 10px;
+}
+
 .answers-container{
   // border-bottom: 0px;
   // border-top: 1px solid lightgrey;
@@ -91,6 +96,11 @@
   margin-right: 20px;
   font-family: 'Roboto', sans-serif;
   list-style: none;
+}
+
+.answer-index-item img{
+  width: 25px;
+  border-radius: 10px;
 }
 
 .button:hover{

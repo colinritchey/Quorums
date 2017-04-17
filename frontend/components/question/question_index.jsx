@@ -6,8 +6,19 @@ import QuestionFormContainer from '../question_form/question_form_container';
 
 
 class QuestionIndex extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = {loaded: false};
+  }
+
   componentDidMount(){
-    this.props.fetchQuestions();
+    this.props.fetchQuestions().then(() => this.setState({ loaded: true }) );
+
+  }
+
+  componentWillUnmount(){
+    this.props.clearQuestions();
   }
 
   getForm(){
@@ -21,18 +32,31 @@ class QuestionIndex extends React.Component{
   render(){
     const form = this.getForm();
 
-    return(
-      <div className="quesitons-container col col-3-4">
-        {form}
-        <ul>
-          {this.props.questions.map((question, idx) => (
-            <QuestionIndexItem
-              key={idx}
-              question={question} />
-          ))}
-        </ul>
-      </div>
-    );
+    if(this.state.loaded && this.props.questions.length < 1){
+      return (
+        // <div className="quesitons-container col col-3-4">
+          <div className="search-result-empty">
+            <p>Couldn't find matches for "{this.props.searchTitle}"</p>
+          </div>
+        // </div>
+      )
+    } else {
+
+      return(
+        <div className="quesitons-container col col-3-4">
+          {form}
+          <ul>
+            {this.props.questions.map((question, idx) => (
+              <QuestionIndexItem
+                key={idx}
+                question={question} />
+            ))}
+          </ul>
+        </div>
+      );
+
+    }
+
   }
 }
 

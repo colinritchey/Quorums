@@ -11,46 +11,35 @@ class AnswerIndex extends React.Component{
     this.authorizedButttons = this.authorizedButttons.bind(this);
   }
 
-  authorizedButttons(){
-
-    let currentUserAnswer = undefined;
+  authorizedButttons(answer, currentUser){
+    let currentUserAnswer = null;
     let buttonType = "create";
     let deleteForm = "";
-    let owner = this.props.question.user;
-    let question = this.props.question;
-
-    let answers = [];
-    if(question.answers){
-      answers = Object.keys(question.answers).map((id) => question.answers[id]);
-    }
-
-    answers.forEach((answer) => {
-      if(this.props.currentUser.id === answer.user.id){
-        currentUserAnswer = answer;
+      if(currentUser.id === answer.user.id){
         buttonType = "edit";
         deleteForm = (
           <DeleteFormModal
-            item={currentUserAnswer}
+            item={answer}
             action={this.props.deleteAnswer}
             textButton={"Answer"}
             />
         );
+        return(
+          <section className="comment-buttons">
+
+            <FormModal
+              formType="answer"
+              answer={answer}
+              createAnswer={this.props.createAnswer}
+              updateAnswer={this.props.updateAnswer}
+              questionId={this.props.question.id}
+              buttonType={buttonType} />
+            {deleteForm}
+          </section>
+        );
+      } else {
+        return(<div></div>);
       }
-    });
-
-    return(
-      <section className="button-container">
-
-        <FormModal
-          formType="answer"
-          answer={currentUserAnswer}
-          createAnswer={this.props.createAnswer}
-          updateAnswer={this.props.updateAnswer}
-          questionId={this.props.question.id}
-          buttonType={buttonType} />
-        {deleteForm}
-      </section>
-    );
   }
 
   render(){
@@ -62,11 +51,10 @@ class AnswerIndex extends React.Component{
 
     return(
       <section className="detail answers-container">
-        {this.authorizedButttons()}
         <h4>{this.props.answers.length} {header}</h4>
-        <ul>
+        <ul className="comment-index">
           {this.props.answers.map((answer, idx) => (
-            <AnswerIndexItem answer={answer} key={idx}/>
+            <AnswerIndexItem answer={answer} key={idx} authorizedButttons={this.authorizedButttons}/>
           ))}
         </ul>
       </section>

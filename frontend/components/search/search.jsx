@@ -27,7 +27,7 @@ class Search extends React.Component{
 
         <SidebarContainer />
         <div className="search-results-container ">
-          <QuestionIndexContainer formType="none"/>
+          <QuestionIndexContainer formType="search" searchTitle={this.props.searchByTitle}/>
         </div>
 
       </div>

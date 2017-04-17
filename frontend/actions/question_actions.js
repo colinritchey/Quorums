@@ -5,6 +5,7 @@ import * as APIUtilComment from '../util/comment_api_util';
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_QUESTION = "RECEIVE_QUESTION";
 export const REMOVE_QUESTION = "REMOVE_QUESTION";
+export const CLEAR_QUESTIONS = "REMOVE_QUESTIONS";
 export const RECEIVE_ANSWER = "RECEIVE_ANSWER";
 export const REMOVE_ANSWER = "REMOVE_ANSWER";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
@@ -37,6 +38,10 @@ export const receiveQuestion = (question) => ({
 export const removeQuestion = (question) => ({
   type: REMOVE_QUESTION,
   question
+});
+
+export const clearQuestions = () => ({
+  type: CLEAR_QUESTIONS
 });
 
 export const removeAnswer = (answer) => ({

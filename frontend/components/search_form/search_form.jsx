@@ -23,7 +23,6 @@ class SearchForm extends React.Component{
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text"
-          placeholder="Search Bar"
           className="search"
           onChange={this.update('body')}
           value={this.state.body}></input>

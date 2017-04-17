@@ -7,13 +7,20 @@ const showPage = (id) => {
 
 
 const QuestionIndexItem = ({question}) => {
+  let userIcon = <i className="fa fa-user" aria-hidden="true"></i>;
+    
+  if(question.user.img_url){
+    userIcon = <img
+      src={`${question.user.img_url}`}>
+
+    </img>
+  }
+
   return(
     <li className="index-item" onClick={() => showPage(question.id)}>
       <h1>{question.title}</h1>
 
-      <p><i
-        className="fa fa-user"
-        aria-hidden="true"></i> {question.user.username}</p>
+      <p>{userIcon} {question.user.username}</p>
 
       <article>{question.body}</article>
     </li>
