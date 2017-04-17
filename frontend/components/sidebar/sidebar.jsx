@@ -7,23 +7,37 @@ class Sidebar extends React.Component {
   constructor(props){
     super(props);
 
+    this.state = { currentTag: "default" };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFetchAll = this.handleFetchAll.bind(this);
     this.form = this.form.bind(this);
+    this.getCurrentTag = this.getCurrentTag.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchTags();
   }
 
+  getCurrentTag(tagId){
+    if(tagId === this.state.currentTag){
+      return "current-feed-tag";
+    } else {
+      return "";
+    }
+  }
+
   handleSubmit(e){
     e.preventDefault();
     this.props.updateFilter('searchByTagId', e.target.value);
+
+    this.setState({ currentTag: e.target.value });
   }
 
   handleFetchAll(e){
     e.preventDefault();
     this.props.fetchQuestions();
+    this.setState({ currentTag: "default" });
   }
 
   form(){
@@ -50,12 +64,21 @@ class Sidebar extends React.Component {
             </section>
 
             <ul>
-              <li onClick={this.handleFetchAll} key={"All"}>Featured</li>
+              <li
+                className={this.getCurrentTag("default")}
+                onClick={this.handleFetchAll}
+                key={"All"}
+                value={"default"}>Featured</li>
 
               {this.props.tags.map((tag, idx) => {
                 if(userTags.includes(tag.id)){
-                  return (<li onClick={this.handleSubmit} key={idx}
-                    value={tag.id}>{tag.name}</li>);
+                  return (
+                    <li
+                      className={this.getCurrentTag(tag.id)}
+                      onClick={this.handleSubmit}
+                      key={idx}
+                      value={tag.id}>{tag.name}</li>
+                  );
                 } else {
                   return "";
                 }

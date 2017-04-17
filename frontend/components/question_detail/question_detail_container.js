@@ -10,7 +10,8 @@ import {
   deleteAnswer,
   createComment,
   updateComment,
-  deleteComment, } from '../../actions/question_actions';
+  deleteComment,
+  clearQuestions } from '../../actions/question_actions';
 
 import { fetchTags } from '../../actions/tag_actions.js';
 
@@ -32,6 +33,7 @@ const mapDispatchToProps = dispatch => ({
   createComment: comment => dispatch(createComment(comment)),
   updateComment: comment => dispatch(updateComment(comment)),
   deleteComment: comment => dispatch(deleteComment(comment)),
+  clearQuestions: () => dispatch(clearQuestions()),
   fetchTags: () => dispatch(fetchTags())
 });
 

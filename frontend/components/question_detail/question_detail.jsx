@@ -29,6 +29,10 @@ class QuestionDetail extends React.Component {
     this.props.fetchTags();
   }
 
+  componentWillUnmount(){
+    this.props.clearQuestions();
+  }
+
   authorFunctions(){
     let currentUser = this.props.currentUser;
     let owner = this.props.question.user;

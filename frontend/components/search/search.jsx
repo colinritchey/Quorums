@@ -20,6 +20,9 @@ class Search extends React.Component{
     }
   }
 
+  componentWillUnmount(){
+    this.props.clearQuestions();
+  }
 
   render(){
     return(
