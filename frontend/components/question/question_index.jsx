@@ -9,12 +9,27 @@ class QuestionIndex extends React.Component{
   constructor(props){
     super(props);
 
-    this.state = {loaded: false};
+    this.state = {loaded: false, mountCount: 0};
   }
 
   componentDidMount(){
-    this.props.fetchQuestions().then(() => this.setState({ loaded: true }) );
 
+    if(this.props.searchTitle){
+      this.props.updateFilter('searchByTitle', this.props.searchTitle);
+    }else{
+      this.props.fetchQuestions();
+    }
+
+  }
+
+  componentWillReceiveProps(newProps){
+    let count = this.state.mountCount;
+    count++;
+
+    this.setState({mountCount: count});
+    if(newProps.questions.length > 0 || this.state.mountCount > 1){
+      this.setState({ loaded: true });
+    }
   }
 
   componentWillUnmount(){
@@ -30,16 +45,24 @@ class QuestionIndex extends React.Component{
   }
 
   render(){
+    // debugger;
     const form = this.getForm();
+    if(this.state.loaded === false){
 
-    if(this.state.loaded && this.props.questions.length < 1){
+      return(
+        <div className="search-result-empty">
+
+        </div>
+      );
+
+    }else if(this.state.loaded && this.props.questions.length < 1){
       return (
         // <div className="quesitons-container col col-3-4">
           <div className="search-result-empty">
             <p>Couldn't find matches for "{this.props.searchTitle}"</p>
           </div>
         // </div>
-      )
+      );
     } else {
 
       return(

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchQuestions, clearQuestions } from '../../actions/question_actions';
+import { updateFilter } from '../../actions/filter_actions';
 
 import QuestionIndex from './question_index';
 
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchQuestions: () => dispatch(fetchQuestions()),
-  clearQuestions: () => dispatch(clearQuestions())
+  clearQuestions: () => dispatch(clearQuestions()),
+  updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
 });
 
 export default connect(

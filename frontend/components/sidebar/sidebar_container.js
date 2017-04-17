@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {  updateFilter } from '../../actions/filter_actions';
+import { updateFilter } from '../../actions/filter_actions';
 import { fetchTags } from '../../actions/tag_actions.js';
 import { updateUser } from '../../actions/session_actions.js';
 import { fetchQuestions } from '../../actions/question_actions.js';

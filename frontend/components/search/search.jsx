@@ -10,10 +10,6 @@ class Search extends React.Component{
     this.state = this.props;
   }
 
-  componentDidMount(){
-    this.props.updateFilter('searchByTitle', this.props.searchByTitle);
-  }
-
   componentWillReceiveProps(newProps) {
     if(newProps.searchByTitle !== this.props.searchByTitle){
       this.props.updateFilter('searchByTitle', newProps.searchByTitle);
