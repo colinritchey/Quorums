@@ -50,19 +50,19 @@ class AnswerIndex extends React.Component{
     }
 
     return(
-      <section >
-        <section className="button-container">
-
-          <FormModal
-            formType="answer"
-            createAnswer={this.props.createAnswer}
-            updateAnswer={this.props.updateAnswer}
-            questionId={this.props.question.id}
-            buttonType={"create"} />
-
-        </section>
-
+      <section>
         <section className="detail answers-container">
+          <section className="button-container">
+
+            <FormModal
+              formType="answer"
+              createAnswer={this.props.createAnswer}
+              updateAnswer={this.props.updateAnswer}
+              questionId={this.props.question.id}
+              buttonType={"create"} />
+
+          </section>
+
           <h4>{this.props.answers.length} {header}</h4>
           <ul className="comment-index">
             {this.props.answers.map((answer, idx) => (
