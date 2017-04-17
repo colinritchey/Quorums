@@ -12,13 +12,13 @@ User.delete_all
 guest = User.create!(username: "guest", password: "password")
 
 #Sample Users
-user1 = User.create!(username: "Bill", password: "password", img_url: "http://res.cloudinary.com/diu6roixv/image/upload/v1492379378/user-f027-user-male-man-business-icon-512x512-clipart-best-user-clipart-400_400_qd1ggo.png" )
-user2 = User.create!(username: "Jon Hunter", password: "hunter12", img_url: "http://res.cloudinary.com/diu6roixv/image/upload/v1492382639/dog-icon_zt2x3t.svg")
-user3 = User.create!(username: "Alex Leeroy", password: "#7sYsk88", img_url: "http://res.cloudinary.com/diu6roixv/image/upload/v1492382940/black-cat-icon2_hao6ts.png")
-user4 = User.create!(username: "cool_guy", password: "cooler_guy", img_url: "http://res.cloudinary.com/diu6roixv/image/upload/v1492382008/modern-male-user-with-sunglasses_icon-icons.com_68293_hytzzs.png")
-user5 = User.create!(username: "forest_18", password: "longpassword", img_url: "http://res.cloudinary.com/diu6roixv/image/upload/v1492379487/user-clipart-dagobert83_female_user_icon_dbi6u8.png")
-user6 = User.create!(username: "PM_ME_YOUR_QUESTIONS", password: "palidrone", img_url: "http://res.cloudinary.com/diu6roixv/image/upload/v1492381881/Riddler-icon_sm0lzf.png")
-user7 = User.create!(username: "Most Interesting Man", password: "normal_password", img_url: "http://res.cloudinary.com/diu6roixv/image/upload/v1492381510/atomix_user31_p8mwbj.png")
+user1 = User.create!(username: "Bill", password: "password", img_url: "https://res.cloudinary.com/diu6roixv/image/upload/v1492379378/user-f027-user-male-man-business-icon-512x512-clipart-best-user-clipart-400_400_qd1ggo.png" )
+user2 = User.create!(username: "Jon Hunter", password: "hunter12", img_url: "https://res.cloudinary.com/diu6roixv/image/upload/v1492382639/dog-icon_zt2x3t.svg")
+user3 = User.create!(username: "Alex Leeroy", password: "#7sYsk88", img_url: "https://res.cloudinary.com/diu6roixv/image/upload/v1492382940/black-cat-icon2_hao6ts.png")
+user4 = User.create!(username: "cool_guy", password: "cooler_guy", img_url: "https://res.cloudinary.com/diu6roixv/image/upload/v1492382008/modern-male-user-with-sunglasses_icon-icons.com_68293_hytzzs.png")
+user5 = User.create!(username: "forest_18", password: "longpassword", img_url: "https://res.cloudinary.com/diu6roixv/image/upload/v1492379487/user-clipart-dagobert83_female_user_icon_dbi6u8.png")
+user6 = User.create!(username: "PM_ME_YOUR_QUESTIONS", password: "palidrone", img_url: "https://res.cloudinary.com/diu6roixv/image/upload/v1492381881/Riddler-icon_sm0lzf.png")
+user7 = User.create!(username: "Most Interesting Man", password: "normal_password", img_url: "https://res.cloudinary.com/diu6roixv/image/upload/v1492381510/atomix_user31_p8mwbj.png")
 
 Tag.delete_all
 
