@@ -1,14 +1,18 @@
 class Api::QuestionsController < ApplicationController
 
   def index
-    @questions = filter_params ? Question.searchByWord(filter_params) : Question.all
+    feed_tagIds = current_user.subscriptions.pluck(:tag_id)
+
+    featured_questions = feed_tagIds.empty? ? Question.all : Question.feedQuestions(feed_tagIds)
+
+    @questions = filter_params ? Question.searchByWord(filter_params) : featured_questions
 
     if(filter_tag_params)
       @questions = Tag.returnQuestionsByTagId(filter_tag_params)
     elsif filter_params
       @questions = Question.searchByWord(filter_params)
     else
-      @questions = Question.all
+      @questions = featured_questions
     end
 
     @questions.includes(:user)

@@ -22,4 +22,8 @@ class Question < ActiveRecord::Base
   def self.searchByWord(word)
     self.where("lower(title) LIKE ?", "%#{word.downcase}%")
   end
+
+  def self.feedQuestions(feed_tagIds)
+    Question.joins(:tags).where('tags.id in (?)', feed_tagIds)
+  end
 end
