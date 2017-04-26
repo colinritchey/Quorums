@@ -66,7 +66,11 @@ class AnswerIndex extends React.Component{
           <h4>{this.props.answers.length} {header}</h4>
           <ul className="comment-index">
             {this.props.answers.map((answer, idx) => (
-              <AnswerIndexItem answer={answer} key={idx} authorizedButttons={this.authorizedButttons}/>
+              <AnswerIndexItem
+                answer={answer}
+                key={idx}
+                currentUser={this.props.currentUser}
+                authorizedButttons={this.authorizedButttons}/>
             ))}
           </ul>
         </section>

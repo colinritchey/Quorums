@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AnswerIndexItem = ({answer, authorizedButttons}) => {
+const AnswerIndexItem = ({answer, currentUser, authorizedButttons}) => {
   let userIcon = <i className="fa fa-user" aria-hidden="true"></i>;
 
   if(answer.user.img_url){
