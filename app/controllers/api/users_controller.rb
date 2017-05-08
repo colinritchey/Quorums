@@ -19,7 +19,7 @@ class Api::UsersController < ApplicationController
     @user = current_user
     @user.tag_ids = user_params[:tag_ids] || []
 
-    if @user.update(user_params)
+    if @user.update(user_params) # TODO: Adjusts to only tag_ids
       render "api/users/show"
     else
       render json: @question.errors.full_messages, status: 422

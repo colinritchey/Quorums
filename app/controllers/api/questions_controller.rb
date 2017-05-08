@@ -46,7 +46,7 @@ class Api::QuestionsController < ApplicationController
     @comments = @question.comments
     @question.tag_ids = questions_params[:tag_ids] || []
 
-    p questions_params
+    # p questions_params
 
     if @question.update(questions_params)
       render :show
