@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::AnswersController, type: :controller do
+RSpec.describe Api::CommentsController, type: :controller do
   describe 'POST #create' do
     context 'with valid params' do
       let! (:user) { create(:user)}
@@ -11,8 +11,8 @@ RSpec.describe Api::AnswersController, type: :controller do
       let! (:question) { create(:question, user_id: user.id) }
 
       before(:each) do
-        post :create, answer: {
-          body: 'sample answer',
+        post :create, comment: {
+          body: 'sample comment',
           user_id: user.id,
           question_id:  question.id
         },
@@ -22,8 +22,8 @@ RSpec.describe Api::AnswersController, type: :controller do
       it { should render_template(:show) }
       it { should respond_with(200) }
 
-      it 'creates the answer' do
-        expect(Answer.exists?).to be true
+      it 'creates the comment' do
+        expect(Comment.exists?).to be true
       end
     end
 
@@ -35,12 +35,12 @@ RSpec.describe Api::AnswersController, type: :controller do
       end
 
       before(:each) do
-        post :create, answer: { body: '' }, format: :json
+        post :create, comment: { body: '' }, format: :json
       end
 
       it { should respond_with(422) }
-      it 'does not create the answer' do
-        expect(Answer.exists?).to be false
+      it 'does not create the comment' do
+        expect(Comment.exists?).to be false
       end
     end
   end
@@ -53,16 +53,16 @@ RSpec.describe Api::AnswersController, type: :controller do
     end
 
     let! (:question) { create(:question, user_id: user.id) }
-    let! (:answer) {
-      create(:answer,
+    let! (:comment) {
+      create(:comment,
         user_id: user.id,
         question_id:  question.id,
-        body: 'sample answer')
+        body: 'sample comment')
     }
 
     # before(:each) do
-    #   patch :update, id: answer.id, answer: {
-    #     body: 'sample answer'
+    #   patch :update, id: comment.id, comment: {
+    #     body: 'sample comment'
     #   },
     #   format: :json
     # end
@@ -71,7 +71,7 @@ RSpec.describe Api::AnswersController, type: :controller do
     context 'with valid params' do
 
       before(:each) do
-        patch :update, id: answer.id, answer: {
+        patch :update, id: comment.id, comment: {
           body: 'sample question update'
         },
         format: :json
@@ -81,8 +81,8 @@ RSpec.describe Api::AnswersController, type: :controller do
       it { should respond_with(200) }
 
       it 'update the question' do
-        expect(Answer.exists?).to be true
-        expect(Answer.first.body).to eq('sample question update')
+        expect(Comment.exists?).to be true
+        expect(Comment.first.body).to eq('sample question update')
       end
     end
 
@@ -96,19 +96,17 @@ RSpec.describe Api::AnswersController, type: :controller do
         allow(controller).to receive(:current_user) { other_user }
       end
 
-
-
       it "should not allow users to update another users links" do
         begin
-          patch :update, id: answer.id, answer: {
-            body: 'other answer update'
+          patch :update, id: comment.id, comment: {
+            body: 'other comment update'
           },
           format: :json
         rescue ActiveRecord::RecordNotFound
         end
 
-        updated_answer = Answer.find(answer.id)
-        expect(answer.body).to eq('sample answer')
+        updated_comment = Comment.find(comment.id)
+        expect(comment.body).to eq('sample comment')
       end
     end
   end
@@ -121,23 +119,23 @@ RSpec.describe Api::AnswersController, type: :controller do
     end
 
     let! (:question) { create(:question, user_id: user.id) }
-    let! (:answer) {
-      create(:answer,
+    let! (:comment) {
+      create(:comment,
       user_id: user.id,
       question_id:  question.id,
-      body: 'sample answer')
+      body: 'sample comment')
     }
 
     context "when logged in" do
 
       before do
-        delete :destroy, id: answer.id, format: :json
+        delete :destroy, id: comment.id, format: :json
       end
 
       it { should render_template(:show) }
 
       it "removes the comment and redirects back to the link" do
-        expect(Answer.exists?(answer.id)).to be false
+        expect(Comment.exists?(comment.id)).to be false
       end
 
     end
@@ -152,12 +150,12 @@ RSpec.describe Api::AnswersController, type: :controller do
 
       it "should not allow users to delete another users links" do
         begin
-          delete :destroy, id: answer.id, format: :json
+          delete :destroy, id: comment.id, format: :json
         rescue ActiveRecord::RecordNotFound
         end
 
-        updated_answer = Answer.find(answer.id)
-        expect(answer.body).to eq('sample answer')
+        updated_comment = Comment.find(comment.id)
+        expect(comment.body).to eq('sample comment')
       end
     end
   end
