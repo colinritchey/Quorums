@@ -28,7 +28,7 @@ RSpec.describe Api::SessionsController, type: :controller do
             username: "breakfast",
             password: "password"},
           format: :json
-          
+
         should render_template(:show)
         should respond_with(200)
       end
@@ -48,6 +48,22 @@ RSpec.describe Api::SessionsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    before(:each) do
+      post :create,
+        user: {
+          username: "breakfast",
+          password: "password"},
+        format: :json
+      @session_token = User.find_by_username("breakfast").session_token
+    end
 
+    it "logs out the current user" do
+
+      delete :destroy, format: :json
+      expect(session[:session_token]).to be_nil
+
+      jack = User.find_by_username("breakfast")
+      expect(jack.session_token).not_to eq(@session_token)
+    end
   end
 end
