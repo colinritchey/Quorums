@@ -11,7 +11,7 @@
     "npm": "3.10.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
   "repository": {
@@ -39,5 +39,9 @@
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
     "webpack": "2.2.1"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.0",
+    "jest": "20.0.0"
   }
 }
