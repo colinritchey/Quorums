@@ -1,5 +1,3 @@
-/* globals jest */
-
 import {
   fetchQuestion,
   fetchQuestions,
