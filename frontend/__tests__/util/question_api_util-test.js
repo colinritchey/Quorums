@@ -20,8 +20,18 @@ describe('the api util', () => {
     const returnValue = fetchQuestions();
     expect($.ajax).toBeCalled();
 
-    // This line gets the first argument of the first call to $.ajax
     const ajaxCallArg = $.ajax.mock.calls[0][0];
+    expect(ajaxCallArg.url).toEqual('api/questions');
+    expect(returnValue).toEqual("ajax promise");
+  });
+
+  it('fetchQuestions with parameters makes request and returns an ajax promise', () => {
+    let data = { searchByTitle: "test", }
+    const returnValue = fetchQuestions(data);
+    expect($.ajax).toBeCalled();
+
+    const ajaxCallArg = $.ajax.mock.calls[0][0];
+    console.log(ajaxCallArg);
     expect(ajaxCallArg.url).toEqual('api/questions');
     expect(returnValue).toEqual("ajax promise");
   });
@@ -41,7 +51,6 @@ describe('the api util', () => {
     expect($.ajax).toBeCalled();
 
     const ajaxCallArg = $.ajax.mock.calls[0][0];
-    // console.log(ajaxCallArg);
     expect(ajaxCallArg.url).toEqual('api/questions');
     expect(ajaxCallArg.type || ajaxCallArg.method).toMatch(/post/i);
     expect(ajaxCallArg.data).toEqual({ question });
