@@ -31,7 +31,6 @@ describe('the api util', () => {
     expect($.ajax).toBeCalled();
 
     const ajaxCallArg = $.ajax.mock.calls[0][0];
-    console.log(ajaxCallArg);
     expect(ajaxCallArg.url).toEqual('api/questions');
     expect(returnValue).toEqual("ajax promise");
   });
