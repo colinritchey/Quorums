@@ -20,7 +20,7 @@ export const createTagging = (tagging) => (
   })
 );
 
-export const deleteTaggin = (tag) => (
+export const deleteTagging = (tag) => (
   $.ajax({
     url: `api/tags`,
     method: 'DELETE'
