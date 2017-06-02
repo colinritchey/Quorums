@@ -4,8 +4,12 @@ import * as APIUtil from '../../util/question_api_util';
 import {
   RECEIVE_QUESTIONS,
   RECEIVE_QUESTION,
+  REMOVE_QUESTION,
   fetchQuestions,
   fetchQuestion,
+  createQuestion,
+  updateQuestion,
+  deleteQuestion
 } from '../../actions/question_actions';
 
 import thunk from 'redux-thunk';
@@ -14,7 +18,7 @@ import configureMockStore from 'redux-mock-store';
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
 
-describe('post actions', () => {
+describe('question actions', () => {
   describe('post constants', () => {
     it('should contain a RECEIVE_QUESTIONS constant', () => {
       expect(RECEIVE_QUESTIONS).toEqual('RECEIVE_QUESTIONS');
@@ -22,6 +26,10 @@ describe('post actions', () => {
 
     it('should contain a RECEIVE_QUESTION constant', () => {
       expect(RECEIVE_QUESTION).toEqual('RECEIVE_QUESTION');
+    });
+
+    it('should contain a REMOVE_QUESTION constant', () => {
+      expect(REMOVE_QUESTION).toEqual('REMOVE_QUESTION');
     });
   });
 
@@ -67,67 +75,69 @@ describe('post actions', () => {
         });
       });
     });
-    //
-    // describe('createPost', () => {
-    //   it('should export a createPost function', () => {
-    //     expect(typeof createPost).toEqual('function');
-    //   });
-    //
-    //   it('dispatches RECEIVE_POST when a post has been created', () => {
-    //     const newPost = { title: "New Title", body: "New Body" };
-    //     PostApiUtil.createPost = jest.fn((post) => (
-    //       Promise.resolve({ 1: post })
-    //     ));
-    //     const expectedActions = [{ type: "RECEIVE_POST", post: { 1: newPost }}];
-    //
-    //     return store.dispatch(createPost(newPost)).then(() => {
-    //       expect(store.getActions()).toEqual(expectedActions);
-    //     });
-    //   });
-    // });
-    //
-    // describe('updatePost', () => {
-    //   it('should export an updatePost function', () => {
-    //     expect(typeof updatePost).toEqual('function');
-    //   });
-    //
-    //   it('dispatches RECEIVE_POST when a post has been updated', () => {
-    //     const updatedPost = { title: "Updated Title", body: "Updated Body", id: 2 };
-    //     PostApiUtil.updatePost = jest.fn((post) => (
-    //       Promise.resolve({ [updatedPost.id]: updatedPost })
-    //     ));
-    //     hashHistory.push = jest.fn();
-    //     const expectedActions = [{
-    //       type: "RECEIVE_POST",
-    //       post: { [updatedPost.id]: updatedPost }
-    //     }];
-    //
-    //     return store.dispatch(updatePost(updatedPost)).then(() => {
-    //       expect(store.getActions()).toEqual(expectedActions);
-    //       expect(hashHistory.push).toBeCalledWith('/');
-    //     });
-    //   });
-    // });
-    //
-    // describe('deletePost', () => {
-    //   it('should export a deletePost function', () => {
-    //     expect(typeof updatePost).toEqual('function');
-    //   });
-    //
-    //   it('dispatches REMOVE_POST when a post has been deleted', () => {
-    //     const post = { title: "Title", body: "Body", id: 3 };
-    //     PostApiUtil.deletePost = jest.fn((post) => (
-    //       Promise.resolve({ [post.id]: post })
-    //     ));
-    //     const expectedActions = [{
-    //       type: "REMOVE_POST",
-    //       post: { [post.id]: post }
-    //     }];
-    //
-    //     return store.dispatch(deletePost(post)).then(() => {
-    //       expect(store.getActions()).toEqual(expectedActions);
-    //     });
-    //   });
-    // });
+
+    describe('createQuestion', () => {
+      it('should export a createQuestion function', () => {
+        expect(typeof createQuestion).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_QUESTION when a post has been created', () => {
+        const newQuestion = { title: "New Title", body: "New Body" };
+        APIUtil.createQuestion = jest.fn((question) => (
+          Promise.resolve({ 1: question })
+        ));
+        const expectedActions = [{ type: "RECEIVE_QUESTION", question: { 1: newQuestion }}];
+
+        return store.dispatch(createQuestion(newQuestion)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('updatePost', () => {
+      it('should export an updatePost function', () => {
+        expect(typeof updateQuestion).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_QUESTION when a question has been updated', () => {
+        const updatedQuestion = { title: "Updated Title", body: "Updated Body", id: 2 };
+        APIUtil.updateQuestion = jest.fn((question) => (
+          Promise.resolve({ [updatedQuestion.id]: updatedQuestion })
+        ));
+        const expectedActions = [{
+          type: "RECEIVE_QUESTION",
+          question: { [updatedQuestion.id]: updatedQuestion }
+        }];
+
+        return store.dispatch(updateQuestion(updatedQuestion)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('deleteQuestion', () => {
+      it('should export a deletePost function', () => {
+        expect(typeof deleteQuestion).toEqual('function');
+      });
+
+      it('dispatches REMOVE_QUESTION when a post has been deleted', () => {
+        const deletedQuestion = { title: "Title", body: "Body", id: 3 };
+
+        APIUtil.deleteQuestion = jest.fn((id) => (
+          Promise.resolve({ [id]: deletedQuestion })
+        ));
+        const expectedActions = [{
+          type: "REMOVE_QUESTION",
+          question: { [deletedQuestion.id]: deletedQuestion }
+        }];
+
+        hashHistory.push = jest.fn();
+
+        return store.dispatch(deleteQuestion(deletedQuestion)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+          expect(hashHistory.push).toBeCalledWith('/');
+        });
+      });
+    });
   });
 });
