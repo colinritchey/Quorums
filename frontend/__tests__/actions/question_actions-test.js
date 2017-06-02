@@ -50,23 +50,23 @@ describe('post actions', () => {
       });
     });
 
-    // describe('fetchPost', () => {
-    //   it('should export a fetchPost function', () => {
-    //     expect(typeof fetchPost).toEqual('function');
-    //   });
-    //
-    //   it('dispatches RECEIVE_POST when a single post has been fetched', () => {
-    //     const posts = { 1: { id: 1, title: "Test", body: "Works?"} };
-    //     PostApiUtil.fetchPost = jest.fn(id => (
-    //       Promise.resolve({ [id]: posts[id] })
-    //     ));
-    //     const expectedActions = [{ type: "RECEIVE_POST", post: posts }];
-    //
-    //     return store.dispatch(fetchPost(1)).then(() => {
-    //       expect(store.getActions()).toEqual(expectedActions);
-    //     });
-    //   });
-    // });
+    describe('fetchQuestion', () => {
+      it('should export a fetchQuestion function', () => {
+        expect(typeof fetchQuestion).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_QUESTION when a single post has been fetched', () => {
+        const question = { 1: { id: 1, title: "Test", body: "Works?"} };
+        APIUtil.fetchQuestion = jest.fn(id => (
+          Promise.resolve({ [id]: question[id] })
+        ));
+        const expectedActions = [{ type: "RECEIVE_QUESTION", question: question }];
+
+        return store.dispatch(fetchQuestion(1)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
     //
     // describe('createPost', () => {
     //   it('should export a createPost function', () => {
