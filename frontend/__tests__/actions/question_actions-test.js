@@ -1,15 +1,21 @@
 import { hashHistory } from 'react-router';
 import * as APIUtil from '../../util/question_api_util';
+import * as AnswerAPIUtil from '../../util/answer_api_util';
 
 import {
   RECEIVE_QUESTIONS,
   RECEIVE_QUESTION,
   REMOVE_QUESTION,
+  RECEIVE_ANSWER,
+  REMOVE_ANSWER,
   fetchQuestions,
   fetchQuestion,
   createQuestion,
   updateQuestion,
-  deleteQuestion
+  deleteQuestion,
+  createAnswer,
+  updateAnswer,
+  deleteAnswer
 } from '../../actions/question_actions';
 
 import thunk from 'redux-thunk';
@@ -31,6 +37,24 @@ describe('question actions', () => {
     it('should contain a REMOVE_QUESTION constant', () => {
       expect(REMOVE_QUESTION).toEqual('REMOVE_QUESTION');
     });
+
+    it('should contain a RECEIVE_ANSWER constant', () => {
+      expect(RECEIVE_ANSWER).toEqual('RECEIVE_ANSWER');
+    });
+
+    it('should contain a REMOVE_ANSWER constant', () => {
+      expect(REMOVE_ANSWER).toEqual('REMOVE_ANSWER');
+    });
+
+    it('should contain a RECEIVE_QUESTION constant', () => {
+      expect(RECEIVE_QUESTION).toEqual('RECEIVE_QUESTION');
+    });
+
+    it('should contain a REMOVE_QUESTION constant', () => {
+      expect(REMOVE_QUESTION).toEqual('REMOVE_QUESTION');
+    });
+
+
   });
 
   describe('thunks', () => {
@@ -94,8 +118,8 @@ describe('question actions', () => {
       });
     });
 
-    describe('updatePost', () => {
-      it('should export an updatePost function', () => {
+    describe('updateQuestion', () => {
+      it('should export an updateQuestion function', () => {
         expect(typeof updateQuestion).toEqual('function');
       });
 
@@ -136,6 +160,67 @@ describe('question actions', () => {
         return store.dispatch(deleteQuestion(deletedQuestion)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
           expect(hashHistory.push).toBeCalledWith('/');
+        });
+      });
+    });
+
+    describe('createAnswer', () => {
+      it('should export a createAnswer function', () => {
+        expect(typeof createAnswer).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_ANSWER when a post has been created', () => {
+        const newAnswer = { body: "New Body" };
+        AnswerAPIUtil.createAnswer = jest.fn((answer) => (
+          Promise.resolve({ 1: answer })
+        ));
+        const expectedActions = [{ type: "RECEIVE_ANSWER", answer: { 1: newAnswer }}];
+
+        return store.dispatch(createAnswer(newAnswer)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('updateAnswer', () => {
+      it('should export an updateAnswer function', () => {
+        expect(typeof updateAnswer).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_ANSWER when a answer has been updated', () => {
+        const updatedAnswer = { body: "Updated Body", id: 2 };
+        AnswerAPIUtil.updateAnswer = jest.fn((answer) => (
+          Promise.resolve({ [updatedAnswer.id]: updatedAnswer })
+        ));
+        const expectedActions = [{
+          type: "RECEIVE_ANSWER",
+          answer: { [updatedAnswer.id]: updatedAnswer }
+        }];
+
+        return store.dispatch(updateAnswer(updatedAnswer)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('deleteAnswer', () => {
+      it('should export a deleteAnswer function', () => {
+        expect(typeof deleteAnswer).toEqual('function');
+      });
+
+      it('dispatches REMOVE_ANSWER when a post has been deleted', () => {
+        const deletedAnswer = { body: "Body", id: 3 };
+
+        AnswerAPIUtil.deleteAnswer = jest.fn((id) => (
+          Promise.resolve({ [id]: deletedAnswer })
+        ));
+        const expectedActions = [{
+          type: "REMOVE_ANSWER",
+          answer: { [deletedAnswer.id]: deletedAnswer }
+        }];
+
+        return store.dispatch(deleteAnswer(deletedAnswer)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
         });
       });
     });
