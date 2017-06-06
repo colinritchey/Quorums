@@ -1,6 +1,7 @@
 import { hashHistory } from 'react-router';
 import * as APIUtil from '../../util/question_api_util';
 import * as AnswerAPIUtil from '../../util/answer_api_util';
+import * as CommentAPIUtil from '../../util/comment_api_util';
 
 import {
   RECEIVE_QUESTIONS,
@@ -8,6 +9,8 @@ import {
   REMOVE_QUESTION,
   RECEIVE_ANSWER,
   REMOVE_ANSWER,
+  RECEIVE_COMMENT,
+  REMOVE_COMMENT,
   fetchQuestions,
   fetchQuestion,
   createQuestion,
@@ -15,7 +18,10 @@ import {
   deleteQuestion,
   createAnswer,
   updateAnswer,
-  deleteAnswer
+  deleteAnswer,
+  createComment,
+  updateComment,
+  deleteComment
 } from '../../actions/question_actions';
 
 import thunk from 'redux-thunk';
@@ -25,7 +31,7 @@ const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
 
 describe('question actions', () => {
-  describe('post constants', () => {
+  describe('question constants', () => {
     it('should contain a RECEIVE_QUESTIONS constant', () => {
       expect(RECEIVE_QUESTIONS).toEqual('RECEIVE_QUESTIONS');
     });
@@ -44,6 +50,14 @@ describe('question actions', () => {
 
     it('should contain a REMOVE_ANSWER constant', () => {
       expect(REMOVE_ANSWER).toEqual('REMOVE_ANSWER');
+    });
+
+    it('should contain a RECEIVE_COMMENT constant', () => {
+      expect(RECEIVE_COMMENT).toEqual('RECEIVE_COMMENT');
+    });
+
+    it('should contain a REMOVE_COMMENT constant', () => {
+      expect(REMOVE_COMMENT).toEqual('REMOVE_COMMENT');
     });
 
     it('should contain a RECEIVE_QUESTION constant', () => {
@@ -69,7 +83,7 @@ describe('question actions', () => {
         expect(typeof fetchQuestions).toEqual('function');
       });
 
-      it('dispatches RECEIVE_QUESTIONS when posts have been fetched', () => {
+      it('dispatches RECEIVE_QUESTIONS when questions have been fetched', () => {
         const questions = { 1: { id: 1, title: "Test", body: "Works?"} };
         APIUtil.fetchQuestions = jest.fn(() => (
           Promise.resolve(questions)
@@ -87,7 +101,7 @@ describe('question actions', () => {
         expect(typeof fetchQuestion).toEqual('function');
       });
 
-      it('dispatches RECEIVE_QUESTION when a single post has been fetched', () => {
+      it('dispatches RECEIVE_QUESTION when a single question has been fetched', () => {
         const question = { 1: { id: 1, title: "Test", body: "Works?"} };
         APIUtil.fetchQuestion = jest.fn(id => (
           Promise.resolve({ [id]: question[id] })
@@ -105,7 +119,7 @@ describe('question actions', () => {
         expect(typeof createQuestion).toEqual('function');
       });
 
-      it('dispatches RECEIVE_QUESTION when a post has been created', () => {
+      it('dispatches RECEIVE_QUESTION when a question has been created', () => {
         const newQuestion = { title: "New Title", body: "New Body" };
         APIUtil.createQuestion = jest.fn((question) => (
           Promise.resolve({ 1: question })
@@ -140,11 +154,11 @@ describe('question actions', () => {
     });
 
     describe('deleteQuestion', () => {
-      it('should export a deletePost function', () => {
+      it('should export a deleteQuestion function', () => {
         expect(typeof deleteQuestion).toEqual('function');
       });
 
-      it('dispatches REMOVE_QUESTION when a post has been deleted', () => {
+      it('dispatches REMOVE_QUESTION when a question has been deleted', () => {
         const deletedQuestion = { title: "Title", body: "Body", id: 3 };
 
         APIUtil.deleteQuestion = jest.fn((id) => (
@@ -169,7 +183,7 @@ describe('question actions', () => {
         expect(typeof createAnswer).toEqual('function');
       });
 
-      it('dispatches RECEIVE_ANSWER when a post has been created', () => {
+      it('dispatches RECEIVE_ANSWER when a answer has been created', () => {
         const newAnswer = { body: "New Body" };
         AnswerAPIUtil.createAnswer = jest.fn((answer) => (
           Promise.resolve({ 1: answer })
@@ -208,7 +222,7 @@ describe('question actions', () => {
         expect(typeof deleteAnswer).toEqual('function');
       });
 
-      it('dispatches REMOVE_ANSWER when a post has been deleted', () => {
+      it('dispatches REMOVE_ANSWER when a answer has been deleted', () => {
         const deletedAnswer = { body: "Body", id: 3 };
 
         AnswerAPIUtil.deleteAnswer = jest.fn((id) => (
@@ -220,6 +234,67 @@ describe('question actions', () => {
         }];
 
         return store.dispatch(deleteAnswer(deletedAnswer)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('createComment', () => {
+      it('should export a createComment function', () => {
+        expect(typeof createComment).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_COMMENT when a comment has been created', () => {
+        const newComment = { body: "New Body" };
+        CommentAPIUtil.createComment = jest.fn((comment) => (
+          Promise.resolve({ 1: comment })
+        ));
+        const expectedActions = [{ type: "RECEIVE_COMMENT", comment: { 1: newComment }}];
+
+        return store.dispatch(createComment(newComment)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('updateComment', () => {
+      it('should export an updateComment function', () => {
+        expect(typeof updateComment).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_COMMENT when a comment has been updated', () => {
+        const updatedComment = { body: "Updated Body", id: 2 };
+        CommentAPIUtil.updateComment = jest.fn((comment) => (
+          Promise.resolve({ [updatedComment.id]: updatedComment })
+        ));
+        const expectedActions = [{
+          type: "RECEIVE_COMMENT",
+          comment: { [updatedComment.id]: updatedComment }
+        }];
+
+        return store.dispatch(updateComment(updatedComment)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('deleteComment', () => {
+      it('should export a deleteComment function', () => {
+        expect(typeof deleteComment).toEqual('function');
+      });
+
+      it('dispatches REMOVE_COMMENT when a comment has been deleted', () => {
+        const deletedComment = { body: "Body", id: 3 };
+
+        CommentAPIUtil.deleteComment = jest.fn((id) => (
+          Promise.resolve({ [id]: deletedComment })
+        ));
+        const expectedActions = [{
+          type: "REMOVE_COMMENT",
+          comment: { [deletedComment.id]: deletedComment }
+        }];
+
+        return store.dispatch(deleteComment(deletedComment)).then(() => {
           expect(store.getActions()).toEqual(expectedActions);
         });
       });
