@@ -18,8 +18,8 @@ import configureMockStore from 'redux-mock-store';
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
 
-describe('post actions', () => {
-  describe('post constants', () => {
+describe('session actions', () => {
+  describe('session constants', () => {
     it('should contain a RECEIVE_CURRENT_USER constant', () => {
       expect(RECEIVE_CURRENT_USER).toEqual('RECEIVE_CURRENT_USER');
     });
@@ -40,24 +40,24 @@ describe('post actions', () => {
       store = mockStore({ session: {} });
     });
 
-    // describe('login', () => {
-    //   it('should export a login function', () => {
-    //     expect(typeof login).toEqual('function');
-    //   });
-    //
-    //   it('dispatches RECEIVE_CURRENT_USER when user session have been created', () => {
-    //     const user = { currentUser: "Bill", user_id: 1 };
-    //     APIUtil.login = jest.fn(() => (
-    //       Promise.resolve({ 1: user })
-    //     ));
-    //     const expectedActions = [{ type: "RECEIVE_CURRENT_USER", user }];
-    //
-    //     return store.dispatch(login(user)).then(() => {
-    //       expect(store.getActions()).toEqual(expectedActions);
-    //     });
-    //   });
-    // });
+    describe('login', () => {
+      it('should export a login function', () => {
+        expect(typeof login).toEqual('function');
+      });
 
-    
+      it('dispatches RECEIVE_CURRENT_USER when user session have been created', () => {
+        const newUser = { username: "Bill", password: "password" };
+        APIUtil.login = jest.fn(() => (
+          Promise.resolve({ username: "Bill", password: "password" })
+        ));
+        const expectedActions = [{ type: "RECEIVE_CURRENT_USER", currentUser: newUser }];
+
+        return store.dispatch(login(newUser)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+
   });
 });
