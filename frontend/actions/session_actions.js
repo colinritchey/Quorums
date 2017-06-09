@@ -32,12 +32,12 @@ export const login = user => dispatch => {
 };
 
 export const signup = user => dispatch => {
-  APIUtil.signup(user).then(_user => dispatch(receiveCurrentUser(_user)),
+  return APIUtil.signup(user).then(_user => dispatch(receiveCurrentUser(_user)),
     errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const logout = () => dispatch => {
-  APIUtil.logout().then(user => {
+  return APIUtil.logout().then(user => {
     dispatch(receiveLogout(user));
     hashHistory.push('/login');
   },

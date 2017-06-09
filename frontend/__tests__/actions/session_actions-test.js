@@ -58,6 +58,66 @@ describe('session actions', () => {
       });
     });
 
+    describe('signup', () => {
+      it('should export a signup function', () => {
+        expect(typeof signup).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_CURRENT_USER when user session have been created', () => {
+        const newUser = { username: "Bill", password: "password" };
+        APIUtil.signup = jest.fn(() => (
+          Promise.resolve({ username: "Bill", password: "password" })
+        ));
+        const expectedActions = [{ type: "RECEIVE_CURRENT_USER", currentUser: newUser }];
+
+        return store.dispatch(signup(newUser)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('logout', () => {
+      it('should export a signup function', () => {
+        expect(typeof logout).toEqual('function');
+      });
+
+      it('dispatches LOGOUT when user session have been created', () => {
+        const newUser = { username: "Bill", password: "password" };
+        APIUtil.login = jest.fn(() => (
+          Promise.resolve({ username: "Bill", password: "password" })
+        ));
+        APIUtil.logout = jest.fn(() => (
+          Promise.resolve()
+        ));
+        const expectedActions = [{ type: "LOGOUT" }];
+
+        return store.dispatch(logout()).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
+    describe('updateUser', () => {
+      it('should export an updateUser function', () => {
+        expect(typeof updateUser).toEqual('function');
+      });
+
+      it('dispatches RECEIVE_CURRENT_USER when a question has been updated', () => {
+        const updatedUser = { id: 1, username: "Bill", tag_ids: [1,2,3] };
+        APIUtil.updateUser = jest.fn((updatedUser) => (
+          Promise.resolve({ id: 1, username: "Bill", tag_ids: [1,2,3] })
+        ));
+        const expectedActions = [{
+          type: "RECEIVE_CURRENT_USER",
+          currentUser: updatedUser
+        }];
+
+        return store.dispatch(updateUser(updatedUser)).then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+      });
+    });
+
 
   });
 });
