@@ -14,7 +14,7 @@ const currentUser = {
 
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
-const testStore = mockStore({ session: { currentUser } });
+const testStore = mockStore({ session: { currentUser, errors: [] } });
 
 describe('post form container', () => {
   let sessionFormWrapper,
@@ -48,26 +48,35 @@ describe('post form container', () => {
 
     });
 
+
     it('correctly maps state to props', () => {
-      expect(sessionFormWrapper.props().post).toEqual({
-        username: "", password: ""
-      });
+      expect(sessionFormWrapper.props().loggedIn).toEqual(true);
     });
-    //
-    // it('correctly maps dispatch to props', () => {
-    //   expect(postFormWrapper.props().action).toBeDefined();
-    // });
-    //
-    // it('pre-fills title and body input fields with empty string', () => {
-    //   expect(titleInput.props().value).toEqual('');
-    //   expect(bodyInput.props().value).toEqual('');
-    // });
-    //
-    // it('updates the title and body fields when they change', () => {
-    //   titleInput.simulate('change', { target: { value: 'telephone' }});
-    //   expect(titleInput.props().value).toEqual('telephone');
-    // });
-    //
+
+    it('correctly maps dispatch to props', () => {
+      expect(sessionFormWrapper.props().signup).toBeDefined();
+      expect(sessionFormWrapper.props().login).toBeDefined();
+      expect(sessionFormWrapper.props().removeErrors).toBeDefined();
+    });
+
+    it('pre-fills title and body input fields with empty string', () => {
+      expect(usernameInput.props().value).toEqual('');
+      expect(passwordInput.props().value).toEqual('');
+    });
+
+    it('updates the username and password fields when they change', () => {
+      const username = usernameInput;
+
+      console.log(username);
+      username.node.value='test';
+      username.simulate('change', username);
+      // // usernameInput.simulate('change', { target: { value: 'Test' }});
+      // expect(usernameInput.props().value).toEqual('Test');
+
+      // passwordInput.simulate('change', { target: { value: 'password' }});
+      // expect(passwordInput.props().value).toEqual('password');
+    });
+
     // it('triggers the correct action when submitted', () => {
     //   const newPost = { title: 'testTitle', body: 'testBody' };
     //   titleInput.simulate('change', { target: { value: newPost.title }});
