@@ -64,18 +64,18 @@ describe('post form container', () => {
       expect(passwordInput.props().value).toEqual('');
     });
 
-    it('updates the username and password fields when they change', () => {
-      const username = usernameInput;
-
-      console.log(username);
-      username.node.value='test';
-      username.simulate('change', username);
-      // // usernameInput.simulate('change', { target: { value: 'Test' }});
-      // expect(usernameInput.props().value).toEqual('Test');
-
-      // passwordInput.simulate('change', { target: { value: 'password' }});
-      // expect(passwordInput.props().value).toEqual('password');
-    });
+    // it('updates the username and password fields when they change', () => {
+    //   const username = usernameInput;
+    //
+    //   // console.log(username);
+    //   username.node.value='test';
+    //   username.simulate('change', username);
+    //   // // usernameInput.simulate('change', { target: { value: 'Test' }});
+    //   // expect(usernameInput.props().value).toEqual('Test');
+    //
+    //   // passwordInput.simulate('change', { target: { value: 'password' }});
+    //   // expect(passwordInput.props().value).toEqual('password');
+    // });
 
     // it('triggers the correct action when submitted', () => {
     //   const newPost = { title: 'testTitle', body: 'testBody' };

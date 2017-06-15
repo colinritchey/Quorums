@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import QuestionIndexItem from './question_index_item';
+import QuestionIndexItem from './question_index_item.jsx';
 import QuestionFormContainer from '../question_form/question_form_container';
 
 

@@ -4,7 +4,7 @@ import {
   createQuestion,
   updateQuestion } from '../../actions/question_actions';
 
-import QuestionForm from './question_form';
+import QuestionForm from './question_form.jsx';
 
 const mapStateToProps = (state, ownProps) => {
   let question = {title: "", body: ""};
