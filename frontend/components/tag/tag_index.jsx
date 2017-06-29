@@ -17,11 +17,12 @@ class TagIndex extends React.Component{
     let questionTags = [];
     let tags = [];
 
-    if(!$.isEmptyObject(this.props.tags)){
+    // if(!$.isEmptyObject(this.props.tags)){
+    if(Object.keys(this.props.tags).length !== 0){
       questionTags = this.props.questionTags.map((id) => (
         this.props.tags[id]
       ));
-      
+
       tags = Object.keys(this.props.tags).map((id) => this.props.tags[id]);
     }
 
