@@ -35,6 +35,7 @@ describe('question deatil', () => {
 
   beforeEach(() => {
     QuestionActions.fetchQuestion = jest.fn(() => dispatch => {});
+    TagActions.fetchTags = jest.fn(() => dispatch => {});
     const testParams = { questionId: testQuestion.id };
 
     questionDetailWrapper = mount(
@@ -43,7 +44,31 @@ describe('question deatil', () => {
   });
 
   it('correctly maps state to props', () => {
-    expect(questionDetailWrapper.props().post).toEqual(testQuestion);
+    expect(questionDetailWrapper.props().question).toEqual(testQuestion);
+  });
+
+  it('correctly maps dispatches to props', () => {
+    expect(questionDetailWrapper.props().fetchQuestion).toBeDefined();
+    expect(questionDetailWrapper.props().updateQuestion).toBeDefined();
+    expect(questionDetailWrapper.props().deleteQuestion).toBeDefined();
+
+    expect(questionDetailWrapper.props().createAnswer).toBeDefined();
+    expect(questionDetailWrapper.props().updateAnswer).toBeDefined();
+    expect(questionDetailWrapper.props().deleteAnswer).toBeDefined();
+
+    expect(questionDetailWrapper.props().createComment).toBeDefined();
+    expect(questionDetailWrapper.props().updateComment).toBeDefined();
+    expect(questionDetailWrapper.props().deleteComment).toBeDefined();
+
+    expect(questionDetailWrapper.props().fetchTags).toBeDefined();
+  });
+
+  it('contains the question information', () => {
+    const renderedText = questionDetailWrapper.text();
+
+    // expect(QuestionActions.fetchPost).toBeCalledWith(testQuestion.id);
+    expect(renderedText).toContain(testQuestion.title);
+    expect(renderedText).toContain(testQuestion.body);
   });
 
 });

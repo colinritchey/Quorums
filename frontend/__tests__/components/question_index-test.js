@@ -25,37 +25,33 @@ const testQuestions = {
 };
 const middlewares = [ thunk ];
 const mockStore = configureMockStore(middlewares);
-const testStore = mockStore({ question: testQuestions });
+const testStore = mockStore({ questions: testQuestions });
 
 describe('question index', () => {
   let questionIndexWrapper;
 
-  // beforeEach(() => {
-  //   // QuestionActions.fetchQuestions = jest.fn(() => dispatch => {});
-  //   questionIndexWrapper = mount(
-  //     <QuestionIndexContainer store={testStore}/>
-  //   ).find('QuestionIndex');
-  // });
-
-  describe('test without enzyme', () => {
-    it('will be a simple test', () => {
-      expect(2+2).toBe(4)
-    })
+  beforeEach(() => {
+    QuestionActions.fetchQuestions = jest.fn(() => dispatch => {});
+    questionIndexWrapper = mount(
+      <QuestionIndexContainer store={testStore}/>
+    ).find('QuestionIndex');
   });
 
-  // it('correctly maps state to props', () => {
-  //   expect(postIndexWrapper.props().posts).toEqual(Object.values(testPosts));
-  // });
-  //
-  // it('correctly maps dispatch to props', () => {
-  //   expect(postIndexWrapper.props().fetchPosts).toBeDefined();
-  //   expect(postIndexWrapper.props().deletePost).toBeDefined();
-  // });
-  //
-  // it('fetches posts after being mounted', () => {
-  //   expect(PostActions.fetchPosts).toBeCalled();
-  // });
-  //
+  it('correctly maps state to props', () => {
+    let mappedQuestions = Object.keys(testQuestions).map((id) => testQuestions[id]);
+
+    expect(questionIndexWrapper.props().questions).toEqual(mappedQuestions);
+  });
+
+  it('correctly maps dispatch to props', () => {
+    expect(questionIndexWrapper.props().fetchQuestions).toBeDefined();
+    expect(questionIndexWrapper.props().clearQuestions).toBeDefined();
+  });
+
+  it('fetches posts after being mounted', () => {
+    expect(QuestionActions.fetchQuestions).toBeCalled();
+  });
+
   // it('renders a PostIndexItem for each post, passing in each post as a "post" prop', () => {
   //   const postIndexItems = postIndexWrapper.find('ul').children();
   //   expect(postIndexItems.nodes.length).toBe(3);
