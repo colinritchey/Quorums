@@ -1,18 +1,19 @@
-// jest.mock('../../components/question/question_index_item', () => (
-//   () => ({ render: () => ( <div></div> ) })
-// ));
-// jest.mock('../components/posts/post_form_container', () => {
-//   // need to name function so we can query for it later
-//   return function FormContainer() {
-//     return { render: () => ( <div></div> ) }
-//   }
-// });
+jest.mock('../../components/question/question_index_item', () => (
+  () => ({ render: () => ( <div></div> ) })
+));
+
+jest.mock('../../components/question_form/question_form_container', () => {
+  return function QuestionFormContainer() {
+    return { render: () => ( <div></div> ) }
+  }
+});
 
 import React from 'react';
 import { mount } from 'enzyme';
 
 import QuestionIndexContainer from '../../components/question/question_index_container';
 import QuestionIndex from '../../components/question/question_index.jsx';
+import QuestionIndexItem from '../../components/question/question_index_item.jsx';
 import * as QuestionActions from '../../actions/question_actions';
 
 import configureMockStore from 'redux-mock-store';
@@ -29,12 +30,17 @@ const testStore = mockStore({ questions: testQuestions });
 
 describe('question index', () => {
   let questionIndexWrapper;
+  let questionFromWrapper;
 
   beforeEach(() => {
     QuestionActions.fetchQuestions = jest.fn(() => dispatch => {});
     questionIndexWrapper = mount(
-      <QuestionIndexContainer store={testStore}/>
+      <QuestionIndexContainer store={testStore} formType={"new"}/>
     ).find('QuestionIndex');
+
+    questionFromWrapper = mount(
+      <QuestionIndexContainer store={testStore} formType={"new"}/>
+    ).find('QuestionFormContainer');
   });
 
   it('correctly maps state to props', () => {
@@ -52,17 +58,23 @@ describe('question index', () => {
     expect(QuestionActions.fetchQuestions).toBeCalled();
   });
 
-  // it('renders a PostIndexItem for each post, passing in each post as a "post" prop', () => {
-  //   const postIndexItems = postIndexWrapper.find('ul').children();
-  //   expect(postIndexItems.nodes.length).toBe(3);
+  it('renders a QuestionIndexItem for each post, passing in each question as a "question" prop', () => {
+    const questionIndexItems = questionIndexWrapper.find('QuestionIndexItem').children();
+    // console.log(questionIndexItems);
+
+    // expect(questionIndexItems.length).toBe(3);
+
+    questionIndexItems.forEach((item, i) => {
+      // console.log(item);
+      expect(item.props().question).toEqual(testQuestions[i+1]);
+    });
+  });
+
+  // it('contains a QuestionFormContainer component', () => {
   //
-  //   postIndexItems.forEach((item, i) => {
-  //     expect(item.props().post).toEqual(testPosts[i+1]);
-  //   });
-  // });
+  //   const questionForm = questionFromWrapper.find('QuestionForm');
+  //   console.log("questionForm", questionForm);
   //
-  // it('contains a PostFormContainer component', () => {
-  //   const postForm = postIndexWrapper.find('FormContainer');
-  //   expect(postForm.length).toBe(1);
+  //   expect(questionForm.length).toBe(1);
   // });
 });

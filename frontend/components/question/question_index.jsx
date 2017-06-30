@@ -45,7 +45,6 @@ class QuestionIndex extends React.Component{
   }
 
   render(){
-    // debugger;
     const form = this.getForm();
     if(this.state.loaded === false){
 
