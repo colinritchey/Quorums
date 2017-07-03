@@ -27,12 +27,6 @@ describe('post form container', () => {
     SessionActions.logout = jest.fn(user => dispatch => {});
   });
 
-  describe('test without enzyme', () => {
-    it('will be a simple test', () => {
-      expect(2+2).toBe(4)
-    })
-  });
-
   describe('creating a new session', () => {
     beforeEach(() => {
       sessionFormWrapper = mount(
@@ -64,18 +58,19 @@ describe('post form container', () => {
       expect(passwordInput.props().value).toEqual('');
     });
 
-    // it('updates the username and password fields when they change', () => {
-    //   const username = usernameInput;
-    //
-    //   // console.log(username);
-    //   username.node.value='test';
-    //   username.simulate('change', username);
-    //   // // usernameInput.simulate('change', { target: { value: 'Test' }});
-    //   // expect(usernameInput.props().value).toEqual('Test');
-    //
-    //   // passwordInput.simulate('change', { target: { value: 'password' }});
-    //   // expect(passwordInput.props().value).toEqual('password');
-    // });
+    it('updates the username field when they change', () => {
+
+      usernameInput.simulate('change', { target: { value: 'password' }});
+      expect(usernameInput.props().value).toEqual('password');
+
+    });
+
+    it('updates the password field when they change', () => {
+
+      passwordInput.simulate('change', { target: { value: 'Test' }});
+      expect(passwordInput.props().value).toEqual('Test');
+
+    });
 
     // it('triggers the correct action when submitted', () => {
     //   const newPost = { title: 'testTitle', body: 'testBody' };
