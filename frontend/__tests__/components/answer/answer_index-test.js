@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import AnswerIndex from '../../components/answer/answer_index.jsx';
-import AnswerIndexItem from '../../components/answer/answer_index_item.jsx';
-import * as QuestionActions from '../../actions/question_actions';
+import AnswerIndex from '../../../components/answer/answer_index.jsx';
+import AnswerIndexItem from '../../../components/answer/answer_index_item.jsx';
+import * as QuestionActions from '../../../actions/question_actions';
 
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';

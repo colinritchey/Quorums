@@ -1,8 +1,8 @@
 import React from 'react';
-import QuestionDetailContainer from '../../components/question_detail/question_detail_container';
+import QuestionDetailContainer from '../../../components/question_detail/question_detail_container';
 import { mount } from 'enzyme';
-import * as QuestionActions from '../../actions/question_actions';
-import * as TagActions from '../../actions/tag_actions';
+import * as QuestionActions from '../../../actions/question_actions';
+import * as TagActions from '../../../actions/tag_actions';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 

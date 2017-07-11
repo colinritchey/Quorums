@@ -1,6 +1,6 @@
-import * as QuestionActions from '../../actions/question_actions';
+import * as QuestionActions from '../../../actions/question_actions';
 import React from 'react';
-import QuestionFormContainer from '../../components/question_form/question_form_container';
+import QuestionFormContainer from '../../../components/question_form/question_form_container';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { mount } from 'enzyme';

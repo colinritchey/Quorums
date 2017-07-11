@@ -1,20 +1,20 @@
-jest.mock('../../components/question/question_index_item', () => (
-  () => ({ render: () => ( <div></div> ) })
-));
-
-jest.mock('../../components/question_form/question_form_container', () => {
-  return function QuestionFormContainer() {
-    return { render: () => ( <div></div> ) }
-  }
-});
+// jest.mock('../../components/question/question_index_item', () => (
+//   () => ({ render: () => ( <div></div> ) })
+// ));
+//
+// jest.mock('../../components/question_form/question_form_container', () => {
+//   return function QuestionFormContainer() {
+//     return { render: () => ( <div></div> ) }
+//   }
+// });
 
 import React from 'react';
 import { mount } from 'enzyme';
 
-import QuestionIndexContainer from '../../components/question/question_index_container';
-import QuestionIndex from '../../components/question/question_index.jsx';
-import QuestionIndexItem from '../../components/question/question_index_item.jsx';
-import * as QuestionActions from '../../actions/question_actions';
+import QuestionIndexContainer from '../../../components/question/question_index_container';
+import QuestionIndex from '../../../components/question/question_index.jsx';
+import QuestionIndexItem from '../../../components/question/question_index_item.jsx';
+import * as QuestionActions from '../../../actions/question_actions';
 
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';

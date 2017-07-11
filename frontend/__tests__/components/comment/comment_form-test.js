@@ -1,6 +1,6 @@
-import * as QuestionActions from '../../actions/question_actions';
+import * as QuestionActions from '../../../actions/question_actions';
 import React from 'react';
-import AnswerForm from '../../components/answer/answer_form';
+import CommentForm from '../../../components/comment/comment_form';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { mount } from 'enzyme';
@@ -17,7 +17,7 @@ const testQuestion = {
   tag_ids: [2]
 };
 
-const testAnswer = {
+const testComment = {
   id: 1,
   body: "Body1",
   question_id: 1,
@@ -50,37 +50,35 @@ const testStore2 = mockStore({
 });
 
 describe('question form container', () => {
-  let answerFormWrapper,
+  let commentFormWrapper,
       titleInput,
       closeModal,
       bodyInput;
 
   beforeEach(() => {
-    QuestionActions.updateAnswer = jest.fn(question => dispatch => {});
-    QuestionActions.createAnswer = jest.fn(question => dispatch => {});
+    QuestionActions.updateComment = jest.fn(question => dispatch => {});
+    QuestionActions.createComment = jest.fn(question => dispatch => {});
     closeModal = jest.fn(() => dispatch => {});
   });
 
-
-
   describe('creating a new question', () => {
     beforeEach(() => {
-      answerFormWrapper = mount(
-        <AnswerForm
-          questionId={testAnswer.questionId}
+      commentFormWrapper = mount(
+        <CommentForm
+          questionId={testComment.questionId}
           closeModal={closeModal}
-          createAnswer={QuestionActions.createAnswer}
-          updateAnswer={QuestionActions.updateAnswer}
+          createComment={QuestionActions.createComment}
+          updateComment={QuestionActions.updateComment}
            />
-      ).find('AnswerForm');
+       ).find('CommentForm');
 
-      bodyInput = answerFormWrapper.find('textarea');
+      bodyInput = commentFormWrapper.find('textarea');
     });
 
     it('correctly maps dispatch to props', () => {
-      expect(answerFormWrapper.props().createAnswer).toBeDefined();
-      expect(answerFormWrapper.props().updateAnswer).toBeDefined();
-      expect(answerFormWrapper.props().closeModal).toBeDefined();
+      expect(commentFormWrapper.props().createComment).toBeDefined();
+      expect(commentFormWrapper.props().updateComment).toBeDefined();
+      expect(commentFormWrapper.props().closeModal).toBeDefined();
     });
 
     it('pre-fills title and body input fields with empty string', () => {
@@ -93,47 +91,47 @@ describe('question form container', () => {
     });
 
     it('triggers the correct action when submitted', () => {
-      const newAnswer = { body: 'testBody', hasError: false };
-      bodyInput.simulate('change', { target: { value: newAnswer.body }});
-      answerFormWrapper.find('form').simulate('submit');
+      const newComment = { body: 'testBody', hasError: false };
+      bodyInput.simulate('change', { target: { value: newComment.body }});
+      commentFormWrapper.find('form').simulate('submit');
 
-      expect(QuestionActions.createAnswer).toBeCalledWith(newAnswer);
+      expect(QuestionActions.createComment).toBeCalledWith(newComment);
     });
   });
 
   describe('updating an existing question', () => {
     beforeEach(() => {
-      answerFormWrapper = mount(
-        <AnswerForm
-          answer={testAnswer}
-          questionId={testAnswer.questionId}
+      commentFormWrapper = mount(
+        <CommentForm
+          comment={testComment}
+          questionId={testComment.questionId}
           closeModal={closeModal}
-          createAnswer={QuestionActions.createAnswer}
-          updateAnswer={QuestionActions.updateAnswer}
+          createComment={QuestionActions.createComment}
+          updateComment={QuestionActions.updateComment}
            />
-      ).find('AnswerForm');
+       ).find('CommentForm');
 
-      bodyInput = answerFormWrapper.find('textarea');
+      bodyInput = commentFormWrapper.find('textarea');
     });
 
     it('correctly maps dispatch to props', () => {
 
-      expect(answerFormWrapper.props().createAnswer).toBeDefined();
-      expect(answerFormWrapper.props().updateAnswer).toBeDefined();
-      expect(answerFormWrapper.props().closeModal).toBeDefined();
+      expect(commentFormWrapper.props().createComment).toBeDefined();
+      expect(commentFormWrapper.props().updateComment).toBeDefined();
+      expect(commentFormWrapper.props().closeModal).toBeDefined();
     });
 
     it('pre-fills title and body input fields with question data from the store', () => {
-      expect(bodyInput.props().value).toEqual(testAnswer.body);
+      expect(bodyInput.props().value).toEqual(testComment.body);
     });
 
     it('triggers the correct action when submitted', () => {
-      const updatedAnswer = merge({}, testAnswer);
-      updatedAnswer["hasError"] = false;
-      updatedAnswer["question_id"] = testAnswer.questionId;
+      const updatedComment = merge({}, testComment);
+      updatedComment["hasError"] = false;
+      updatedComment["question_id"] = testComment.questionId;
 
-      answerFormWrapper.find('form').simulate('submit');
-      expect(QuestionActions.updateAnswer).toBeCalledWith(updatedAnswer);
+      commentFormWrapper.find('form').simulate('submit');
+      expect(QuestionActions.updateComment).toBeCalledWith(updatedComment);
     });
   });
 });
