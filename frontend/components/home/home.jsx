@@ -8,7 +8,7 @@ const Home = ({currentUser}) => {
   if(currentUser){
     return(
       <div className="content">
-        
+
 
         <SidebarContainer formType="home"/>
         <QuestionIndexContainer formType="new"/>
